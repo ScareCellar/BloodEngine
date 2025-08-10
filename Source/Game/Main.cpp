@@ -10,7 +10,6 @@
 #include "Core/Random.h"
 #include "Core/Math/MathUtils.h"
 #include "Core/Math/Vector2.h"
-#include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
 #include "Core/Audio/AudioSystem.h" 
 #include "Core/Math/Vector3.h"
@@ -22,6 +21,7 @@
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
 #include "../Engine/Core/File.h"
+#include "../Engine/Resources/ResourceManager.h"
 
 
 
@@ -35,6 +35,8 @@ int main(int argc, char* argv[]) {
     GetEngine().Initialize();
     
 
+    ResourceManager resourceManager;
+
     std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
 
     game->Initialize();
@@ -44,8 +46,12 @@ int main(int argc, char* argv[]) {
     SDL_Event e;
 
 
-
-
+    // create texture, using shared_ptr so texture can be shared
+/*
+    std::shared_ptr<Texture> texture = std::make_shared<Texture>();
+    texture->Load("doretta.png", GetEngine().GetRenderer());
+*/
+    auto texture = resourceManager.Get<Texture>("dorretta.png", GetEngine().GetRenderer());
     //initialize sounds
     GetEngine().GetAudio().AddSound("test.wav", "test");
     GetEngine().GetAudio().AddSound("bass.wav", "bass");
@@ -93,8 +99,10 @@ int main(int argc, char* argv[]) {
         //Spanish Button
         if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_P)) GetEngine().GetAudio().PlaySound("spanish");
 
+
         game->Draw(GetRenderer());
         //text->Draw(GetEngine().GetRenderer(), 40.0f, 40.0f);
+        GetEngine().GetRenderer().DrawTexture(texture.get(), 300, 300);
 
         GetEngine().GetRenderer().Present(); // Render the screen
 

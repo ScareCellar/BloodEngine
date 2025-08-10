@@ -1,7 +1,6 @@
 #pragma once
 #include "../Core/Math/Transform.h"
 #include "../Renderer/Model.h"
-#include "../Renderer/Renderer.h"
 
 #include <memory>
 #include <string>
@@ -23,12 +22,13 @@ namespace blood {
 		class Scene* scene{ nullptr };
 	public:
 		Actor() = default;
+		~Actor() = default;
 		Actor(const Transform& transform, std::shared_ptr<Model> model) : m_transform{ transform }, m_model{ model } {}
 		
 
 
 		virtual void Update(float dt);
-		virtual void Draw(class Renderer& renderer);
+		virtual void Draw(Renderer& renderer);
 
 		virtual void OnCollision(Actor* other) = 0;
 

@@ -5,7 +5,9 @@
 #include "../Framework/Actor.h"
 #include "../Core/StringHelper.h"
 
+
 namespace blood{
+	
 	class Scene {
 	public:
 		Scene(class Game* game) : m_game{ game } {}

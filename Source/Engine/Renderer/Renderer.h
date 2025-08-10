@@ -1,6 +1,9 @@
 #pragma once
+#include "Texture.h"
+
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3_image/SDL_image.h>
 #include <iostream>	
 
 namespace blood
@@ -31,6 +34,10 @@ namespace blood
 		int GetHeight() {
 			return m_height;
 		}
+
+		void DrawTexture(Texture* texture, float x, float y);
+
+		friend class Texture;
 
 	private:
 		SDL_Window* m_window = nullptr;

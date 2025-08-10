@@ -1,4 +1,4 @@
-#include "Engine.h"
+#pragma once
 #include "Framework/Actor.h"
 
 class Bullet : public blood::Actor{
@@ -6,7 +6,7 @@ public:
 	Bullet(blood::Transform& transform, std::shared_ptr<blood::Model> model) : blood::Actor{ transform, model } {};
 
 	
-	void Update(float dt);
+	void Update(float dt) override;
 	
 	float speed{ 2000.0f };
 

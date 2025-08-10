@@ -2,9 +2,9 @@
 #include "Model.h"
 #include "Renderer.h"
 #include "../Core/Math/Vector2.h"
-namespace blood {
 
-	void Model::Draw(class Renderer& renderer, const vec2& position, float rotation, float scale) {
+
+	void blood::Model::Draw(class Renderer& renderer, const vec2& position, float rotation, float scale) {
 
 		if (m_points.empty()) return;
 		renderer.SetColorFloat(m_color.r, m_color.g, m_color.b);
@@ -19,15 +19,14 @@ namespace blood {
 
 		}
 	}
-	void Model::Draw(class Renderer& renderer, const Transform& transform) {
+	void blood::Model::Draw(class Renderer& renderer, const Transform& transform) {
 		Draw(renderer, transform.position, transform.rotation, transform.scale);
 	}
 
-	void Model::CalculateRadius() {
+	void blood::Model::CalculateRadius() {
 		m_radius = 0;
 		for (auto& point : m_points) {
 			float length = point.Length();
 			if (length > m_radius) m_radius = length;
 		}
 	}
-}

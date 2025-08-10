@@ -27,6 +27,9 @@
     <Filter Include="Framework">
       <UniqueIdentifier>{38059ff9-3921-4625-ac0e-3db6fc90ab16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{90577dca-d452-48d7-a591-6a52c474ab75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -66,6 +69,9 @@
       <Filter>Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="Renderer\ParticleSystem.cpp">
+      <Filter>Source\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Texture.cpp">
       <Filter>Source\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,6 +135,15 @@
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Texture.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\ResourceManager.h">
+      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,6 +8,11 @@
 
 
 
+void Rocket::Draw(blood::Renderer& renderer)
+{
+
+}
+
 void Rocket::Update(float dt) {
 	blood::vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(m_transform.rotation)) * speed;
 	velocity = force;

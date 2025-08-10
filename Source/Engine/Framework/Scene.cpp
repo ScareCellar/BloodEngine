@@ -1,9 +1,7 @@
 #include "Scene.h"
 #include "../Renderer/Renderer.h"
-#include "../Core/StringHelper.h"
 
-
-namespace blood {
+namespace blood{
 
 	void Scene::Update(float dt) {
 		for (auto& actor : m_actors) {

@@ -7,8 +7,8 @@ class Rocket : public blood::Actor {
 public:
 	Rocket(blood::Transform& transform, std::shared_ptr<blood::Model> model) : Actor{transform, model} {};
 
-	void Draw();
-	void Update(float dt);
+	void Draw(blood::Renderer& renderer) override;
+	void Update(float dt) override;
 	void Explode();
 	float speed{ -1000.0f };
 	
