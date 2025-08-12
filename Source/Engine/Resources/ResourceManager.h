@@ -10,7 +10,7 @@ namespace blood {
 	public:
 		template<typename T, typename ... TArgs>
 		res_t<T> Get(const std::string& name, TArgs&& ... args);
-
+		
 
 
 	private:
@@ -26,13 +26,13 @@ namespace blood {
 		auto iter = m_resources.find(key);
 		if (iter != m_resources.end()) {
 			auto base = iter->second;
-			auto derived = std::dynamic_pointer_cast<T>(base);
-			if (!derived) {
+			auto resource = std::dynamic_pointer_cast<T>(base);
+			if (!resource) {
 				std::cerr << "Resource type mismatch: " << key << std::endl;
 				return res_t<T>();
 			}
 
-			return derived;
+			return resource;
 		}
 
 		//load resource

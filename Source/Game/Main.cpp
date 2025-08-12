@@ -47,11 +47,8 @@ int main(int argc, char* argv[]) {
 
 
     // create texture, using shared_ptr so texture can be shared
-/*
-    std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-    texture->Load("doretta.png", GetEngine().GetRenderer());
-*/
-    auto texture = resourceManager.Get<Texture>("dorretta.png", GetEngine().GetRenderer());
+    auto texture = resourceManager.Get <blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
+    auto texture2 = resourceManager.Get <blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
     //initialize sounds
     GetEngine().GetAudio().AddSound("test.wav", "test");
     GetEngine().GetAudio().AddSound("bass.wav", "bass");

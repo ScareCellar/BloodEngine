@@ -173,6 +173,11 @@
     <ClInclude Include="Game\SpaceGame.h" />
     <ClInclude Include="Game\Turret.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Engine\Engine.vcxproj">
+      <Project>{8b5e3282-6df8-4677-be13-cf9e381955b2}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

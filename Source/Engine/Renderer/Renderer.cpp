@@ -1,5 +1,5 @@
 #include "Renderer.h"
-using namespace blood;
+//using namespace blood;
 namespace blood
 {
     bool Renderer::Initialize() {
@@ -34,6 +34,8 @@ namespace blood
             SDL_Quit();
             return false;
         }
+        
+        
 
         return true;
     }
@@ -69,6 +71,7 @@ namespace blood
 
     void Renderer::DrawTexture(Texture* texture, float x, float y)
     {
+        //if (!texture) return;
         vec2 size = texture->GetSize();
 
         SDL_FRect destRect;

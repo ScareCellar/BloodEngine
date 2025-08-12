@@ -39,9 +39,10 @@ namespace blood {
         w = 0;
         h = 0;
 
-        // https://wiki.libsdl.org/SDL3/SDL_GetTextureSize
-        SDL_GetTextureSize(m_texture, &w, &h);
-
+        if (m_texture) {
+            // https://wiki.libsdl.org/SDL3/SDL_GetTextureSize
+            SDL_GetTextureSize(m_texture, &w, &h);
+        }
         return vec2{ w, h };
     }
 }
