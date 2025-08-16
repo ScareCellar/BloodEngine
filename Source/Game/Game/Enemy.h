@@ -6,8 +6,8 @@ using namespace blood;
 class Enemy : public Actor {
 public:
 	Enemy() = default;
-	Enemy(const Transform& transform, std::shared_ptr<Model> model) :
-		Actor{ transform, model } {
+	Enemy(const Transform& transform, blood::res_t<blood::Texture> texture) :
+		Actor{ transform, texture } {
 	};
 
 	void Update(float dt) override;

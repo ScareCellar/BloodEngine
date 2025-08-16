@@ -45,7 +45,7 @@ void Player::Update(float dt) {
     
 
     //fire rockets
-    GetEngine().GetPS().Draw(GetRenderer());
+    GetEngine().GetPS().Draw(Engine::Instance().GetRenderer());
 
     Actor::Update(dt);
 }

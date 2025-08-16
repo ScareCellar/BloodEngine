@@ -1,27 +1,38 @@
 #pragma once
 #include "../Core/StringHelper.h"
 #include "../Resources/Resource.h"
+#include "../Core/Singleton.h"
 #include <map>
 #include <iostream>
 
 
 namespace blood {
-	class ResourceManager {
+	class ResourceManager :public Singleton<ResourceManager> {
 	public:
-		template<typename T, typename ... TArgs>
-		res_t<T> Get(const std::string& name, TArgs&& ... args);
+		template<typename T, typename ... Args>
+		res_t<T> Get(const std::string& name, Args&& ... args);
 		
-
+		template<typename T, typename ... Args>
+		res_t<T> GetWithID(const std::string& id, const std::string& name, Args&& ... args);
 
 	private:
+		friend class Singleton<ResourceManager>;
+
 		std::map<std::string, res_t<Resource>> m_resources;
+
+		ResourceManager() = default;
 	};
 
 
-	template<typename T, typename ... TArgs>
-	inline res_t<T> ResourceManager::Get(const std::string& name, TArgs&& ... args)
+	template<typename T, typename ... Args>
+	inline res_t<T> ResourceManager::Get(const std::string& name, Args&& ... args)
 	{
-		std::string key = toLower(name);
+		return GetWithID<T>(name, name, std::forward<Args>(args)...); 
+	}
+
+	template<typename T, typename ... Args>
+	inline res_t<T> ResourceManager::GetWithID(const std::string& id, const std::string& name, Args&& ... args) {
+		std::string key = toLower(id);
 
 		auto iter = m_resources.find(key);
 		if (iter != m_resources.end()) {
@@ -37,8 +48,8 @@ namespace blood {
 
 		//load resource
 		res_t<T> resource = std::make_shared<T>();
-		if (!resource->Load(key, std::forward<TArgs>(args)...)) {
-			std::cerr << "Could not load resource: " << key << std::endl;//why is this line not auto formatting?
+		if (!resource->Load(name, std::forward<Args>(args)...)) {
+			std::cerr << "Could not load resource: " << name << std::endl;//why is this line not auto formatting?
 			return res_t<T>();
 		}
 
@@ -47,4 +58,7 @@ namespace blood {
 
 		return resource;
 	}
+
+	inline ResourceManager& Resources() { return ResourceManager::Instance(); }
+
 }

@@ -1,9 +1,10 @@
 #pragma once
 #include "Framework/Actor.h"
+#include "../Engine/Renderer/Texture.h"
 
 class Bullet : public blood::Actor{
 public:
-	Bullet(blood::Transform& transform, std::shared_ptr<blood::Model> model) : blood::Actor{ transform, model } {};
+	Bullet(blood::Transform& transform, blood::res_t<blood::Texture> texture) : blood::Actor{ transform, texture } {};
 
 	
 	void Update(float dt) override;

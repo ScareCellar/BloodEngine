@@ -6,11 +6,6 @@
 
 namespace blood {
 
-	Engine& GetEngine() {
-		static Engine engine;
-		return engine;
-	}
-
 	bool Engine::Initialize() {
 		m_renderer = std::make_unique<blood::Renderer>();
 		m_renderer->Initialize();
@@ -28,7 +23,7 @@ namespace blood {
 	void Engine::Shutdown() {
 		m_particleSystem->Shutdown();
 		m_audio->Shutdown();
-		m_input->ShutDown();//fix this when I figure out where my audio system is.
+		m_input->ShutDown();
 		m_renderer->Shutdown();
 	}
 	void Engine::Update() {
@@ -37,7 +32,4 @@ namespace blood {
 		m_audio->Update();
 		m_particleSystem->Update(time.GetDeltaTime());
 	}
-
-
-
 }

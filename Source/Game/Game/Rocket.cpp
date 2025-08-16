@@ -2,6 +2,7 @@
 #include "Core/Math/MathUtils.h"
 #include "GameData.h"
 #include "Engine.h"
+#include "Resources/ResourceManager.h"
 
 #include <memory>
 
@@ -31,7 +32,7 @@ void Rocket::Explode(){
 	if (!exploded) {
 		blood::GetEngine().GetAudio().PlaySound("explode");
 		std::unique_ptr<blood::Model> explode;
-		m_model = std::make_shared<blood::Model>(GameData::explodePoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
+		m_texture = blood::Resources().Get<blood::Texture>("explode.png", blood::GetEngine().GetRenderer());
 		lifespan = 0.2f;
 		speed = 0;
 		exploded = true;

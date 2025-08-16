@@ -39,9 +39,6 @@ private:
 
 	float m_stateTimer{ 0 };
 
-	std::shared_ptr<blood::Font> m_titleFont;
-	std::shared_ptr<blood::Font> m_uiFont;
-
 	std::unique_ptr<blood::Text> m_titleText;
 	std::unique_ptr<blood::Text> m_scoreText;
 	std::unique_ptr<blood::Text> m_livesText;

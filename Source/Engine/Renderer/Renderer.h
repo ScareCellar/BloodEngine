@@ -36,6 +36,7 @@ namespace blood
 		}
 
 		void DrawTexture(Texture* texture, float x, float y);
+		void DrawTexture(Texture* texture, float x, float y, float angle, float scale = 1);
 
 		friend class Texture;
 

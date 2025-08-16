@@ -5,7 +5,7 @@
 
 class Rocket : public blood::Actor {
 public:
-	Rocket(blood::Transform& transform, std::shared_ptr<blood::Model> model) : Actor{transform, model} {};
+	Rocket(blood::Transform& transform, blood::res_t<blood::Texture> texture) : Actor{transform, texture} {};
 
 	void Draw(blood::Renderer& renderer) override;
 	void Update(float dt) override;

@@ -7,9 +7,9 @@ using namespace blood;
 class Player : public Actor {
 public:
 	Player() = default;
-	Player(const Transform& transform, std::shared_ptr<Model> model) {
+	Player(const Transform& transform, res_t<Texture> texture) {
 		m_transform = transform;
-		m_model = model;
+		m_texture = texture;
 
 		
 	}

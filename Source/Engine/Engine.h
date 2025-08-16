@@ -4,6 +4,7 @@
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/ParticleSystem.h"
+#include "Core/Singleton.h"
 #include <memory>
 
 namespace blood {
@@ -11,14 +12,13 @@ namespace blood {
 	class InputSystem;
 	class AudioSystem;
 	class ParticleSystem;
-	class Engine {
+	class Engine : public Singleton<Engine>{
 	public:
-		Engine() = default;
 
 		bool Initialize();
-		void Update();
 		void Shutdown();
 
+		void Update();
 		void Draw();
 
 		Renderer& GetRenderer() { return *m_renderer; }
@@ -29,6 +29,10 @@ namespace blood {
 
 
 	private:
+		friend Singleton<Engine>;
+
+		Engine() = default;
+
 		Time time;
 		std::unique_ptr<Renderer> m_renderer;
 		std::unique_ptr<InputSystem> m_input;
@@ -36,6 +40,7 @@ namespace blood {
 		std::unique_ptr<ParticleSystem> m_particleSystem;
 	};
 
-	Engine& GetEngine();
-	inline Renderer& GetRenderer() { return GetEngine().GetRenderer(); }
+	inline Engine& GetEngine() {
+		return Engine::Instance();
+	}
 }

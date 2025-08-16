@@ -1,10 +1,15 @@
 #include "Bullet.h"
 #include "Framework/Scene.h"
+#include "SpaceGame.h"
 
 void Bullet::OnCollision(Actor* other){
-	if (tag != other->tag) {
+	if (tag != other->tag && other->name != "turret") {
 		destroyed = true;
+		if (tag == "enemy") {
+			scene->GetGame()->AddPoints(50);
+		}
 	}
+	
 }
 
 void Bullet::Update(float dt) {

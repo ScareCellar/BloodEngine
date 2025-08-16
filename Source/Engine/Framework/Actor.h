@@ -1,6 +1,6 @@
 #pragma once
-#include "../Core/Math/Transform.h"
 #include "../Renderer/Model.h"
+#include "../Renderer/Texture.h"
 
 #include <memory>
 #include <string>
@@ -23,7 +23,7 @@ namespace blood {
 	public:
 		Actor() = default;
 		~Actor() = default;
-		Actor(const Transform& transform, std::shared_ptr<Model> model) : m_transform{ transform }, m_model{ model } {}
+		Actor(const Transform& transform, res_t<Texture> texture) : m_transform{ transform }, m_texture{ texture } {}
 		
 
 
@@ -36,7 +36,8 @@ namespace blood {
 
 	public:
 		Transform m_transform;
-		std::shared_ptr<Model> m_model;
+		res_t<Texture> m_texture;
+		//std::shared_ptr<Model> m_model;
 
 
 	};

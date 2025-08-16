@@ -33,9 +33,6 @@ int main(int argc, char* argv[]) {
 
     //create systems
     GetEngine().Initialize();
-    
-
-    ResourceManager resourceManager;
 
     std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
 
@@ -47,8 +44,8 @@ int main(int argc, char* argv[]) {
 
 
     // create texture, using shared_ptr so texture can be shared
-    auto texture = resourceManager.Get <blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
-    auto texture2 = resourceManager.Get <blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
+    //auto texture = blood::Resources().Get<blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
+    //auto texture2 = resourceManager.Get <blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
     //initialize sounds
     GetEngine().GetAudio().AddSound("test.wav", "test");
     GetEngine().GetAudio().AddSound("bass.wav", "bass");
@@ -71,6 +68,8 @@ int main(int argc, char* argv[]) {
     //GetEngine().GetAudio().PlaySound("clap");
 
     vec3 color(0, 0, 0);
+
+    float rotate = 0;
 
     //main loop
     while (!quit) {
@@ -97,9 +96,10 @@ int main(int argc, char* argv[]) {
         if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_P)) GetEngine().GetAudio().PlaySound("spanish");
 
 
-        game->Draw(GetRenderer());
+        game->Draw(Engine::Instance().GetRenderer());
+        rotate += 90 * GetEngine().GetTime().GetDeltaTime();
         //text->Draw(GetEngine().GetRenderer(), 40.0f, 40.0f);
-        GetEngine().GetRenderer().DrawTexture(texture.get(), 300, 300);
+       // GetEngine().GetRenderer().DrawTexture(texture.get(), 300, 300, rotate, 20);
 
         GetEngine().GetRenderer().Present(); // Render the screen
 

@@ -6,9 +6,10 @@
 #include "Player.h"
 #include "SpaceGame.h"
 #include "GameData.h"
-#include "Rocket.h"
+#include "Bullet.h"
 #include "Renderer/ParticleSystem.h"
 #include "../Engine/Engine.h"
+#include "Resources/ResourceManager.h"
 #include "Core/Random.h"
 
 void Enemy::Update(float dt) {
@@ -45,13 +46,13 @@ void Enemy::Update(float dt) {
     if (shootTimer <= 0) {
         std::shared_ptr<blood::Model> rocketModel = std::make_shared<blood::Model>(GameData::rocketPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
         blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 10 };
-        auto rocket = std::make_unique<Rocket>(transform, rocketModel);
-        rocket->speed = 500.0f;
-        rocket->lifespan = 5.0f;
-        rocket->name = "rocket";
-        rocket->tag = "enemy";
+        auto bullet = std::make_unique<Bullet>(transform, blood::Resources().Get<blood::Texture>("bullet.png", blood::GetEngine().GetRenderer()));
+        bullet->speed = 500.0f;
+        bullet->lifespan = 5.0f;
+        bullet->name = "rocket";
+        bullet->tag = "enemy";
         shootTimer = 2.0f;
-        scene->AddActor(std::move(rocket));
+        scene->AddActor(std::move(bullet));
     }
 
     Actor::Update(dt);

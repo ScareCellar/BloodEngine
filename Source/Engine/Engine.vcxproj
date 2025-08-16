@@ -190,6 +190,7 @@
     <ClInclude Include="Core\Math\Vector2.h" />
     <ClInclude Include="Core\Math\Vector3.h" />
     <ClInclude Include="Core\Random.h" />
+    <ClInclude Include="Core\Singleton.h" />
     <ClInclude Include="Core\StringHelper.h" />
     <ClInclude Include="Core\Time.h" />
     <ClInclude Include="Engine.h" />

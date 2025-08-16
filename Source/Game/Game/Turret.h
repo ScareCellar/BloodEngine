@@ -5,8 +5,8 @@ using namespace blood;
 class Turret :public Actor {
 public:
 	Turret() = default;
-	Turret(const Transform& transform, std::shared_ptr<Model> model) :
-		Actor{ transform, model } {
+	Turret(const Transform& transform, res_t<Texture> texture) :
+		Actor{ transform, texture } {
 	};
 
 	void Update(float dt) override;

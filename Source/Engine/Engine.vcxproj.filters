@@ -145,5 +145,8 @@
     <ClInclude Include="Resources\ResourceManager.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Singleton.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
