@@ -2,6 +2,7 @@
 #include "../Core/StringHelper.h"
 #include "../Resources/Resource.h"
 #include "../Core/Singleton.h"
+#include "../Core/Logger.h"
 #include <map>
 #include <iostream>
 
@@ -39,7 +40,7 @@ namespace blood {
 			auto base = iter->second;
 			auto resource = std::dynamic_pointer_cast<T>(base);
 			if (!resource) {
-				std::cerr << "Resource type mismatch: " << key << std::endl;
+				Logger::Log(LogLevel::Warning, "Resource type mismatch: " << key);
 				return res_t<T>();
 			}
 
@@ -49,7 +50,7 @@ namespace blood {
 		//load resource
 		res_t<T> resource = std::make_shared<T>();
 		if (!resource->Load(name, std::forward<Args>(args)...)) {
-			std::cerr << "Could not load resource: " << name << std::endl;//why is this line not auto formatting?
+			Logger::Log(LogLevel::Warning, "Could not load resource: " << name);
 			return res_t<T>();
 		}
 

@@ -1,11 +1,12 @@
 #include "AudioSystem.h"
-
+#include "../Logger.h"
 
 namespace blood {
 
 	bool AudioSystem::CheckFMODResult(FMOD_RESULT result) {
 		if (result != FMOD_OK) {
-			std::cerr << FMOD_ErrorString(result) << std::endl;
+			Logger::Log(LogLevel::Error, FMOD_ErrorString(result));
+			
 			return false;
 		}
 
@@ -40,7 +41,7 @@ namespace blood {
 
 		//check if key exists in sounds map
 		if (m_sounds.find(key) != m_sounds.end()) {
-			std::cerr << "AudioSystem : Name already exists" << key << std::endl;
+			Logger::Log(LogLevel::Warning, "AudioSystem : Name already exists " + key);
 			return false;
 		}
 
@@ -65,7 +66,8 @@ namespace blood {
 
 
 		if (m_sounds.find(name) == m_sounds.end()) {
-			std::cerr << "AudioSystem : name doesn't exist" << key << std::endl;
+			
+			Logger::Log(LogLevel::Info, "AudioSystem : name doesn't exist" + key);
 			return false;
 		}
 

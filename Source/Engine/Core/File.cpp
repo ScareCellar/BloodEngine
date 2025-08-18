@@ -1,4 +1,5 @@
 #include "File.h"
+#include "../Core/Logger.h"
 #include <filesystem>
 #include <iostream>
 #include <fstream>
@@ -89,7 +90,7 @@ namespace blood {
 
                 str = ss.str();
             } else {
-                std::cerr << "Error: Could not open the file.\n";
+                Logger::Log(LogLevel::Warning, "Error: Could not open the file.");
                 return false;
             }
 

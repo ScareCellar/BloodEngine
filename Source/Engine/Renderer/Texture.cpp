@@ -1,5 +1,6 @@
 #include "Texture.h"
 #include "../Renderer/Renderer.h"
+#include "../Core/Logger.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -16,7 +17,7 @@ namespace blood {
         SDL_Surface* surface = IMG_Load(filename.c_str());
         if (!surface)
         {
-            std::cerr << "Could not load image: " << filename << std::endl;
+            Logger::Log(LogLevel::Warning, "Could not load image: " + filename);
             return false;
         }
 
@@ -26,7 +27,7 @@ namespace blood {
         SDL_DestroySurface(surface);
         if (!m_texture)
         {
-            std::cerr << "Could not create texture: " << filename << std::endl;
+            Logger::Log(LogLevel::Warning, "Could not create texture: " + filename);
             return false;
         }
 

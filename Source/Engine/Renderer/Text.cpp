@@ -1,4 +1,5 @@
 #include "Text.h"
+#include "../Core/Logger.h"
 
 namespace blood {
 	Text::~Text() {
@@ -12,7 +13,7 @@ namespace blood {
 		SDL_Color c{ (uint8_t)(color.r * 255), (uint8_t)(color.g * 255), (uint8_t)(color.b * 255), 255 };
 		SDL_Surface* surface = TTF_RenderText_Solid(m_font->m_ttfFont, text.c_str(), text.size(), c);
 		if (surface == nullptr) {
-			std::cerr << "Could not create surface.\n";
+			Logger::Log(LogLevel::Warning, "Could not create surface.");
 			return false;
 		}
 
@@ -20,7 +21,7 @@ namespace blood {
 		m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
 		if (m_texture == nullptr) {
 			SDL_DestroySurface(surface);
-			std::cerr << "Could not create texture" << SDL_GetError() << std::endl;
+			Logger::Log(LogLevel::Error, "Could not create texture " + *SDL_GetError());
 			return false;
 		}
 
