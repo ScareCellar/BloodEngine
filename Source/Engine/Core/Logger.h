@@ -40,23 +40,23 @@ namespace blood {
 			switch (level) {
 			case LogLevel::Info:
 				prefix = "[INFO] ";
-				color = "#008000"; // Green
+				color = "\033[32m"; // Green
 				break;
 			case LogLevel::Warning:
 				prefix = "[WARNING] ";
-				color = "#FFFF00"; // Yellow
+				color = "\033[33m"; // Yellow
 				break;
 			case LogLevel::Error:
 				prefix = "[ERROR] ";
-				color = "#FF0000"; // Red
+				color = "\033[31m"; // Red
 				break;
 			case LogLevel::Debug:
 				prefix = "[DEBUG] ";
-				color = "#00FFFF"; // Cyan
+				color = "\033[36m"; // Cyan
 				break;
 			default:
 				prefix = "[UNKNOWN] ";
-				color = "#000000"; // Reset
+				color = "\033[0m"; // Reset
 				break;
 			}
 
