@@ -2,6 +2,9 @@
 #include "Rocket.h"
 #include "Bullet.h"
 #include "Gamedata.h"
+#include "Engine.h"
+#include "../../Engine/EngineMinimal.h"
+#include "../../Engine/Source/Components/SpriteRenderer.h"
 
 
 void Turret::Update(float dt) {
@@ -28,12 +31,17 @@ void Turret::Update(float dt) {
 
         std::shared_ptr<blood::Model> rocketModel = std::make_shared<blood::Model>(GameData::rocketPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
         blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 2 };
-        auto rocket = std::make_unique<Rocket>(transform, blood::Resources().Get<blood::Texture>("rocket.png", blood::GetEngine().GetRenderer()));
+        auto rocket = std::make_unique<Rocket>(transform);// , blood::Resources().Get<blood::Texture>("rocket.png", blood::GetEngine().GetRenderer()));
         rocket->speed = 1000.0f;
         rocket->lifespan = 2.0f;
         rocket->name = "rocket";
         rocket->tag = "player";
         rocketShootTimer = 3.0f;
+
+        auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
+        spriteRenderer->textureName = "rocket.png";
+
+        rocket->AddComponent(std::move(spriteRenderer));
         scene->AddActor(std::move(rocket));
     }
 
@@ -43,12 +51,18 @@ void Turret::Update(float dt) {
 
         std::shared_ptr<blood::Model> bulletModel = std::make_shared<blood::Model>(GameData::bulletPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
         blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 2 };
-        auto bullet = std::make_unique<Bullet>(transform, blood::Resources().Get<blood::Texture>("bullet.png", blood::GetEngine().GetRenderer()));
+        auto bullet = std::make_unique<Bullet>(transform);// , blood::Resources().Get<blood::Texture>("bullet.png", blood::GetEngine().GetRenderer()));
         bullet->speed = 2000.0f;
         bullet->lifespan = 1.5f;
         bullet->name = "bullet";
         bullet->tag = "player";
         bulletShootTimer = 0.2f;
+
+        auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
+        spriteRenderer->textureName = "bullet.png";
+
+        bullet->AddComponent(std::move(spriteRenderer));
+
         scene->AddActor(std::move(bullet));
     }
 }

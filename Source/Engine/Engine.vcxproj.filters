@@ -81,7 +81,7 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Components\SpriteRenderer.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

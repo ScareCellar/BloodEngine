@@ -5,9 +5,7 @@ using namespace blood;
 class Turret :public Actor {
 public:
 	Turret() = default;
-	Turret(const Transform& transform, res_t<Texture> texture) :
-		Actor{ transform, texture } {
-	};
+	Turret(const Transform& transform) : Actor{ transform } {};
 
 	void Update(float dt) override;
 	void Draw(class Renderer& renderer) override;
@@ -22,6 +20,7 @@ private:
 	float rocketShootTimer{ 3.0f };
 	float bulletShootTimer{ 0.2f };
 
+	
 
 
 private:

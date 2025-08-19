@@ -6,7 +6,7 @@ using namespace blood;
 class Enemy : public Actor {
 public:
 	Enemy() = default;
-	Enemy(const Transform& transform, blood::res_t<blood::Texture> texture) :
+	Enemy(const Transform& transform) :
 		Actor{ transform } {
 	};
 

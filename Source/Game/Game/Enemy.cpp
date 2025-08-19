@@ -5,6 +5,7 @@
 #include "Bullet.h"
 #include "../Engine/Engine.h"
 #include "../Engine/Source/Core/Random.h"
+#include "../Engine/Source/Components/SpriteRenderer.h"
 
 void Enemy::Update(float dt) {
     bool playerSeen = false;
@@ -47,7 +48,10 @@ void Enemy::Update(float dt) {
         bullet->tag = "enemy";
         shootTimer = 2.0f;
 
-        auto spriteRenderer = std::make_unique<blood::SpriteRenderer>
+        auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
+        spriteRenderer->textureName = "bullet.png";
+
+        bullet->AddComponent(std::move(spriteRenderer));
 
         scene->AddActor(std::move(bullet));
     }

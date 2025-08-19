@@ -3,6 +3,9 @@
 #include "Turret.h"
 #include "../Game/Game/GameData.h"
 #include "../Game/Enemy.h"
+#include "../../Engine/EngineMinimal.h"
+#include "../../Engine/Engine.h"
+#include "../GamePCH.h"
 
 #include <vector>
 #include <iostream>
@@ -49,13 +52,23 @@ void SpaceGame::Update(float dt) {
         player->name = "player";
         player->tag = "player";
 
+        auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
+        spriteRenderer->textureName = "doretta.png";
+
+        player->AddComponent(std::move(spriteRenderer));
+
         m_scene->AddActor(std::move(player));
 
         std::shared_ptr<blood::Model> turretModel = std::make_shared<blood::Model>(GameData::turretPoints, blood::vec3{ 0.0f, 0.0f, 1.0f });
         blood::Transform turretTransform{ blood::vec2{ blood::GetEngine().GetRenderer().GetWidth() * 0.5f, blood::GetEngine().GetRenderer().GetHeight() * 0.5f }, 0, 2 };
-        auto turret = std::make_unique<Turret>(turretTransform, blood::Resources().Get<blood::Texture>("turret.png", blood::GetEngine().GetRenderer()));
+        auto turret = std::make_unique<Turret>(turretTransform);// , blood::Resources().Get<blood::Texture>("turret.png", blood::GetEngine().GetRenderer()));
         turret->name = "turret";
         turret->tag = "player";
+
+        spriteRenderer = std::make_unique<blood::SpriteRenderer>();
+        spriteRenderer->textureName = "turret.png";
+
+        turret->AddComponent(std::move(spriteRenderer));
 
         m_scene->AddActor(std::move(turret));
 
@@ -127,10 +140,15 @@ void SpaceGame::SpawnEnemy() {
 
         std::shared_ptr<Model> enemyModel = std::make_shared<blood::Model>(GameData::drillPoints, vec3{ 1,0,0 });
         Transform transform{ vec2{ random::getReal() * GetEngine().GetRenderer().GetWidth(), random::getReal() * GetEngine().GetRenderer().GetHeight() }, 0, 2 };
-        std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, blood::Resources().Get<blood::Texture>("turret.png", blood::GetEngine().GetRenderer()));
+        std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform); //, blood::Resources().Get<blood::Texture>("turret.png", blood::GetEngine().GetRenderer()));
         enemy->damping = 0.2f;
         enemy->speed = 50;
         enemy->tag = "enemy";
+
+        auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
+        spriteRenderer->textureName = "doretta.png";
+        enemy->AddComponent(std::move(spriteRenderer));
+
         m_scene->AddActor(std::move(enemy));
     }
 }

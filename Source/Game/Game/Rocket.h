@@ -5,7 +5,7 @@
 
 class Rocket : public blood::Actor {
 public:
-	Rocket(blood::Transform& transform, blood::res_t<blood::Texture> texture) : Actor{transform, texture} {};
+	Rocket(blood::Transform& transform) : Actor{transform} {};
 
 	void Draw(blood::Renderer& renderer) override;
 	void Update(float dt) override;

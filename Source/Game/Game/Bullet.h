@@ -4,7 +4,7 @@
 
 class Bullet : public blood::Actor{
 public:
-	Bullet(blood::Transform& transform, blood::res_t<blood::Texture> texture) : blood::Actor{ transform, texture } {};
+	Bullet(blood::Transform& transform) : blood::Actor{ transform} {};
 
 	
 	void Update(float dt) override;
