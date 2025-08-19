@@ -1,6 +1,6 @@
 #pragma once
-#include "../Core/Math/MathUtils.h"
-#include "../Core/Math/Vector2.h"
+#include "Source/Math/MathUtils.h"
+#include "Source/Math/Vector2.h"
 
 
 #include <cstdlib>

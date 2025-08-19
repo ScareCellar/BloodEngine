@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "../Core/Logger.h"
+
 
 namespace blood
 {

@@ -1,9 +1,6 @@
 #include "Texture.h"
 #include "../Renderer/Renderer.h"
-#include "../Core/Logger.h"
-#include <fstream>
-#include <iostream>
-#include <sstream>
+
 namespace blood {
     Texture::~Texture()
     {

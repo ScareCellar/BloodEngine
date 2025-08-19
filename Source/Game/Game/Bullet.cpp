@@ -1,5 +1,5 @@
 #include "Bullet.h"
-#include "Framework/Scene.h"
+
 #include "SpaceGame.h"
 
 void Bullet::OnCollision(Actor* other){

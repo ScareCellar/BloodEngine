@@ -1,27 +1,10 @@
 //#include <SDL3/SDL.h>
 #include <iostream>
 #include <vector>
-#include <fmod.hpp>
-#include <memory>
-
 #include "Game/Player.h"
 #include "Game/SpaceGame.h"
 
-#include "Core/Random.h"
-#include "Core/Math/MathUtils.h"
-#include "Core/Math/Vector2.h"
-#include "Input/InputSystem.h"
-#include "Core/Audio/AudioSystem.h" 
-#include "Core/Math/Vector3.h"
-#include "Renderer/Model.h"
-#include "Core/Time.h"
-#include "Framework/Actor.h"
-#include "Engine.h"
-#include "Framework/Scene.h"
-#include "Renderer/Font.h"
-#include "Renderer/Text.h"
-#include "../Engine/Core/File.h"
-#include "../Engine/Resources/ResourceManager.h"
+
 
 
 
@@ -32,6 +15,7 @@ int main(int argc, char* argv[]) {
     blood::file::SetCurrentDirectory("Assets");
 
     //create systems
+    Logger::Info("Initialize Engine... ");
     GetEngine().Initialize();
 
     std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();

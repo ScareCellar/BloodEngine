@@ -1,16 +1,9 @@
 #include "Enemy.h"
-#include "Renderer/Renderer.h"
-#include "Core/Math/Vector2.h"
-#include "Core/Audio/AudioSystem.h"
-#include "Framework/Scene.h"
 #include "Player.h"
 #include "SpaceGame.h"
 #include "GameData.h"
 #include "Bullet.h"
-#include "Renderer/ParticleSystem.h"
-#include "../Engine/Engine.h"
-#include "Resources/ResourceManager.h"
-#include "Core/Random.h"
+
 
 void Enemy::Update(float dt) {
     bool playerSeen = false;

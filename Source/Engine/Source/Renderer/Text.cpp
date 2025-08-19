@@ -1,5 +1,5 @@
 #include "Text.h"
-#include "../Core/Logger.h"
+
 
 namespace blood {
 	Text::~Text() {

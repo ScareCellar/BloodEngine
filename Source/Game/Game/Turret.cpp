@@ -1,11 +1,7 @@
 #include "Turret.h"
-#include "Framework/Scene.h"
-#include "Input/InputSystem.h"
-#include "Engine.h"
 #include "Rocket.h"
 #include "Bullet.h"
 #include "Gamedata.h"
-#include "Resources/ResourceManager.h"
 
 
 void Turret::Update(float dt) {

@@ -40,7 +40,7 @@ namespace blood {
 			auto base = iter->second;
 			auto resource = std::dynamic_pointer_cast<T>(base);
 			if (!resource) {
-				Logger::Log(LogLevel::Warning, "Resource type mismatch: " << key);
+				Logger::Warning("Resource type mismatch: {}", key);
 				return res_t<T>();
 			}
 
@@ -50,7 +50,7 @@ namespace blood {
 		//load resource
 		res_t<T> resource = std::make_shared<T>();
 		if (!resource->Load(name, std::forward<Args>(args)...)) {
-			Logger::Log(LogLevel::Warning, "Could not load resource: " << name);
+			Logger::Warning("Could not load resource: {}", name);
 			return res_t<T>();
 		}
 

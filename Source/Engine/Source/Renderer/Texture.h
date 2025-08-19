@@ -1,6 +1,6 @@
 #pragma once
-#include "../Core/Math/Vector2.h"
-#include "../Resources/Resource.h"
+#include "../../Source/Math/Vector2.h"
+#include "../../Source/Resources/Resource.h"
 #include <string>
 
 

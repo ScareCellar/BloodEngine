@@ -1,10 +1,10 @@
 #pragma once
-#include "Core/Time.h"
-#include "Core/Audio/AudioSystem.h"
-#include "Input/InputSystem.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/ParticleSystem.h"
-#include "Core/Singleton.h"
+#include "Source/Core/Time.h"
+#include "Source/Core/Audio/AudioSystem.h"
+#include "Source/Input/InputSystem.h"
+#include "Source/Renderer/Renderer.h"
+#include "Source/Renderer/ParticleSystem.h"
+#include "Source/Core/Singleton.h"
 #include <memory>
 
 namespace blood {

@@ -1,14 +1,15 @@
 #pragma once
 #include "Font.h"
 #include "Renderer.h"
-#include "../Core/Math/Vector3.h"
-#include "../Resources/Resource.h"
-
+#include "../../Source/Math/Vector3.h"
 #include <string>
 #include <memory>
 
 struct SDL_Texture;
 namespace blood {
+	class Resource;
+	
+
 	class Text {
 	public:
 		Text() = default;

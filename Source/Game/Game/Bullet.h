@@ -1,6 +1,6 @@
 #pragma once
-#include "Framework/Actor.h"
-#include "../Engine/Renderer/Texture.h"
+#include "Source/Framework/Actor.h"
+#include "Source/Renderer/Texture.h"
 
 class Bullet : public blood::Actor{
 public:

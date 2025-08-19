@@ -1,7 +1,6 @@
 #include "Font.h"
-#include "../Core/Logger.h"
-#include <SDL3_ttf/SDL_textengine.h>
-#include <iostream>
+
+
 namespace blood {
 	Font::~Font() {
 		if (m_ttfFont != nullptr) {

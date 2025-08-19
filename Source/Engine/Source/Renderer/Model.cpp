@@ -1,8 +1,5 @@
 #pragma once
-#include "Model.h"
 #include "Renderer.h"
-#include "../Core/Math/Vector2.h"
-
 
 	void blood::Model::Draw(class Renderer& renderer, const vec2& position, float rotation, float scale) {
 

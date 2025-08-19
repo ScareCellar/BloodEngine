@@ -1,7 +1,7 @@
 #pragma once
-#include "../../Engine/Framework/Game.h"
-#include "Renderer/Font.h"
-#include "Renderer/Text.h"
+#include "Source/Framework/Game.h"
+#include "Source/Renderer/Font.h"
+#include "Source/Renderer/Text.h"
 
 class SpaceGame : public blood::Game {
 public:
