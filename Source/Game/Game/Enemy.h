@@ -7,7 +7,7 @@ class Enemy : public Actor {
 public:
 	Enemy() = default;
 	Enemy(const Transform& transform, blood::res_t<blood::Texture> texture) :
-		Actor{ transform, texture } {
+		Actor{ transform } {
 	};
 
 	void Update(float dt) override;

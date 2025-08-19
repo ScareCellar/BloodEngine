@@ -5,7 +5,7 @@ namespace blood{
 
 	void Scene::Update(float dt) {
 		for (auto& actor : m_actors) {
-			actor->Update(dt);
+			if (actor->active) actor->Update(dt);
 		}
 		//remove destroyed actors
 		for (auto iter = m_actors.begin(); iter != m_actors.end();) {
@@ -35,7 +35,7 @@ namespace blood{
 
 	void Scene::Draw(Renderer& renderer) {
 		for (auto& actor : m_actors) {
-			actor->Draw(renderer);
+			if (actor->active) actor->Draw(renderer);
 		}
 	}
 	void Scene::AddActor(std::unique_ptr<Actor> actor){

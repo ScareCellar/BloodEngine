@@ -9,7 +9,7 @@ public:
 	Player() = default;
 	Player(const Transform& transform, res_t<Texture> texture) {
 		m_transform = transform;
-		m_texture = texture;
+		
 
 		
 	}

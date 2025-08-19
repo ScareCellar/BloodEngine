@@ -1,15 +1,17 @@
 #pragma once
+#include "Object.h"
+#include "../Framework/Component.h"
 #include "../Renderer/Model.h"
 #include "../Renderer/Texture.h"
+#include "../Renderer/Renderer.h"
 
 #include <memory>
 #include <string>
 
 
 namespace blood {
-	class Actor {
+	class Actor : public Object{
 	public:
-		std::string name;
 		std::string tag;
 
 		vec2 velocity{ 0, 0 };
@@ -23,7 +25,7 @@ namespace blood {
 	public:
 		Actor() = default;
 		~Actor() = default;
-		Actor(const Transform& transform, res_t<Texture> texture) : m_transform{ transform }, m_texture{ texture } {}
+		Actor(const Transform& transform) : m_transform{ transform }{}
 		
 
 
@@ -34,11 +36,13 @@ namespace blood {
 
 		float GetRadius();
 
+		void AddComponent(std::unique_ptr<Component> component);
+
 	public:
 		Transform m_transform;
-		res_t<Texture> m_texture;
-		//std::shared_ptr<Model> m_model;
 
+	protected:
+		std::vector<std::unique_ptr<Component>> m_components; 
 
 	};
 }

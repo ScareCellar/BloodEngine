@@ -9,6 +9,7 @@
 #include "Source/Core/Time.h"
 
 //framwork
+#include "Source/Framework/Object.h"
 #include "Source/Framework/Actor.h"
 #include "Source/Framework/Game.h"
 #include "Source/Framework/Scene.h"

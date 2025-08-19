@@ -186,6 +186,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Source\Components\SpriteRenderer.cpp" />
     <ClCompile Include="Source\Core\Audio\AudioSystem.cpp" />
     <ClCompile Include="Source\Core\File.cpp" />
     <ClCompile Include="Source\Core\Time.cpp" />
@@ -205,6 +206,8 @@
     <ClInclude Include="EngineMinimal.h" />
     <ClInclude Include="EnginePCH.h" />
     <ClInclude Include="Sound\Header.h" />
+    <ClInclude Include="Source\Components\RendererComponent.h" />
+    <ClInclude Include="Source\Components\SpriteRenderer.h" />
     <ClInclude Include="Source\Core\Audio\AudioSystem.h" />
     <ClInclude Include="Source\Core\File.h" />
     <ClInclude Include="Source\Core\Logger.h" />
@@ -213,7 +216,9 @@
     <ClInclude Include="Source\Core\StringHelper.h" />
     <ClInclude Include="Source\Core\Time.h" />
     <ClInclude Include="Source\Framework\Actor.h" />
+    <ClInclude Include="Source\Framework\Component.h" />
     <ClInclude Include="Source\Framework\Game.h" />
+    <ClInclude Include="Source\Framework\Object.h" />
     <ClInclude Include="Source\Framework\Scene.h" />
     <ClInclude Include="Source\Input\InputSystem.h" />
     <ClInclude Include="Source\Math\MathUtils.h" />

@@ -1,5 +1,6 @@
 #include "Rocket.h"
 #include "GameData.h"
+#include "../Engine/Engine.h"
 
 
 
@@ -27,7 +28,7 @@ void Rocket::Explode(){
 	if (!exploded) {
 		blood::GetEngine().GetAudio().PlaySound("explode");
 		std::unique_ptr<blood::Model> explode;
-		m_texture = blood::Resources().Get<blood::Texture>("explode.png", blood::GetEngine().GetRenderer());
+		//m_texture = blood::Resources().Get<blood::Texture>("explode.png", blood::GetEngine().GetRenderer());
 		lifespan = 0.2f;
 		speed = 0;
 		exploded = true;
