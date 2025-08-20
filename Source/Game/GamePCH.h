@@ -12,6 +12,7 @@
 
 //audio
 #include "../Engine/Source/Core/Audio/AudioSystem.h"
+#include "../Engine/Source/Core/Audio/AudioClip.h"
 
 //input
 #include "../Engine/Source/Input/InputSystem.h"

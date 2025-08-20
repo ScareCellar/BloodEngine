@@ -3,8 +3,8 @@
 #include "Bullet.h"
 #include "Gamedata.h"
 #include "Engine.h"
-#include "../../Engine/EngineMinimal.h"
 #include "../GamePCH.h"
+#include "../../Engine/Source/Core/Audio/AudioSystem.h"
 
 
 void Turret::Update(float dt) {
@@ -53,7 +53,8 @@ void Turret::Update(float dt) {
     }
 
     if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Left) && bulletShootTimer <= 0) {
-        blood::GetEngine().GetAudio().PlaySound("bullet");
+        //blood::GetEngine().GetAudio().PlaySound("bullet");
+        blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
 
 
         std::shared_ptr<blood::Model> bulletModel = std::make_shared<blood::Model>(GameData::bulletPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });

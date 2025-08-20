@@ -1,5 +1,6 @@
 #include "AudioSystem.h"
 #include "../../../EnginePCH.h"
+#include "AudioClip.h"
 
 namespace blood {
 
@@ -72,6 +73,12 @@ namespace blood {
 		}
 
 		FMOD_RESULT result = m_system->playSound(m_sounds[name], 0, false, nullptr);
+		if (!CheckFMODResult(result)) return false;
+
+		return true;
+	}
+	bool AudioSystem::PlaySound(AudioClip& audioClip) {
+		FMOD_RESULT result = m_system->playSound(audioClip.m_sound, 0, false, nullptr);
 		if (!CheckFMODResult(result)) return false;
 
 		return true;
