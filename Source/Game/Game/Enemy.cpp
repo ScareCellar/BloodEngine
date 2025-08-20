@@ -5,9 +5,7 @@
 #include "Bullet.h"
 #include "../Engine/Engine.h"
 #include "../Engine/Source/Core/Random.h"
-#include "../Engine/Source/Components/SpriteRenderer.h"
-#include "../Engine/Source/Components/RigidBody.h"
-
+#include "../GamePCH.h"
 void Enemy::Update(float dt) {
     bool playerSeen = false;
 
@@ -36,7 +34,7 @@ void Enemy::Update(float dt) {
     
     auto rb = GetComponent<blood::RigidBody>();
     if (rb) {
-        rb->velocity = force * dt;
+        rb->velocity = (force * dt) * speed;
     }
 
     /*m_transform.position.x = math::wrap(m_transform.position.x, 0.0f, 1980.0f);
@@ -57,7 +55,14 @@ void Enemy::Update(float dt) {
         auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
         spriteRenderer->textureName = "bullet.png";
 
+        auto rigidBody = std::make_unique<blood::RigidBody>();
+
+        auto collider = std::make_unique<blood::CircleCollider2D>();
+        collider->radius = 50.0f;
+
         bullet->AddComponent(std::move(spriteRenderer));
+        bullet->AddComponent(std::move(rigidBody));
+        bullet->AddComponent(std::move(collider));
 
         scene->AddActor(std::move(bullet));
     }

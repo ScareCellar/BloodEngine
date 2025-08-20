@@ -9,7 +9,7 @@ public:
 	
 	void Update(float dt) override;
 	
-	float speed{ 2000.0f };
+	float speed{ 5.0f };
 
 	// Inherited via Actor
 	void OnCollision(Actor* other) override;

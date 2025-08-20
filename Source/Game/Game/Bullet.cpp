@@ -15,14 +15,11 @@ void Bullet::OnCollision(Actor* other){
 
 void Bullet::Update(float dt) {
 	blood::vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(m_transform.rotation)) * speed;
-	//velocity = force;
 
 	auto rb = GetComponent<blood::RigidBody>();
 	if (rb) {
-		rb->velocity = force * dt;
+		rb->velocity = (force * dt) * speed;
 	}
-
-	lifespan -= dt;
 
 	if (lifespan <= 0) {
 		destroyed = true;

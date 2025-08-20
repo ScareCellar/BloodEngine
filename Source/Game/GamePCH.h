@@ -7,7 +7,8 @@
 //components
 #include "../Engine/Source/Components/SpriteRenderer.h"
 #include "../Engine/Source/Components/RigidBody.h"
-
+#include "../Engine/Source/Components/Collider.h"
+#include "../Engine/Source/Components/CircleCollider2D.h"
 
 //audio
 #include "../Engine/Source/Core/Audio/AudioSystem.h"

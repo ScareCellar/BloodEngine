@@ -3,8 +3,10 @@
 namespace blood {
 	class CircleCollider2D :public ColliderComponent {
 	public:
-		void Update(float dt) override;
+		float radius = 0;
 
+
+		void Update(float dt) override;
 		bool CheckCollision(ColliderComponent& other) override;
 
 	};

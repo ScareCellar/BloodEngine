@@ -58,9 +58,12 @@ void SpaceGame::Update(float dt) {
         auto rigidBody = std::make_unique<blood::RigidBody>();
         rigidBody->damping = 10.0f;
 
+        auto collider = std::make_unique<blood::CircleCollider2D>();
+        collider->radius = 50.0f;
 
         player->AddComponent(std::move(spriteRenderer));
         player->AddComponent(std::move(rigidBody));
+        player->AddComponent(std::move(collider));
 
         m_scene->AddActor(std::move(player));
 
@@ -72,6 +75,7 @@ void SpaceGame::Update(float dt) {
 
         spriteRenderer = std::make_unique<blood::SpriteRenderer>();
         spriteRenderer->textureName = "turret.png";
+        
 
         turret->AddComponent(std::move(spriteRenderer));
 
@@ -155,8 +159,12 @@ void SpaceGame::SpawnEnemy() {
         auto rigidBody = std::make_unique<blood::RigidBody>();
         rigidBody->damping = 0.2f;
 
+        auto collider = std::make_unique<blood::CircleCollider2D>();
+        collider->radius = 50.0f;
+
         enemy->AddComponent(std::move(spriteRenderer));
         enemy->AddComponent(std::move(rigidBody));
+        enemy->AddComponent(std::move(collider));
 
         m_scene->AddActor(std::move(enemy));
     }

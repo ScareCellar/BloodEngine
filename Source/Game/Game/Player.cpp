@@ -42,7 +42,7 @@ void Player::Update(float dt) {
     m_transform.position.y = math::wrap(m_transform.position.y, 0.0f, 1224.0f);
     
 
-    //fire rockets
+    
     GetEngine().GetPS().Draw(Engine::Instance().GetRenderer());
 
     Actor::Update(dt);

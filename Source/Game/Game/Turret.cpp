@@ -43,8 +43,12 @@ void Turret::Update(float dt) {
 
         auto rigidBody = std::make_unique<blood::RigidBody>();
 
+        auto collider = std::make_unique<blood::CircleCollider2D>();
+        collider->radius = 50.0f;
+
         rocket->AddComponent(std::move(spriteRenderer));
         rocket->AddComponent(std::move(rigidBody));
+        rocket->AddComponent(std::move(collider));
         scene->AddActor(std::move(rocket));
     }
 
@@ -55,7 +59,7 @@ void Turret::Update(float dt) {
         std::shared_ptr<blood::Model> bulletModel = std::make_shared<blood::Model>(GameData::bulletPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
         blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 2 };
         auto bullet = std::make_unique<Bullet>(transform);// , blood::Resources().Get<blood::Texture>("bullet.png", blood::GetEngine().GetRenderer()));
-        bullet->speed = 2000.0f;
+        bullet->speed = 1000.0f;
         bullet->lifespan = 1.5f;
         bullet->name = "bullet";
         bullet->tag = "player";
@@ -65,11 +69,15 @@ void Turret::Update(float dt) {
         spriteRenderer->textureName = "bullet.png";
 
         auto rigidBody = std::make_unique<blood::RigidBody>();
-        
+        rigidBody->damping = 0.0f;
+
+        auto collider = std::make_unique<blood::CircleCollider2D>();
+        collider->radius = 50.0f;
 
         
         bullet->AddComponent(std::move(spriteRenderer));
         bullet->AddComponent(std::move(rigidBody));
+        bullet->AddComponent(std::move(collider));
 
         scene->AddActor(std::move(bullet));
     }

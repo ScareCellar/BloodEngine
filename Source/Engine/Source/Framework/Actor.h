@@ -31,8 +31,6 @@ namespace blood {
 
 		virtual void OnCollision(Actor* other) = 0;
 
-		float GetRadius();
-
 		void AddComponent(std::unique_ptr<Component> component);
 
 		template<typename T>

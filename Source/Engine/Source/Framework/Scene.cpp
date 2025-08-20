@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "../Renderer/Renderer.h"
+#include "../Components/Collider.h"
 
 namespace blood{
 
@@ -22,13 +23,17 @@ namespace blood{
 			for (auto& actorB : m_actors) {
 				if (actorA == actorB || (actorA->destroyed || actorB->destroyed)) continue;
 
+				auto colliderA = actorA->GetComponent<ColliderComponent>();
+				auto colliderB = actorB->GetComponent<ColliderComponent>();
+
+				if (!colliderA || !colliderB) continue;
+
 				float distance = (actorA->m_transform.position - actorB->m_transform.position).Length();
 
-				if (distance <= actorA->GetRadius() + actorB->GetRadius()) {
+				if (colliderA->CheckCollision(*colliderB)) {
 					actorA->OnCollision(actorB.get());
 					actorB->OnCollision(actorA.get());
 				}
-
 			}
 		}
 	}

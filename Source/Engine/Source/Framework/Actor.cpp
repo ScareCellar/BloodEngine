@@ -37,10 +37,6 @@ namespace blood {
         }
     }
 
-    float Actor::GetRadius() {
-        return 50.0f;// (m_texture) ? m_texture->GetSize().Length() * 0.5f * m_transform.scale * 0.5f : 0;
-    }
-
     void Actor::AddComponent(std::unique_ptr<Component> component) {
         component->owner = this;
         m_components.push_back(std::move(component));
