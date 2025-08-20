@@ -4,7 +4,7 @@
 #include "Gamedata.h"
 #include "Engine.h"
 #include "../../Engine/EngineMinimal.h"
-#include "../../Engine/Source/Components/SpriteRenderer.h"
+#include "../GamePCH.h"
 
 
 void Turret::Update(float dt) {
@@ -41,7 +41,10 @@ void Turret::Update(float dt) {
         auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
         spriteRenderer->textureName = "rocket.png";
 
+        auto rigidBody = std::make_unique<blood::RigidBody>();
+
         rocket->AddComponent(std::move(spriteRenderer));
+        rocket->AddComponent(std::move(rigidBody));
         scene->AddActor(std::move(rocket));
     }
 
@@ -61,7 +64,12 @@ void Turret::Update(float dt) {
         auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
         spriteRenderer->textureName = "bullet.png";
 
+        auto rigidBody = std::make_unique<blood::RigidBody>();
+        
+
+        
         bullet->AddComponent(std::move(spriteRenderer));
+        bullet->AddComponent(std::move(rigidBody));
 
         scene->AddActor(std::move(bullet));
     }

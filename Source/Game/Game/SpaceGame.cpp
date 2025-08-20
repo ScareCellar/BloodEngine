@@ -47,15 +47,20 @@ void SpaceGame::Update(float dt) {
         blood::Transform transform{ blood::vec2{ blood::GetEngine().GetRenderer().GetWidth() * 0.5f, blood::GetEngine().GetRenderer().GetHeight() * 0.5f }, 0, 2};
         auto player = std::make_unique<Player>(transform, blood::Resources().Get<blood::Texture>("doretta.png", blood::GetEngine().GetRenderer()));
         player->speed = 5000.0f;
-        player->rotationRate = 30.0f;
-        player->damping = 10.0f;
+        player->rotationRate = 60.0f;
+      
         player->name = "player";
         player->tag = "player";
 
         auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
         spriteRenderer->textureName = "doretta.png";
 
+        auto rigidBody = std::make_unique<blood::RigidBody>();
+        rigidBody->damping = 10.0f;
+
+
         player->AddComponent(std::move(spriteRenderer));
+        player->AddComponent(std::move(rigidBody));
 
         m_scene->AddActor(std::move(player));
 
@@ -141,13 +146,17 @@ void SpaceGame::SpawnEnemy() {
         std::shared_ptr<Model> enemyModel = std::make_shared<blood::Model>(GameData::drillPoints, vec3{ 1,0,0 });
         Transform transform{ vec2{ random::getReal() * GetEngine().GetRenderer().GetWidth(), random::getReal() * GetEngine().GetRenderer().GetHeight() }, 0, 2 };
         std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform); //, blood::Resources().Get<blood::Texture>("turret.png", blood::GetEngine().GetRenderer()));
-        enemy->damping = 0.2f;
         enemy->speed = 50;
         enemy->tag = "enemy";
 
         auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
-        spriteRenderer->textureName = "doretta.png";
+        spriteRenderer->textureName = "turret.png";
+
+        auto rigidBody = std::make_unique<blood::RigidBody>();
+        rigidBody->damping = 0.2f;
+
         enemy->AddComponent(std::move(spriteRenderer));
+        enemy->AddComponent(std::move(rigidBody));
 
         m_scene->AddActor(std::move(enemy));
     }

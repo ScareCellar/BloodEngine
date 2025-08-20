@@ -8,13 +8,15 @@ namespace blood {
     void Actor::Update(float dt)
     {
         if(destroyed) return;
-        m_transform.position += velocity * dt;
-        velocity = velocity * (1.0f - damping * dt);
-        if (lifespan != 0) {
+        if (lifespan > 0) {
             lifespan -= dt;
-            destroyed = lifespan <= 0;
+            if (lifespan <= 0) {
+                destroyed = true; 
+                return;
+            }
         }
 
+        //update all components
         for (auto& component : m_components) {
             if (component->active) {
                 component->Update(dt);

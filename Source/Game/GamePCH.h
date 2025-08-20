@@ -6,6 +6,7 @@
 
 //components
 #include "../Engine/Source/Components/SpriteRenderer.h"
+#include "../Engine/Source/Components/RigidBody.h"
 
 
 //audio

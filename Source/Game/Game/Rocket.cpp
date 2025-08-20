@@ -1,6 +1,7 @@
 #include "Rocket.h"
 #include "GameData.h"
 #include "../Engine/Engine.h"
+#include "../Engine/Source/Components/RigidBody.h"
 
 
 
@@ -12,7 +13,12 @@ void Rocket::Draw(blood::Renderer& renderer)
 
 void Rocket::Update(float dt) {
 	blood::vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(m_transform.rotation)) * speed;
-	velocity = force;
+
+	auto rb = GetComponent<blood::RigidBody>();
+	if (rb) {
+		rb->velocity = force;
+	}
+	
 	
 	lifespan -= dt;
 	

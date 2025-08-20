@@ -83,6 +83,12 @@
     <ClCompile Include="Source\Components\SpriteRenderer.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\RigidBody.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\CircleCollider2D.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sound\Header.h">
@@ -176,6 +182,15 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Components\SpriteRenderer.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\RigidBody.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\Collider.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\CircleCollider2D.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@
 #include "../Engine/Engine.h"
 #include "../Engine/Source/Core/Random.h"
 #include "../Engine/Source/Components/SpriteRenderer.h"
+#include "../Engine/Source/Components/RigidBody.h"
 
 void Enemy::Update(float dt) {
     bool playerSeen = false;
@@ -31,8 +32,13 @@ void Enemy::Update(float dt) {
 
 
     vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(m_transform.rotation* speed));
-    velocity = force * dt;
     
+    
+    auto rb = GetComponent<blood::RigidBody>();
+    if (rb) {
+        rb->velocity = force * dt;
+    }
+
     /*m_transform.position.x = math::wrap(m_transform.position.x, 0.0f, 1980.0f);
     m_transform.position.y = math::wrap(m_transform.position.y, 0.0f, 1224.0f);*/
 

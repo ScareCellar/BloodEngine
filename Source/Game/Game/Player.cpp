@@ -3,6 +3,7 @@
 #include "Rocket.h"
 #include "SpaceGame.h"
 #include "../Engine/Engine.h"
+#include "../Engine/Source/Components/RigidBody.h"
 
 
 
@@ -32,8 +33,11 @@ void Player::Update(float dt) {
 
     vec2 direction{ 1,0 };
     vec2 force = direction.Rotate(math::degToRad(m_transform.rotation)) * thrust * speed;
-    velocity += force * dt;
 
+    auto* rb = GetComponent<blood::RigidBody>();
+    if (rb) {
+        rb->velocity += force * dt;
+    }
     m_transform.position.x = math::wrap(m_transform.position.x, 0.0f, 1980.0f);
     m_transform.position.y = math::wrap(m_transform.position.y, 0.0f, 1224.0f);
     

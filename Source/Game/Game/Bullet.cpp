@@ -1,6 +1,7 @@
 #include "Bullet.h"
 
 #include "SpaceGame.h"
+#include "../Engine/Source/Components/RigidBody.h"
 
 void Bullet::OnCollision(Actor* other){
 	if (tag != other->tag && other->name != "turret") {
@@ -14,7 +15,12 @@ void Bullet::OnCollision(Actor* other){
 
 void Bullet::Update(float dt) {
 	blood::vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(m_transform.rotation)) * speed;
-	velocity = force;
+	//velocity = force;
+
+	auto rb = GetComponent<blood::RigidBody>();
+	if (rb) {
+		rb->velocity = force * dt;
+	}
 
 	lifespan -= dt;
 
