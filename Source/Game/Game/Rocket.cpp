@@ -33,7 +33,7 @@ void Rocket::Update(float dt) {
 void Rocket::Explode(){
 	if (!exploded) {
 		blood::GetEngine().GetAudio().PlaySound("explode");
-		std::unique_ptr<blood::Model> explode;
+		std::unique_ptr<blood::Mesh> explode;
 		//m_texture = blood::Resources().Get<blood::Texture>("explode.png", blood::GetEngine().GetRenderer());
 		lifespan = 0.2f;
 		speed = 0;

@@ -43,7 +43,7 @@ void SpaceGame::Update(float dt) {
         
 
         // create player
-        std::shared_ptr<blood::Model> model = std::make_shared<blood::Model>(GameData::drillPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
+        std::shared_ptr<blood::Mesh> model = std::make_shared<blood::Mesh>(GameData::drillPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
         blood::Transform transform{ blood::vec2{ blood::GetEngine().GetRenderer().GetWidth() * 0.5f, blood::GetEngine().GetRenderer().GetHeight() * 0.5f }, 0, 2};
         auto player = std::make_unique<Player>(transform, blood::Resources().Get<blood::Texture>("doretta.png", blood::GetEngine().GetRenderer()));
         player->speed = 5000.0f;
@@ -67,7 +67,7 @@ void SpaceGame::Update(float dt) {
 
         m_scene->AddActor(std::move(player));
 
-        std::shared_ptr<blood::Model> turretModel = std::make_shared<blood::Model>(GameData::turretPoints, blood::vec3{ 0.0f, 0.0f, 1.0f });
+        std::shared_ptr<blood::Mesh> turretModel = std::make_shared<blood::Mesh>(GameData::turretPoints, blood::vec3{ 0.0f, 0.0f, 1.0f });
         blood::Transform turretTransform{ blood::vec2{ blood::GetEngine().GetRenderer().GetWidth() * 0.5f, blood::GetEngine().GetRenderer().GetHeight() * 0.5f }, 0, 2 };
         auto turret = std::make_unique<Turret>(turretTransform);// , blood::Resources().Get<blood::Texture>("turret.png", blood::GetEngine().GetRenderer()));
         turret->name = "turret";
@@ -147,22 +147,22 @@ void SpaceGame::SpawnEnemy() {
 
         blood::vec2 position = player->m_transform.position + blood::random::onUnitCircle();
 
-        std::shared_ptr<Model> enemyModel = std::make_shared<blood::Model>(GameData::drillPoints, vec3{ 1,0,0 });
-        Transform transform{ vec2{ random::getReal() * GetEngine().GetRenderer().GetWidth(), random::getReal() * GetEngine().GetRenderer().GetHeight() }, 0, 2 };
+        std::shared_ptr<Mesh> enemyModel = std::make_shared<blood::Mesh>(GameData::drillPoints, vec3{ 1,0,0 });
+        Transform transform{ vec2{ random::getReal() * GetEngine().GetRenderer().GetWidth(), random::getReal() * GetEngine().GetRenderer().GetHeight() }, 0, 2000 };
         std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform); //, blood::Resources().Get<blood::Texture>("turret.png", blood::GetEngine().GetRenderer()));
         enemy->speed = 50;
         enemy->tag = "enemy";
 
-        auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
-        spriteRenderer->textureName = "turret.png";
-
+        auto meshRenderer = std::make_unique<blood::MeshRenderer>();
+        meshRenderer->meshName = "meshes/enemy.txt";
+        
         auto rigidBody = std::make_unique<blood::RigidBody>();
         rigidBody->damping = 0.2f;
 
         auto collider = std::make_unique<blood::CircleCollider2D>();
         collider->radius = 50.0f;
 
-        enemy->AddComponent(std::move(spriteRenderer));
+        enemy->AddComponent(std::move(meshRenderer));
         enemy->AddComponent(std::move(rigidBody));
         enemy->AddComponent(std::move(collider));
 

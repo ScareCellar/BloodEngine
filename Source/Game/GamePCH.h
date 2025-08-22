@@ -9,6 +9,7 @@
 #include "../Engine/Source/Components/RigidBody.h"
 #include "../Engine/Source/Components/Collider.h"
 #include "../Engine/Source/Components/CircleCollider2D.h"
+#include "../Engine/Source/Components/MeshRenderer.h"
 
 //audio
 #include "../Engine/Source/Core/Audio/AudioSystem.h"
@@ -19,7 +20,7 @@
 
 //renderer
 #include "../Engine/Source/Renderer/Font.h"
-#include "../Engine/Source/Renderer/Model.h"
+#include "../Engine/Source/Renderer/Mesh.h"
 #include "../Engine/Source/Renderer/ParticleSystem.h"
 #include "../Engine/Source/Renderer/Renderer.h"
 #include "../Engine/Source/Renderer/Text.h"

@@ -11,8 +11,13 @@
 using namespace blood;
 
 int main(int argc, char* argv[]) { 
-
     blood::file::SetCurrentDirectory("Assets");
+
+    std::cout << argc << std::endl;
+
+    for (int i = 0; i < argc; i++) {
+        std::cout << argv[i] << std::endl;
+    }
 
     //create systems
     Logger::Info("Initialize Engine... ");

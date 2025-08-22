@@ -29,7 +29,7 @@ void Turret::Update(float dt) {
         blood::GetEngine().GetAudio().PlaySound("launch");
 
 
-        std::shared_ptr<blood::Model> rocketModel = std::make_shared<blood::Model>(GameData::rocketPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
+        std::shared_ptr<blood::Mesh> rocketModel = std::make_shared<blood::Mesh>(GameData::rocketPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
         blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 2 };
         auto rocket = std::make_unique<Rocket>(transform);// , blood::Resources().Get<blood::Texture>("rocket.png", blood::GetEngine().GetRenderer()));
         rocket->speed = 1000.0f;
@@ -57,7 +57,7 @@ void Turret::Update(float dt) {
         blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
 
 
-        std::shared_ptr<blood::Model> bulletModel = std::make_shared<blood::Model>(GameData::bulletPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
+        std::shared_ptr<blood::Mesh> bulletModel = std::make_shared<blood::Mesh>(GameData::bulletPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
         blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 2 };
         auto bullet = std::make_unique<Bullet>(transform);// , blood::Resources().Get<blood::Texture>("bullet.png", blood::GetEngine().GetRenderer()));
         bullet->speed = 1000.0f;

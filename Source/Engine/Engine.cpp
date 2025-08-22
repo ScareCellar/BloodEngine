@@ -9,7 +9,7 @@ namespace blood {
 	bool Engine::Initialize() {
 		m_renderer = std::make_unique<blood::Renderer>();
 		m_renderer->Initialize();
-		m_renderer->CreateWindow("Game", 1980, 1224);
+		m_renderer->CreateWindow("Game", 1980, 1224, false);
 
 		m_input = std::make_unique<blood::InputSystem>();
 		m_input->Initialize();
@@ -21,6 +21,7 @@ namespace blood {
 		return true;
 	}
 	void Engine::Shutdown() {
+		Resources().Clear();
 		m_particleSystem->Shutdown();
 		m_audio->Shutdown();
 		m_input->ShutDown();
