@@ -98,6 +98,9 @@
     <ClCompile Include="Source\Components\AudioSource.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Core\Json.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sound\Header.h">
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="Source\Components\AudioSource.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Json.h">
+      <Filter>Source\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

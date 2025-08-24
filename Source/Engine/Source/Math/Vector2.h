@@ -13,7 +13,7 @@ namespace blood {
 
 		Vector2(T x, T y) : x{ x }, y{ y } {}
 
-		T operator [] (unsigned int index) const { /*assert(i < index); */ return (&x)[index]; }
+		float& operator [] (unsigned int index) { assert(2 > index);  return (&x)[index]; }
 
 		Vector2 operator +(const Vector2& v) const { return Vector2{ x + v.x, y + v.y }; }
 		Vector2 operator -(const Vector2& v) const { return Vector2{ x - v.x, y - v.y }; }

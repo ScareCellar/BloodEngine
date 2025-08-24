@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>EnginePCH.h</ForcedIncludeFiles>
@@ -163,7 +163,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\fmod\core\inc;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>EnginePCH.h</ForcedIncludeFiles>
@@ -194,6 +194,7 @@
     <ClCompile Include="Source\Core\Audio\AudioClip.cpp" />
     <ClCompile Include="Source\Core\Audio\AudioSystem.cpp" />
     <ClCompile Include="Source\Core\File.cpp" />
+    <ClCompile Include="Source\Core\Json.cpp" />
     <ClCompile Include="Source\Core\Time.cpp" />
     <ClCompile Include="Source\Framework\Actor.cpp" />
     <ClCompile Include="Source\Framework\Game.cpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="Source\Core\Audio\AudioClip.h" />
     <ClInclude Include="Source\Core\Audio\AudioSystem.h" />
     <ClInclude Include="Source\Core\File.h" />
+    <ClInclude Include="Source\Core\Json.h" />
     <ClInclude Include="Source\Core\Logger.h" />
     <ClInclude Include="Source\Core\Random.h" />
     <ClInclude Include="Source\Core\Singleton.h" />
