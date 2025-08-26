@@ -83,9 +83,6 @@
     <ClCompile Include="Source\Components\SpriteRenderer.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Components\RigidBody.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Core\Audio\AudioClip.cpp">
       <Filter>Source\Audio</Filter>
     </ClCompile>
@@ -100,6 +97,15 @@
     </ClCompile>
     <ClCompile Include="Source\Core\Json.cpp">
       <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\RigidBody.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Math\Transform.cpp">
+      <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Framework\Object.cpp">
+      <Filter>Source\Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +221,12 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Core\Json.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Factory.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Serializable.h">
       <Filter>Source\Core</Filter>
     </ClInclude>
   </ItemGroup>

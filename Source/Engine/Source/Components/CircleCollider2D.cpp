@@ -3,6 +3,7 @@
 #include "../Framework/Actor.h"
 
 namespace blood {
+	FACTORY_REGISTER(CircleCollider2D)
 
 	void CircleCollider2D::Update(float dt) {
 		//

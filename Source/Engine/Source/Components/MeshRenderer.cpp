@@ -2,6 +2,8 @@
 #include "../../EnginePCH.h"
 
 namespace blood {
+	FACTORY_REGISTER(MeshRenderer)
+
 	void MeshRenderer::Update(float dt)	{
 		//
 	}

@@ -1,19 +1,19 @@
 #pragma once
 
-#include "Source/Framework/Actor.h"
+#include "Source/Framework/Component.h"
 
 
-class Rocket : public blood::Actor {
+
+class Rocket : public blood::Component {
 public:
-	Rocket(blood::Transform& transform) : Actor{transform} {};
+	//Rocket(blood::Transform& transform) : Actor{transform} {};
 
-	void Draw(blood::Renderer& renderer) override;
-	void Update(float dt) override;
+	void Update(float dt);
 	void Explode();
 	float speed{ -1000.0f };
 	
 	// Inherited via Actor
-	void OnCollision(Actor* other) override;
+	void OnCollision(class blood::Actor* other);
 
 private:
 	bool exploded = false;

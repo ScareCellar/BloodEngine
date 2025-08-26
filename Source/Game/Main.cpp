@@ -11,6 +11,8 @@
 
 using namespace blood;
 
+
+
 int main(int argc, char* argv[]) { 
     blood::file::SetCurrentDirectory("Assets");
 
@@ -57,7 +59,7 @@ int main(int argc, char* argv[]) {
 
     //GetEngine().GetAudio().PlaySound("clap");
 
-    //vec3 color(0, 0, 0);
+    vec3 color(0, 0, 0);
 
     float rotate = 0;
 

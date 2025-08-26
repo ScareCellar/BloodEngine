@@ -2,32 +2,26 @@
 #include "GameData.h"
 #include "../Engine/Engine.h"
 #include "../Engine/Source/Components/RigidBody.h"
+#include "../Engine/Source/Framework/Actor.h"
+#include "../GamePCH.h"
 
 
 
-
-void Rocket::Draw(blood::Renderer& renderer)
-{
-
-}
+FACTORY_REGISTER(Rocket)
 
 void Rocket::Update(float dt) {
-	blood::vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(m_transform.rotation)) * speed;
-
+	/*blood::vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(m_transform.rotation)) * speed;
 	auto rb = GetComponent<blood::RigidBody>();
 	if (rb) {
 		rb->velocity = force;
 	}
-	
 	
 	lifespan -= dt;
 	
 	if (lifespan <= 0) {
 		Explode();
 	}
-	
-
-	Actor::Update(dt);
+	Actor::Update(dt);*/
 }
 
 void Rocket::Explode(){
@@ -35,17 +29,17 @@ void Rocket::Explode(){
 		blood::GetEngine().GetAudio().PlaySound("explode");
 		std::unique_ptr<blood::Mesh> explode;
 		//m_texture = blood::Resources().Get<blood::Texture>("explode.png", blood::GetEngine().GetRenderer());
-		lifespan = 0.2f;
+		owner->lifespan = 0.2f;
 		speed = 0;
 		exploded = true;
 	}
-	else if (lifespan <= 0 && exploded) {
-		destroyed = true;
+	else if (owner->lifespan <= 0 && exploded) {
+		owner->destroyed = true;
 	}
 }
 
-void Rocket::OnCollision(Actor* other){
-	if (tag != other->tag && !destroyed) {
+void Rocket::OnCollision(blood::Actor* other){
+	if (owner->tag != other->tag && !owner->destroyed) {
 		Explode();
 	}
 }

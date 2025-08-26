@@ -3,7 +3,7 @@
 #include <string>
 
 namespace blood {
-	class SpriteRenderer :public RendererComponent {
+	class SpriteRenderer : public RendererComponent {
 	public:
 		std::string textureName;
 
@@ -11,6 +11,10 @@ namespace blood {
 		void Update(float dt) override;
 
 		void Draw(Renderer& renderer) override;
+
+
+		// Inherited via Serializable
+		void Read(const json::value_t& value) override;
 
 	};
 }

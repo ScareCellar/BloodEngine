@@ -10,7 +10,7 @@
 
 
 namespace blood {
-	class Actor : public Object{
+	class Actor : public Object {
 	public:
 		std::string tag;
 
@@ -29,7 +29,9 @@ namespace blood {
 		virtual void Update(float dt);
 		virtual void Draw(Renderer& renderer);
 
-		virtual void OnCollision(Actor* other) = 0;
+		virtual void OnCollision(Actor* other) {
+
+		}
 
 		void AddComponent(std::unique_ptr<Component> component);
 
@@ -39,12 +41,12 @@ namespace blood {
 		template<typename T>
 		std::vector<T*> GetComponents();
 
+		void Read(const json::value_t& value) override;
 	public:
 		Transform m_transform;
 
 	protected:
-		std::vector<std::unique_ptr<Component>> m_components; 
-
+		std::vector<std::unique_ptr<Component>> m_components;
 	};
 
 

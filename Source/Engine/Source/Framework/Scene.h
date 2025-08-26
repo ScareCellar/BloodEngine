@@ -8,7 +8,7 @@
 
 namespace blood{
 	
-	class Scene {
+	class Scene : public Serializable {
 	public:
 		Scene(class Game* game) : m_game{ game } {}
 
@@ -16,6 +16,7 @@ namespace blood{
 		void Draw(class Renderer& renderer);
 
 		void AddActor(std::unique_ptr<Actor> actor);
+		void RemoveAllActors() { m_actors.clear(); }
 		
 		template<typename T = Actor>
 		T* GetActorByName(const std::string& name) {
@@ -47,11 +48,10 @@ namespace blood{
 			return m_game; 
 		}
 
-		void RemoveAllActors() { m_actors.clear(); }
 
+		void Read(const json::value_t& value) override;
 	private:
 		std::list<std::unique_ptr<Actor>> m_actors;
 		class Game* m_game{ nullptr };
-
 	};
 }

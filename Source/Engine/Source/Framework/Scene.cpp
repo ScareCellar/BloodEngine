@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "../Renderer/Renderer.h"
 #include "../Components/Collider.h"
+#include "../Engine/Source/Core/Factory.h"
 
 namespace blood{
 
@@ -46,6 +47,15 @@ namespace blood{
 	void Scene::AddActor(std::unique_ptr<Actor> actor){
 		actor->scene = this;
 		m_actors.push_back(std::move(actor));
+	}
+
+	void Scene::Read(const json::value_t& value){
+		for (auto& actorValue : value["actors"].GetArray()) {
+			auto actor = Factory::Instance().Create<Actor>("Actor");
+			actor->Read(actorValue);
+
+			AddActor(std::move(actor));
+		}
 	}
 	
 	

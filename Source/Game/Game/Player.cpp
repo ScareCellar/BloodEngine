@@ -6,55 +6,54 @@
 #include "../Engine/Source/Components/RigidBody.h"
 
 
-
 using namespace blood;
 
+FACTORY_REGISTER(Player)
+
 void Player::Update(float dt) {
-    //1980, 1224
-    blood::Particle particle;
-    particle.position = m_transform.position;
-    particle.velocity = blood::vec2{ 200,0 };
-    particle.color = blood::vec3{ 1,1,1 };
-    particle.lifespan = 2.0f;
-    GetEngine().GetPS().AddParticle(particle);
+    ////1980, 1224
+    //blood::Particle particle;
+    //particle.position = owner->m_transform.position;
+    //particle.velocity = blood::vec2{ 200,0 };
+    //particle.color = blood::vec3{ 1,1,1 };
+    //particle.lifespan = 2.0f;
+    //GetEngine().GetPS().AddParticle(particle);
 
 
-    float rotate = 0;
+    //float rotate = 0;
   
-    if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_A)) rotate = -1;//100 * time.GetDeltaTime();
-    if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_D)) rotate = +1;//100 * time.GetDeltaTime();
+    //if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_A)) rotate = -1;//100 * time.GetDeltaTime();
+    //if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_D)) rotate = +1;//100 * time.GetDeltaTime();
 
-    m_transform.rotation += (rotate * rotationRate) * dt;
+    //owner->m_transform.rotation += (rotate * rotationRate) * dt;
 
-    //thrust
-    float thrust = 0;
-    if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_W)) thrust = +1;
-    if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_S)) thrust = -1;
+    ////thrust
+    //float thrust = 0;
+    //if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_W)) thrust = +1;
+    //if (GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_S)) thrust = -1;
 
-    vec2 direction{ 1,0 };
-    vec2 force = direction.Rotate(math::degToRad(m_transform.rotation)) * thrust * speed;
+    //vec2 direction{ 1,0 };
+    //vec2 force = direction.Rotate(math::degToRad(owner->m_transform.rotation)) * thrust * speed;
 
-    auto* rb = GetComponent<blood::RigidBody>();
-    if (rb) {
-        rb->velocity += force * dt;
-    }
-    m_transform.position.x = math::wrap(m_transform.position.x, 0.0f, 1980.0f);
-    m_transform.position.y = math::wrap(m_transform.position.y, 0.0f, 1224.0f);
-    
+    //auto* rb = owner->GetComponent<blood::RigidBody>();
+    //if (rb) {
+    //    rb->velocity += force * dt;
+    //}
+    //owner->m_transform.position.x = math::wrap(owner->m_transform.position.x, 0.0f, 1980.0f);
+    //owner->m_transform.position.y = math::wrap(owner->m_transform.position.y, 0.0f, 1224.0f);
+    //
 
-    
-    GetEngine().GetPS().Draw(Engine::Instance().GetRenderer());
+    //
+    //GetEngine().GetPS().Draw(Engine::Instance().GetRenderer());
 
-    Actor::Update(dt);
+    //Actor::Update(dt);
 }
-void Player::Draw(Renderer& renderer) {
-    Actor::Draw(renderer);
-}
+
 
 void Player::OnCollision(Actor* other)
 {
-    if (tag != other->tag) {
-        destroyed = true;
-        dynamic_cast<SpaceGame*>(scene->GetGame())->OnPlayerDestroyed();
+    if (owner->tag != other->tag) {
+        owner->destroyed = true;
+        dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDestroyed();
     }
 }

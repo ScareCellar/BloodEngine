@@ -198,8 +198,10 @@
     <ClCompile Include="Source\Core\Time.cpp" />
     <ClCompile Include="Source\Framework\Actor.cpp" />
     <ClCompile Include="Source\Framework\Game.cpp" />
+    <ClCompile Include="Source\Framework\Object.cpp" />
     <ClCompile Include="Source\Framework\Scene.cpp" />
     <ClCompile Include="Source\Input\InputSystem.cpp" />
+    <ClCompile Include="Source\Math\Transform.cpp" />
     <ClCompile Include="Source\Renderer\Font.cpp" />
     <ClCompile Include="Source\Renderer\Mesh.cpp" />
     <ClCompile Include="Source\Renderer\ParticleSystem.cpp" />
@@ -221,10 +223,12 @@
     <ClInclude Include="Source\Components\SpriteRenderer.h" />
     <ClInclude Include="Source\Core\Audio\AudioClip.h" />
     <ClInclude Include="Source\Core\Audio\AudioSystem.h" />
+    <ClInclude Include="Source\Core\Factory.h" />
     <ClInclude Include="Source\Core\File.h" />
     <ClInclude Include="Source\Core\Json.h" />
     <ClInclude Include="Source\Core\Logger.h" />
     <ClInclude Include="Source\Core\Random.h" />
+    <ClInclude Include="Source\Core\Serializable.h" />
     <ClInclude Include="Source\Core\Singleton.h" />
     <ClInclude Include="Source\Core\StringHelper.h" />
     <ClInclude Include="Source\Core\Time.h" />

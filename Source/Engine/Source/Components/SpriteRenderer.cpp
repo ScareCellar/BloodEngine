@@ -4,6 +4,9 @@
 #include "../Resources/ResourceManager.h"
 
 namespace blood {
+	FACTORY_REGISTER(SpriteRenderer)
+
+
 	void SpriteRenderer::Update(float dt) {
 		//
 	}
@@ -18,5 +21,9 @@ namespace blood {
 				owner->m_transform.rotation,
 				owner->m_transform.scale);
 		}
+	}
+	void SpriteRenderer::Read(const json::value_t& value) {
+		Object::Read(value);
+		JSON_READ(value, textureName);
 	}
 }

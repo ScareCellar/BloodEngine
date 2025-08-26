@@ -3,21 +3,13 @@
 
 using namespace blood;
 
-class Enemy : public Actor {
+class Enemy : public Component {
 public:
 	Enemy() = default;
-	Enemy(const Transform& transform) :
-		Actor{ transform } {
-	};
-
-	void Update(float dt) override;
-	void Draw(Renderer& renderer) override;
-
 	float speed{ 100 };
 	float rotationRate{ 0 };
-
 	float shootTimer = 1;
 
-	// Inherited via Actor
-	void OnCollision(Actor* other) override;
+	void Update(float dt) override;
+	void OnCollision(Actor* other);
 };

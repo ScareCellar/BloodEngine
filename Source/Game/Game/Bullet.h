@@ -1,19 +1,17 @@
 #pragma once
-#include "Source/Framework/Actor.h"
+#include "Source/Framework/Component.h"
 #include "Source/Renderer/Texture.h"
 
-class Bullet : public blood::Actor{
+class Bullet : public blood::Component {
 public:
-	Bullet(blood::Transform& transform) : blood::Actor{ transform} {};
+	float speed{ 5.0f };
+	bool exploded = false;
 
 	
 	void Update(float dt) override;
-	
-	float speed{ 5.0f };
 
 	// Inherited via Actor
-	void OnCollision(Actor* other) override;
+	void OnCollision(class blood::Actor* other);
 
 private:
-	bool exploded = false;
 };
