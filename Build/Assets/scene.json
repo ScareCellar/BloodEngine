@@ -2,10 +2,13 @@
   "actors": [
     {
       "name": "sprite",
+      "active": true,
+      "tag": "player",
+      "lifespan": 4.0,
       "m_transform": {
         "position": [ 400, 300 ],
-        "rotation": 0,
-        "scale": 2
+        "rotation": 0.0,
+        "scale": 2.0
       },
       "components": [
         {
