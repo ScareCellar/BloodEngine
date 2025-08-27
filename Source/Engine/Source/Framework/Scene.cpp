@@ -29,7 +29,7 @@ namespace blood{
 
 				if (!colliderA || !colliderB) continue;
 
-				float distance = (actorA->m_transform.position - actorB->m_transform.position).Length();
+				float distance = (actorA->transform.position - actorB->transform.position).Length();
 
 				if (colliderA->CheckCollision(*colliderB)) {
 					actorA->OnCollision(actorB.get());
@@ -50,11 +50,13 @@ namespace blood{
 	}
 
 	void Scene::Read(const json::value_t& value){
-		for (auto& actorValue : value["actors"].GetArray()) {
-			auto actor = Factory::Instance().Create<Actor>("Actor");
-			actor->Read(actorValue);
+		if (JSON_HAS(value, actors)) {
+			for (auto& actorValue : JSON_GET(value, actors).GetArray()) {
+				auto actor = Factory::Instance().Create<Actor>("Actor");
+				actor->Read(actorValue);
 
-			AddActor(std::move(actor));
+				AddActor(std::move(actor));
+			}
 		}
 	}
 	

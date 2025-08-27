@@ -15,4 +15,7 @@ namespace blood {
 			GetEngine().GetAudio().PlaySound(*clip);
 		}
 	}
+	void AudioSource::Read(const json::value_t& value) {
+		JSON_READ(value, audioClipName);
+	}
 }

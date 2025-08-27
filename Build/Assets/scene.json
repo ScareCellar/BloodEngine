@@ -1,19 +1,66 @@
 {
   "actors": [
     {
-      "name": "sprite",
+      "name": "player",
       "active": true,
       "tag": "player",
-      "lifespan": 4.0,
-      "m_transform": {
-        "position": [ 400, 300 ],
-        "rotation": 0.0,
-        "scale": 2.0
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 2
       },
       "components": [
         {
+          "type": "Player",
+          "speed": 5000,
+          "rotationRate": 60,
+          "shootTimer":  0.2
+        },
+        {
           "type": "SpriteRenderer",
           "textureName": "doretta.png"
+        },
+        {
+          "type": "RigidBody",
+          "velocity": [
+            30,
+            0
+          ],
+          "damping": 0
+        },
+        {
+          "type": "CircleCollider2D",
+          "radius": 50
+        }
+      ]
+    },
+    {
+      "name": "bob",
+      "active": true,
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          300,
+          400
+        ],
+        "rotation": 0,
+        "scale": 2
+      },
+      "components": [
+        {
+          "type": "RigidBody",
+          "velocity": [
+            30,
+            0
+          ],
+            "damping": 0
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "turret.png"
         }
       ]
     }

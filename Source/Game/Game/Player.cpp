@@ -57,3 +57,11 @@ void Player::OnCollision(Actor* other)
         dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDestroyed();
     }
 }
+
+void Player::Read(const blood::json::value_t& value) {
+    Object::Read(value);
+
+    JSON_READ(value, speed);
+    JSON_READ(value, rotationRate);
+    JSON_READ(value, shootTimer);
+}

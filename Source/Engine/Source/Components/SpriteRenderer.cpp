@@ -12,14 +12,14 @@ namespace blood {
 	}
 
 	void SpriteRenderer::Draw(Renderer& renderer) {
-		auto texture = Resources().Get<Texture>(textureName, renderer).get();
+		auto texture = Resources().Get<Texture>(textureName, renderer);
 
 		if (texture) {
 			renderer.DrawTexture(*texture,
-				owner->m_transform.position.x,
-				owner->m_transform.position.y,
-				owner->m_transform.rotation,
-				owner->m_transform.scale);
+				owner->transform.position.x,
+				owner->transform.position.y,
+				owner->transform.rotation,
+				owner->transform.scale);
 		}
 	}
 	void SpriteRenderer::Read(const json::value_t& value) {

@@ -73,7 +73,7 @@ void Enemy::OnCollision(Actor* other){
         blood::GetEngine().GetAudio().PlaySound("bass");
         for (int i = 0; i < 100; i++) {
             blood::Particle particle;
-            particle.position = owner->m_transform.position;
+            particle.position = owner->transform.position;
             particle.velocity = blood::vec2{ blood::random::getReal(-200.0f, 200.0f), blood::random::getReal(-200.0f, 200.0f) };
             particle.color = blood::vec3{ 1, 1, 1 };
             particle.lifespan = 2;

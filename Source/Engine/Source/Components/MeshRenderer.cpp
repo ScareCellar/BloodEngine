@@ -13,7 +13,10 @@ namespace blood {
 		
 		if (mesh) {
 			mesh->Load(meshName);
-			mesh->Draw(renderer, owner->m_transform);
+			mesh->Draw(renderer, owner->transform);
 		}
+	}
+	void MeshRenderer::Read(const json::value_t& value) {
+		JSON_READ(value, meshName);
 	}
 }

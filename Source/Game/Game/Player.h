@@ -18,6 +18,8 @@ public:
 	
 	void OnCollision(Actor* other);
 
+	void Read(const blood::json::value_t& value) override;
+
 private:
 	float shootTimer{ 0.4f };
 

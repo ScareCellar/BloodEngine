@@ -22,7 +22,7 @@ namespace blood {
 	public:
 		Actor() = default;
 		~Actor() = default;
-		Actor(const Transform& transform) : m_transform{ transform }{}
+		Actor(const Transform& transform) : transform{ transform }{}
 		
 
 
@@ -43,7 +43,7 @@ namespace blood {
 
 		void Read(const json::value_t& value) override;
 	public:
-		Transform m_transform;
+		Transform transform;
 
 	protected:
 		std::vector<std::unique_ptr<Component>> m_components;

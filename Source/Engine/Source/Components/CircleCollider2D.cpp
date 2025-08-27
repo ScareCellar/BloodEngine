@@ -1,4 +1,3 @@
-
 #include "CircleCollider2D.h"
 #include "../Framework/Actor.h"
 
@@ -10,7 +9,7 @@ namespace blood {
 	}
 
 	bool CircleCollider2D::CheckCollision(ColliderComponent& other) {
-		float distance = (owner->m_transform.position - other.owner->m_transform.position).Length();
+		float distance = (owner->transform.position - other.owner->transform.position).Length();
 		auto collider = dynamic_cast<CircleCollider2D*>(&other);
 		if (collider) {
 			float radii = radius + collider->radius;
@@ -20,5 +19,8 @@ namespace blood {
 		}
 		/*if (distance <= owner->GetRadius() + other.owner->GetRadius()) {}*/
 		return false;
+	}
+	void CircleCollider2D::Read(const json::value_t& value) {
+		JSON_READ(value, radius);
 	}
 }
