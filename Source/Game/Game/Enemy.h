@@ -10,6 +10,12 @@ public:
 	float rotationRate{ 0 };
 	float shootTimer = 1;
 
+	blood::RigidBody* rigidBody;
+
+	CLASS_PROTOTYPE(Enemy)
+
+	void Start() override;
+
 	void Update(float dt) override;
 	void OnCollision(Actor* other);
 };

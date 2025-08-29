@@ -9,6 +9,10 @@
 
 FACTORY_REGISTER(Enemy)
 
+void Enemy::Start() {
+    rigidBody = owner->GetComponent<blood::RigidBody>();
+}
+
 void Enemy::Update(float dt) {
     //bool playerSeen = false;
 
@@ -25,13 +29,13 @@ void Enemy::Update(float dt) {
 
 
 
-    //vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(owner->m_transform.rotation* speed));
-    //
-    //
-    //auto rb = owner->GetComponent<blood::RigidBody>();
-    //if (rb) {
-    //    rb->velocity = (force * dt) * speed;
-    //}
+    vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(owner->transform.rotation* speed));
+    
+    
+    auto rb = owner->GetComponent<blood::RigidBody>();
+    if (rb) {
+        rb->velocity = (force * dt) * speed;
+    }
 
     ///*m_transform.position.x = math::wrap(m_transform.position.x, 0.0f, 1980.0f);
     //m_transform.position.y = math::wrap(m_transform.position.y, 0.0f, 1224.0f);*/

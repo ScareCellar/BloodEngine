@@ -23,8 +23,9 @@ namespace blood {
 		Actor() = default;
 		~Actor() = default;
 		Actor(const Transform& transform) : transform{ transform }{}
-		
+		Actor(const Actor& other);
 
+		CLASS_PROTOTYPE(Actor)
 
 		virtual void Update(float dt);
 		virtual void Draw(Renderer& renderer);
@@ -33,6 +34,8 @@ namespace blood {
 
 		}
 
+		virtual void Start();
+		virtual void Destroyed();
 		void AddComponent(std::unique_ptr<Component> component);
 
 		template<typename T>
@@ -42,6 +45,7 @@ namespace blood {
 		std::vector<T*> GetComponents();
 
 		void Read(const json::value_t& value) override;
+
 	public:
 		Transform transform;
 

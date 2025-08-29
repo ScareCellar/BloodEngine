@@ -21,10 +21,10 @@ namespace blood {
 		virtual ~CreatorBase() = default;
 		virtual std::unique_ptr<Object> Create() = 0;
 	};
-	
+
 
 	template<typename T>
-	requires std::derived_from<T, Object>
+		requires std::derived_from<T, Object>
 	class Creator : public CreatorBase {
 	public:
 		std::unique_ptr<Object> Create() override {
@@ -32,14 +32,33 @@ namespace blood {
 		}
 	};
 
+	template<typename T>
+		requires std::derived_from<T, Object>
+	class PrototypeCreator : public CreatorBase {
+	public:
+		PrototypeCreator(std::unique_ptr<T> prototype) :
+			m_prototype{ std::move(prototype) } {
+		};
+		std::unique_ptr<Object> Create() override {
+			return m_prototype->Clone();
+		}
+
+	private:
+		std::unique_ptr<T> m_prototype;
+	};
+
 	class Factory : public Singleton<Factory> {
 	public:
 		template<typename T>
-		requires std::derived_from<T, Object>
+			requires std::derived_from<T, Object>
 		void Register(const std::string& name);
 
+		template<typename T>
+			requires std::derived_from<T, Object>
+		void RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype);
+
 		template<typename T = Object>
-		requires std::derived_from<T, Object>
+			requires std::derived_from<T, Object>
 		std::unique_ptr<T> Create(const std::string& name);
 
 	private:
@@ -47,14 +66,21 @@ namespace blood {
 	};
 
 	template<typename T>
-	requires std::derived_from<T, Object>
+		requires std::derived_from<T, Object>
 	void Factory::Register(const std::string& name) {
 		std::string key = toLower(name);
 		m_registry[key] = std::make_unique<Creator<T>>();
 		Logger::Info("{} Added to Factory", name);
 	}
 	template<typename T>
-	requires std::derived_from<T, Object>
+		requires std::derived_from<T, Object>
+	inline void Factory::RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype) {
+		std::string key = toLower(name);
+		m_registry[key] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
+		Logger::Info("{} Prototype Added to Factory", name);
+	}
+	template<typename T>
+		requires std::derived_from<T, Object>
 	inline std::unique_ptr<T> Factory::Create(const std::string& name)
 	{
 		std::string key = toLower(name);
@@ -64,6 +90,7 @@ namespace blood {
 			T* derived = dynamic_cast<T*>(object.get());
 			if (derived) {
 				object.release();
+				Logger::Debug("instance of object {} created", name);
 				return std::unique_ptr<T>(derived);
 			}
 			Logger::Error("Could not cast factory object: {}", name);
@@ -73,4 +100,27 @@ namespace blood {
 
 		return nullptr;
 	}
+
+	template<typename T = Actor>
+		requires std::derived_from<T, Actor>
+	std::unique_ptr<T> Instantiate(const std::string& name) {
+		return Factory::Instance().Create<T>(name);
+	}
+
+	template<typename T = Actor>
+		requires std::derived_from<T, Actor>
+	std::unique_ptr<T> Instantiate(const std::string& name, const vec2& position, float rotation, float scale) {
+		auto instance = Factory::Instance().Create<T>(name);
+		instance->transform = Transform{ position, rotation, scale };
+		return instance;
+	}
+
+	template<typename T = Actor>
+		requires std::derived_from<T, Actor>
+	std::unique_ptr<T> Instantiate(const std::string& name, const Transform& transform) {
+		auto instance = Factory::Instance().Create<T>(name);
+		instance->transform = transform;
+		return instance;
+	}
+
 }

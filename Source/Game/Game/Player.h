@@ -15,6 +15,7 @@ public:
 	float speed = 1000;
 	float rotationRate = 50;
 	
+	CLASS_PROTOTYPE(Player)
 	
 	void OnCollision(Actor* other);
 

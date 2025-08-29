@@ -5,6 +5,7 @@ namespace blood {
 	public:
 		float radius = 0;
 
+		CLASS_PROTOTYPE(CircleCollider2D)
 
 		void Update(float dt) override;
 		bool CheckCollision(ColliderComponent& other) override;

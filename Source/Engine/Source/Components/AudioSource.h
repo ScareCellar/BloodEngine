@@ -6,6 +6,8 @@ namespace blood {
 	public:
 		std::string audioClipName;
 
+		CLASS_PROTOTYPE(AudioSource)
+
 		void Update(float dt) override;
 
 		void Play();

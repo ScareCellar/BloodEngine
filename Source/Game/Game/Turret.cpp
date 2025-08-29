@@ -9,25 +9,32 @@
 FACTORY_REGISTER(Turret)
 
 void Turret::Update(float dt) {
-	////line up with player position
-	//Actor* player = scene->GetActorByName<Actor>("player");
-	//m_transform = player->m_transform;
-	//
-	//destroyed = player->destroyed;
+	//line up with player position
+	Actor* player = owner->scene->GetActorByName<Actor>("player");
+	if (player) {
+		owner->transform.position = player->transform.position;
 
-	////make it point towards the user's mouse
-	//blood::vec2 mousePosition = blood::GetEngine().GetInput().GetMousePosition();
+		owner->destroyed = player->destroyed;
+	}
+	//make it point towards the user's mouse
+	blood::vec2 mousePosition = blood::GetEngine().GetInput().GetMousePosition();
 
-	//vec2 direction{ 0,0 };
-	//direction = mousePosition - m_transform.position;
+	vec2 direction{ 0,0 };
+	direction = mousePosition - owner->transform.position;
 
-	//m_transform.rotation = math::radToDeg(direction.Angle());
+	owner->transform.rotation = math::radToDeg(direction.Angle());
 
- //   rocketShootTimer -= dt;
- //   bulletShootTimer -= dt;
+    rocketShootTimer -= dt;
+    bulletShootTimer -= dt;
 
- //   if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Right) && rocketShootTimer <= 0) {
- //       blood::GetEngine().GetAudio().PlaySound("launch");
+	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Right) && rocketShootTimer <= 0) {
+		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("rocketLaunch.mp3", blood::GetEngine().GetAudio()));
+		rocketShootTimer = 3.0f;
+
+		auto rocket = blood::Factory::Instance().Create<Actor>("rocket");
+		rocket->lifespan = 3.5f;
+		owner->scene->AddActor(std::move(rocket));
+	}
 
 
  //       std::shared_ptr<blood::Mesh> rocketModel = std::make_shared<blood::Mesh>(GameData::rocketPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
@@ -87,4 +94,11 @@ void Turret::Update(float dt) {
 
 void Turret::OnCollision(Actor* other) {
 
+}
+
+void Turret::Read(const blood::json::value_t& value) {
+	Object::Read(value);
+
+	JSON_READ(value, rocketShootTimer);
+	JSON_READ(value, bulletShootTimer);
 }

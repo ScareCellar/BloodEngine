@@ -6,6 +6,18 @@ namespace blood {
 
     FACTORY_REGISTER(Actor)
 
+        Actor::Actor(const Actor& other) :
+        Object{ other },
+        tag{ other.tag },
+        lifespan{ other.lifespan },
+        transform{ other.transform }
+    {
+        for (auto& component : other.m_components) {
+            auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+            AddComponent(std::move(clone));
+        }
+    }
+
     void Actor::Update(float dt)
     {
         if(destroyed) return;
@@ -38,6 +50,18 @@ namespace blood {
         }
     }
 
+    void Actor::Start() {
+        for (auto& component : m_components) {
+            component->Start();
+        }
+    }
+
+    void Actor::Destroyed() {
+        for (auto& component : m_components) {
+            component->Destroyed();
+        }
+    }
+
     void Actor::AddComponent(std::unique_ptr<Component> component) {
         component->owner = this;
         m_components.push_back(std::move(component));
@@ -46,7 +70,10 @@ namespace blood {
     void Actor::Read(const json::value_t& value){
         Object::Read(value);
 
-        JSON_READ(value, tag);
+        if (JSON_HAS(value, tag)) {
+            JSON_READ(value, tag);
+        }
+
         JSON_READ(value, lifespan);
         
         if (JSON_HAS(value, transform)) {

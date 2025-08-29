@@ -6,11 +6,12 @@
 
 class Rocket : public blood::Component {
 public:
-	//Rocket(blood::Transform& transform) : Actor{transform} {};
+	float speed{ -1000.0f };
+
+	CLASS_PROTOTYPE(Rocket)
 
 	void Update(float dt);
 	void Explode();
-	float speed{ -1000.0f };
 	
 	// Inherited via Actor
 	void OnCollision(class blood::Actor* other);

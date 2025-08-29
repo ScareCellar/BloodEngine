@@ -9,5 +9,7 @@ namespace blood {
 		Component() = default;
 
 		virtual void Update(float dt) = 0;
+		virtual void Start() {}
+		virtual void Destroyed() {}
 	};
 }

@@ -7,13 +7,15 @@ namespace blood {
 	public:
 		std::string textureName;
 
+		res_t<Texture> texture;
+
+		CLASS_PROTOTYPE(SpriteRenderer)
+		void Start() override;
 
 		void Update(float dt) override;
 
 		void Draw(Renderer& renderer) override;
 
-
-		// Inherited via Serializable
 		void Read(const json::value_t& value) override;
 
 	};

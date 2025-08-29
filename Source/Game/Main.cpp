@@ -5,13 +5,7 @@
 #include "Game/SpaceGame.h"
 #include "GamePCH.h"
 
-
-
-
-
 using namespace blood;
-
-
 
 int main(int argc, char* argv[]) { 
     blood::file::SetCurrentDirectory("Assets");
@@ -34,17 +28,7 @@ int main(int argc, char* argv[]) {
 
     SDL_Event e;
 
-
-    // create texture, using shared_ptr so texture can be shared
-    //auto texture = blood::Resources().Get<blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
-    //auto texture2 = resourceManager.Get <blood::Texture>("doretta.png", blood::GetEngine().GetRenderer());
     //initialize sounds
-    GetEngine().GetAudio().AddSound("test.wav", "test");
-    GetEngine().GetAudio().AddSound("bass.wav", "bass");
-    GetEngine().GetAudio().AddSound("snare.wav", "snare");
-    GetEngine().GetAudio().AddSound("clap.wav", "clap");
-    GetEngine().GetAudio().AddSound("close-hat.wav", "close-hat");
-    GetEngine().GetAudio().AddSound("open-hat.wav", "open-hat");
     GetEngine().GetAudio().AddSound("bullet.mp3", "bullet");
     GetEngine().GetAudio().AddSound("spanish.mp3", "spanish");
     GetEngine().GetAudio().AddSound("rocketLaunch.mp3", "launch");
@@ -52,12 +36,6 @@ int main(int argc, char* argv[]) {
     
     Font* font = new Font();
     font->Load("wingding.ttf", 100);
-
-    /*Text* text = new Text(font);
-    text->Create(GetEngine().GetRenderer(), "Hello World!", vec3{ 1,1,1 });*/
-    
-
-    //GetEngine().GetAudio().PlaySound("clap");
 
     vec3 color(0, 0, 0);
 

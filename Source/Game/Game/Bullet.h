@@ -7,7 +7,8 @@ public:
 	float speed{ 5.0f };
 	bool exploded = false;
 
-	
+	CLASS_PROTOTYPE(Bullet)
+
 	void Update(float dt) override;
 
 	// Inherited via Actor

@@ -50,6 +50,16 @@ namespace blood{
 	}
 
 	void Scene::Read(const json::value_t& value){
+		if (JSON_HAS(value, prototypes)) {
+			for (auto& actorValue : JSON_GET(value, prototypes).GetArray()) {
+				auto actor = Factory::Instance().Create<Actor>("Actor");
+				actor->Read(actorValue);
+
+				std::string actorName = actor->name;
+				Factory::Instance().RegisterPrototype<Actor>(actorName, std::move(actor));
+			}
+		}
+
 		if (JSON_HAS(value, actors)) {
 			for (auto& actorValue : JSON_GET(value, actors).GetArray()) {
 				auto actor = Factory::Instance().Create<Actor>("Actor");

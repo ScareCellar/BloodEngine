@@ -1,5 +1,5 @@
 {
-  "actors": [
+  "prototypes": [
     {
       "name": "player",
       "active": true,
@@ -16,8 +16,8 @@
         {
           "type": "Player",
           "speed": 5000,
-          "rotationRate": 60,
-          "shootTimer":  0.2
+          "rotationRate": 80,
+          "shootTimer": 0.2
         },
         {
           "type": "SpriteRenderer",
@@ -26,10 +26,10 @@
         {
           "type": "RigidBody",
           "velocity": [
-            30,
+            0,
             0
           ],
-          "damping": 0
+          "damping": 5
         },
         {
           "type": "CircleCollider2D",
@@ -38,7 +38,35 @@
       ]
     },
     {
-      "name": "bob",
+      "name": "turret",
+      "active": true,
+      "tag": "player",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 2
+      },
+      "components": [
+        {
+          "type": "Turret",
+          "rocketShootTimer": 3,
+          "bulletShootTimer": 0.2
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "turret.png"
+        },
+        {
+          "type": "CircleCollider2D",
+          "radius": 50
+        }
+      ]
+    },
+    {
+      "name": "enemy",
       "active": true,
       "tag": "enemy",
       "transform": {
@@ -51,16 +79,90 @@
       },
       "components": [
         {
+          "type": "Enemy",
+          "speed": 1500,
+          "rotationRate": 180,
+          "fireTime": 1
+        },
+        {
           "type": "RigidBody",
           "velocity": [
             30,
             0
           ],
-            "damping": 0
+          "damping": 0
         },
         {
           "type": "SpriteRenderer",
           "textureName": "turret.png"
+        },
+        {
+          "type": "CircleCollider2D",
+          "radius": 50
+        }
+      ]
+    },
+    {
+      "name": "bullet",
+      "lifespan": 3.5,
+      "transform": {
+        "position": [
+          0,
+          0
+        ],
+        "rotation": 0,
+        "scale": 2
+      },
+      "components": [
+        {
+          "type": "Bullet",
+          "speed": 1500
+        },
+        {
+          "type": "RigidBody",
+          "velocity": [
+            0,
+            0
+          ],
+          "damping": 0
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "bullet.png"
+        },
+        {
+          "type": "CircleCollider2D",
+          "radius": 25
+        }
+      ]
+    },
+    {
+      "name": "rocket",
+      "active": true,
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          300,
+          400
+        ],
+        "rotation": 0,
+        "scale": 2
+      },
+      "components": [
+        {
+          "type": "Rocket",
+          "speed": 1500
+        },
+        {
+          "type": "RigidBody"
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "rocket.png"
+        },
+        {
+          "type": "CircleCollider2D",
+          "radius": 25
         }
       ]
     }
