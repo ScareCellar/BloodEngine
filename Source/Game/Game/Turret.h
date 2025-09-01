@@ -12,9 +12,6 @@ public:
 
 	CLASS_PROTOTYPE(Turret)
 
-	// Inherited via Actor
-	void OnCollision(Actor* other);
-
 	void Read(const blood::json::value_t& value) override;
 
 private:

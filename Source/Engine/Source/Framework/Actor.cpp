@@ -6,11 +6,11 @@ namespace blood {
 
     FACTORY_REGISTER(Actor)
 
-        Actor::Actor(const Actor& other) :
-        Object{ other },
-        tag{ other.tag },
-        lifespan{ other.lifespan },
-        transform{ other.transform }
+    Actor::Actor(const Actor& other) :
+    Object{ other },
+    tag{ other.tag },
+    lifespan{ other.lifespan },
+    transform{ other.transform }
     {
         for (auto& component : other.m_components) {
             auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
@@ -47,6 +47,14 @@ namespace blood {
                     rendererComponent->Draw(renderer); 
                 }
             }
+        }
+    }
+
+    void Actor::OnCollision(Actor* other){
+        Logger::Debug("Actor on collision called with other: {}", other->name);
+        auto collidables = GetComponents<ICollidable>();
+        for (auto& collidable : collidables) {
+            collidable->OnCollision(other);
         }
     }
 

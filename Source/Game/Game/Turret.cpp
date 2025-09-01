@@ -33,7 +33,22 @@ void Turret::Update(float dt) {
 
 		auto rocket = blood::Factory::Instance().Create<Actor>("rocket");
 		rocket->lifespan = 3.5f;
+		rocket->transform = owner->transform;
+		rocket->GetComponent<RigidBody>()->velocity = rocket->GetComponent<RigidBody>()->velocity.Rotate(math::degToRad(rocket->transform.rotation));
+		rocket->tag = "player";
 		owner->scene->AddActor(std::move(rocket));
+	}
+
+	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Left) && bulletShootTimer <= 0) {
+		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
+		bulletShootTimer = 0.2f;
+
+		auto bullet = blood::Factory::Instance().Create<Actor>("bullet");
+		bullet->lifespan = 3.5f;
+		bullet->transform = owner->transform;
+		bullet->GetComponent<RigidBody>()->velocity = bullet->GetComponent<RigidBody>()->velocity.Rotate(math::degToRad(bullet->transform.rotation));
+		bullet->tag = "player";
+		owner->scene->AddActor(std::move(bullet));
 	}
 
 
@@ -90,10 +105,6 @@ void Turret::Update(float dt) {
 
  //       scene->AddActor(std::move(bullet));
  //   }
-}
-
-void Turret::OnCollision(Actor* other) {
-
 }
 
 void Turret::Read(const blood::json::value_t& value) {

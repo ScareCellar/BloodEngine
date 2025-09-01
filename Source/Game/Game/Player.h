@@ -4,7 +4,7 @@
 
 using namespace blood;
 
-class Player : public Component {
+class Player : public Component, ICollidable {
 public:
 	Player() = default;
 	

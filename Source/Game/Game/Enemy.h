@@ -3,12 +3,13 @@
 
 using namespace blood;
 
-class Enemy : public Component {
+class Enemy : public Component, public ICollidable {
 public:
 	Enemy() = default;
 	float speed{ 100 };
 	float rotationRate{ 0 };
 	float shootTimer = 1;
+	
 
 	blood::RigidBody* rigidBody;
 
@@ -17,5 +18,5 @@ public:
 	void Start() override;
 
 	void Update(float dt) override;
-	void OnCollision(Actor* other);
+	void OnCollision(Actor* other) override;
 };

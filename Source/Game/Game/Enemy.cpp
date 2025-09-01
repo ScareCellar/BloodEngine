@@ -16,13 +16,13 @@ void Enemy::Start() {
 void Enemy::Update(float dt) {
     //bool playerSeen = false;
 
-    //Actor* player = owner->scene->GetActorByName<Actor>("player");
-    //if (player) {
-    //    vec2 direction{ 0,0 };
-    //    direction = player->m_transform.position - owner->m_transform.position;
-    //    
-    //    owner->m_transform.rotation = math::radToDeg(direction.Angle());
-    //}
+    Actor* player = owner->scene->GetActorByName<Actor>("player");
+    if (player) {
+        vec2 direction{ 0,0 };
+        direction = player->transform.position - owner->transform.position;
+        
+        owner->transform.rotation = math::radToDeg(direction.Angle());
+    }
 
     //
     //
@@ -40,34 +40,17 @@ void Enemy::Update(float dt) {
     ///*m_transform.position.x = math::wrap(m_transform.position.x, 0.0f, 1980.0f);
     //m_transform.position.y = math::wrap(m_transform.position.y, 0.0f, 1224.0f);*/
 
-    //shootTimer -= dt;
+    shootTimer -= dt;
 
-    //if (shootTimer <= 0) {
-    //    std::shared_ptr<blood::Mesh> rocketModel = std::make_shared<blood::Mesh>(GameData::rocketPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
-    //    blood::Transform transform{ owner->m_transform.position, this->m_transform.rotation, 10 };
-    //    auto bullet = std::make_unique<Actor>(transform); //, blood::Resources().Get<blood::Texture>("bullet.png", blood::GetEngine().GetRenderer()));
-    //    bullet->speed = 500.0f;
-    //    bullet->lifespan = 5.0f;
-    //    bullet->name = "bullet";
-    //    bullet->tag = "enemy";
-    //    shootTimer = 2.0f;
-
-    //    auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
-    //    spriteRenderer->textureName = "bullet.png";
-
-    //    auto rigidBody = std::make_unique<blood::RigidBody>();
-
-    //    auto collider = std::make_unique<blood::CircleCollider2D>();
-    //    collider->radius = 50.0f;
-
-    //    bullet->AddComponent(std::move(spriteRenderer));
-    //    bullet->AddComponent(std::move(rigidBody));
-    //    bullet->AddComponent(std::move(collider));
-
-    //    owner->scene->AddActor(std::move(bullet));
-    //}
-
-    //owner->Actor::Update(dt); 
+    if (shootTimer <= 0) {
+        shootTimer = 3;
+        auto bullet = Factory::Instance().Create<Actor>("bullet");
+        bullet->lifespan = 3.5f;
+        bullet->transform = owner->transform;
+        bullet->GetComponent<RigidBody>()->velocity = bullet->GetComponent<RigidBody>()->velocity.Rotate(math::degToRad(bullet->transform.rotation));
+        bullet->tag = "enemy";
+        owner->scene->AddActor(std::move(bullet));
+    }
 }
 
 void Enemy::OnCollision(Actor* other){

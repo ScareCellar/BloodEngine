@@ -15,9 +15,7 @@ bool SpaceGame::Initialize()
 {
     m_scene = std::make_unique<Scene>(this);
 
-    blood::json::document_t document;
-    blood::json::Load("scene.json", document);
-    m_scene->Read(document);
+    m_scene->Load("scene.json");
 
     m_titleText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("title_font", "wingding.ttf", 128.0f));
     m_scoreText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("ui_font", "wingding.ttf", 64.0f));

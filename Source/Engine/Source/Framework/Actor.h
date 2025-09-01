@@ -10,7 +10,7 @@
 
 
 namespace blood {
-	class Actor : public Object {
+	class Actor : public Object, public ICollidable {
 	public:
 		std::string tag;
 
@@ -30,9 +30,7 @@ namespace blood {
 		virtual void Update(float dt);
 		virtual void Draw(Renderer& renderer);
 
-		virtual void OnCollision(Actor* other) {
-
-		}
+		virtual void OnCollision(Actor* other) override;
 
 		virtual void Start();
 		virtual void Destroyed();

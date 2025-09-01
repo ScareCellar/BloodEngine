@@ -213,6 +213,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineMinimal.h" />
     <ClInclude Include="EnginePCH.h" />
+    <ClInclude Include="Event\Observer.h" />
     <ClInclude Include="Sound\Header.h" />
     <ClInclude Include="Source\Components\AudioSource.h" />
     <ClInclude Include="Source\Components\CircleCollider2D.h" />
@@ -242,6 +243,7 @@
     <ClInclude Include="Source\Math\Transform.h" />
     <ClInclude Include="Source\Math\Vector2.h" />
     <ClInclude Include="Source\Math\Vector3.h" />
+    <ClInclude Include="Source\Physics\ICollidable.h" />
     <ClInclude Include="Source\Renderer\Font.h" />
     <ClInclude Include="Source\Renderer\Mesh.h" />
     <ClInclude Include="Source\Renderer\ParticleSystem.h" />

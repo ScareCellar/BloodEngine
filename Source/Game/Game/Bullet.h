@@ -2,7 +2,7 @@
 #include "Source/Framework/Component.h"
 #include "Source/Renderer/Texture.h"
 
-class Bullet : public blood::Component {
+class Bullet : public blood::Component, public blood::ICollidable {
 public:
 	float speed{ 5.0f };
 	bool exploded = false;
@@ -12,7 +12,7 @@ public:
 	void Update(float dt) override;
 
 	// Inherited via Actor
-	void OnCollision(class blood::Actor* other);
+	void OnCollision(class blood::Actor* other) override;
 
 private:
 };

@@ -47,8 +47,7 @@ void Player::Update(float dt) {
 }
 
 
-void Player::OnCollision(Actor* other)
-{
+void Player::OnCollision(blood::Actor* other) {
     if (owner->tag != other->tag) {
         owner->destroyed = true;
         dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDestroyed();

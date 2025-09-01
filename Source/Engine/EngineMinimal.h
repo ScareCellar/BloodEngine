@@ -20,6 +20,9 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
 
+//physics
+#include "Source/Physics/ICollidable.h"
+
 //core
 #include "Source/Core/File.h"
 #include "Source/Core/Logger.h"

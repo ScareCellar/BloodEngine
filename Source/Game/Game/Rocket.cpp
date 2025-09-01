@@ -3,6 +3,7 @@
 #include "../Engine/Engine.h"
 #include "../Engine/Source/Framework/Actor.h"
 #include "../GamePCH.h"
+#include "Enemy.h"
 
 
 
@@ -19,8 +20,8 @@ void Rocket::Explode(){
 		blood::GetEngine().GetAudio().PlaySound("explode");
 		std::unique_ptr<blood::Mesh> explode;
 		owner->GetComponent<blood::SpriteRenderer>()->textureName = "explode.png";
-		owner->lifespan = 5.2f;
-		speed = 0;
+		owner->lifespan = 0.2f;
+		owner->GetComponent<RigidBody>()->damping = 10;
 		exploded = true;
 	}
 	else if (owner->lifespan <= 0 && exploded) {
@@ -29,7 +30,8 @@ void Rocket::Explode(){
 }
 
 void Rocket::OnCollision(blood::Actor* other){
-	if (owner->tag != other->tag && !owner->destroyed) {
+	if (owner->tag != other->tag && other->name != "turret") {
 		Explode();
+		
 	}
 }

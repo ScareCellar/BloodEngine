@@ -8,7 +8,7 @@
 
 namespace blood{
 	
-	class Scene : public Serializable {
+	class Scene : public ISerializable {
 	public:
 		Scene(class Game* game) : m_game{ game } {}
 
@@ -48,7 +48,7 @@ namespace blood{
 			return m_game; 
 		}
 
-
+		bool Load(const std::string& sceneName);
 		void Read(const json::value_t& value) override;
 	private:
 		std::list<std::unique_ptr<Actor>> m_actors;

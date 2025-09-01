@@ -15,7 +15,7 @@
       "components": [
         {
           "type": "Player",
-          "speed": 5000,
+          "speed": 2000,
           "rotationRate": 80,
           "shootTimer": 0.2
         },
@@ -82,7 +82,7 @@
           "type": "Enemy",
           "speed": 1500,
           "rotationRate": 180,
-          "fireTime": 1
+          "fireTime": 3
         },
         {
           "type": "RigidBody",
@@ -104,7 +104,6 @@
     },
     {
       "name": "bullet",
-      "lifespan": 3.5,
       "transform": {
         "position": [
           0,
@@ -121,7 +120,7 @@
         {
           "type": "RigidBody",
           "velocity": [
-            0,
+            1000,
             0
           ],
           "damping": 0
@@ -154,7 +153,11 @@
           "speed": 1500
         },
         {
-          "type": "RigidBody"
+          "type": "RigidBody",
+          "velocity": [
+            500,
+            0
+          ]
         },
         {
           "type": "SpriteRenderer",

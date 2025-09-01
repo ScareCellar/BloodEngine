@@ -33,6 +33,12 @@
     <Filter Include="Source\Components">
       <UniqueIdentifier>{e8d455fa-4ca1-46d9-990a-7da7a38576c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Physics">
+      <UniqueIdentifier>{720591df-5c02-4667-9560-5716a83407c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Event">
+      <UniqueIdentifier>{b6897513-305c-42c2-950f-211ec61be14f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -228,6 +234,12 @@
     </ClInclude>
     <ClInclude Include="Source\Core\Serializable.h">
       <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physics\ICollidable.h">
+      <Filter>Source\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Observer.h">
+      <Filter>Source\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

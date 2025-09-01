@@ -32,6 +32,7 @@ namespace blood{
 				float distance = (actorA->transform.position - actorB->transform.position).Length();
 
 				if (colliderA->CheckCollision(*colliderB)) {
+					Logger::Debug("{} colliding with {}", actorA->name, actorB->name);
 					actorA->OnCollision(actorB.get());
 					actorB->OnCollision(actorA.get());
 				}
@@ -46,7 +47,24 @@ namespace blood{
 	}
 	void Scene::AddActor(std::unique_ptr<Actor> actor){
 		actor->scene = this;
+		actor->Start();
 		m_actors.push_back(std::move(actor));
+	}
+
+	bool Scene::Load(const std::string& sceneName) {
+		blood::json::document_t document;
+		if (!blood::json::Load(sceneName, document)) {
+			Logger::Error("Could not load Scene {}", sceneName);
+			return false;
+		}
+		Read(document);
+
+		//start actors
+		for (auto& actor : m_actors) {
+			actor->Start();
+		}
+
+		return true;
 	}
 
 	void Scene::Read(const json::value_t& value){
