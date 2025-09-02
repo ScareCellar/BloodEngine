@@ -187,6 +187,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Event\EventManager.cpp" />
+    <ClCompile Include="Event\Observer.cpp" />
     <ClCompile Include="Source\Components\AudioSource.cpp" />
     <ClCompile Include="Source\Components\CircleCollider2D.cpp" />
     <ClCompile Include="Source\Components\MeshRenderer.cpp" />

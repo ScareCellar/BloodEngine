@@ -56,7 +56,8 @@ void Enemy::Update(float dt) {
 void Enemy::OnCollision(Actor* other){
     if (other->tag == "player") {
         owner->destroyed = true;
-        owner->scene->GetGame()->AddPoints(100);
+        blood::EventManager::Instance().Notify({ "add_points", 100 });
+        //owner->scene->GetGame()->AddPoints(100);
         blood::GetEngine().GetAudio().PlaySound("bass");
         for (int i = 0; i < 100; i++) {
             blood::Particle particle;

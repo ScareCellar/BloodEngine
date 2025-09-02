@@ -2,8 +2,9 @@
 #include "Source/Framework/Game.h"
 #include "Source/Renderer/Font.h"
 #include "Source/Renderer/Text.h"
+#include "Event/Observer.h"
 
-class SpaceGame : public blood::Game {
+class SpaceGame : public blood::Game, public blood::IObserver {
 public:
 
 	enum class GameState {
@@ -28,6 +29,7 @@ public:
 
 	void OnPlayerDestroyed();
 
+	void OnNotify(const blood::Event& event) override;
 	
 private:
 	GameState m_gamestate = GameState::Initialize;
@@ -42,4 +44,6 @@ private:
 	std::unique_ptr<blood::Text> m_titleText;
 	std::unique_ptr<blood::Text> m_scoreText;
 	std::unique_ptr<blood::Text> m_livesText;
+
+	// Inherited via IObserver
 };

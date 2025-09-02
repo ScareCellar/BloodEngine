@@ -13,6 +13,9 @@
 
 bool SpaceGame::Initialize()
 {
+    blood::EventManager::Instance().AddObserver("player_dead", *this);
+    blood::EventManager::Instance().AddObserver("add_points", *this);
+
     m_scene = std::make_unique<Scene>(this);
 
     m_scene->Load("scene.json");
@@ -123,6 +126,16 @@ void SpaceGame::SpawnEnemy() {
     auto enemy = blood::Instantiate("enemy", trans);
     if (enemy) m_scene->AddActor(std::move(enemy));
     //1hour:36mins into video.
+}
+
+void SpaceGame::OnNotify(const Event& event){
+    if (blood::equalsIgnoreCase(event.id, "player_dead")) {
+        OnPlayerDestroyed();
+    }
+    else if (blood::equalsIgnoreCase(event.id, "add_points")) {
+        AddPoints(std::get<int>(event.data))
+    }
+    Logger::Info("Event: {}", event.id);
 }
 
 void SpaceGame::OnPlayerDestroyed(){

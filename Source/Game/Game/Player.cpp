@@ -50,6 +50,8 @@ void Player::Update(float dt) {
 void Player::OnCollision(blood::Actor* other) {
     if (owner->tag != other->tag) {
         owner->destroyed = true;
+        blood::EventManager::Instance().Notify(blood::Event{ "player_dead", true });
+
         dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDestroyed();
     }
 }

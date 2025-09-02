@@ -26,6 +26,8 @@ namespace blood {
 		m_audio->Shutdown();
 		m_input->ShutDown();
 		m_renderer->Shutdown();
+		EventManager::Instance().RemoveAll();
+		Factory::Instance().RemoveAll();
 	}
 	void Engine::Update() {
 		time.Tick();

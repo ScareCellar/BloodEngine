@@ -21,4 +21,8 @@ namespace blood {
 
 		return result;
 	}
+
+	inline bool equalsIgnoreCase(const std::string& stringA, const std::string& stringB) {
+		return (toLower(stringA) == toLower(stringB));
+	}
 }

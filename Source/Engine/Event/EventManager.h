@@ -9,6 +9,10 @@ namespace blood {
 	public:
 		void AddObserver(const Event::id_t& id, IObserver& observer);
 		void RemoveObserver(IObserver& observer);
+		void RemoveAll() {
+			m_observers.clear();
+		}
+
 
 		void Notify(const Event& event);
 		

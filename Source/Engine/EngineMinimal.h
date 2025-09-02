@@ -23,6 +23,11 @@
 //physics
 #include "Source/Physics/ICollidable.h"
 
+//events
+#include "Event/Event.h"
+#include "Event/Observer.h"
+#include "Event/EventManager.h"
+
 //core
 #include "Source/Core/File.h"
 #include "Source/Core/Logger.h"

@@ -1,6 +1,9 @@
 #pragma once
 #include <variant>
 
+#include "Source/Math/Vector2.h"
+#include "Source/Math/Vector3.h"
+
 namespace blood {
 	struct Event {
 		using id_t = std::string;
