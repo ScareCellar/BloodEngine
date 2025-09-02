@@ -5,6 +5,7 @@
 #include "Source/Renderer/Renderer.h"
 #include "Source/Renderer/ParticleSystem.h"
 #include "Source/Core/Singleton.h"
+#include "Source/Physics/Physics.h"
 #include <memory>
 
 namespace blood {
@@ -25,7 +26,8 @@ namespace blood {
 		AudioSystem& GetAudio() { return *m_audio; }
 		InputSystem& GetInput() { return *m_input; }
 		ParticleSystem& GetPS() { return *m_particleSystem; }
-		Time GetTime() { return time; }
+		Physics& GetPhysics() { return *m_physics; }
+		Time GetTime() { return m_time; }
 
 
 	private:
@@ -33,11 +35,12 @@ namespace blood {
 
 		Engine() = default;
 
-		Time time;
+		Time m_time;
 		std::unique_ptr<Renderer> m_renderer;
 		std::unique_ptr<InputSystem> m_input;
 		std::unique_ptr<AudioSystem> m_audio;
 		std::unique_ptr<ParticleSystem> m_particleSystem;
+		std::unique_ptr<Physics> m_physics;
 	};
 
 	inline Engine& GetEngine() {

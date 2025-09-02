@@ -18,6 +18,10 @@ namespace blood {
 		m_audio->Initialize();
 
 		m_particleSystem = std::make_unique<blood::ParticleSystem>();
+		m_particleSystem->Initialize();
+
+		m_physics = std::make_unique<Physics>();
+		m_physics->Initialize();
 		return true;
 	}
 	void Engine::Shutdown() {
@@ -26,13 +30,15 @@ namespace blood {
 		m_audio->Shutdown();
 		m_input->ShutDown();
 		m_renderer->Shutdown();
+		m_physics->Shutdown();
 		EventManager::Instance().RemoveAll();
 		Factory::Instance().RemoveAll();
 	}
 	void Engine::Update() {
-		time.Tick();
+		m_time.Tick();
 		m_input->Update();
 		m_audio->Update();
-		m_particleSystem->Update(time.GetDeltaTime());
+		m_particleSystem->Update(m_time.GetDeltaTime());
+		m_physics->Update(m_time.GetDeltaTime());
 	}
 }

@@ -133,7 +133,7 @@ void SpaceGame::OnNotify(const Event& event){
         OnPlayerDestroyed();
     }
     else if (blood::equalsIgnoreCase(event.id, "add_points")) {
-        AddPoints(std::get<int>(event.data))
+        AddPoints(std::get<int>(event.data));
     }
     Logger::Info("Event: {}", event.id);
 }
