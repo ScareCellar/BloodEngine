@@ -10,14 +10,9 @@ namespace blood{
 			if (actor->active) actor->Update(dt);
 		}
 		//remove destroyed actors
-		for (auto iter = m_actors.begin(); iter != m_actors.end();) {
-			if ((*iter)->destroyed) {
-				iter = m_actors.erase(iter);
-			}
-			else {
-				iter++;
-			}
-		}
+	/*	std::erase_if(m_actors, [](auto actor) {
+			return (actor->destroyed);
+		});*/
 
 		//check for collisions
 		for (auto& actorA : m_actors) {

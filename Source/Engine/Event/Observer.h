@@ -2,8 +2,9 @@
 
 namespace blood {
 	class IObserver {
+	public:
 		virtual ~IObserver() = default;
 	
-		virtual void OnNotify() = 0;
+		virtual void OnNotify(const Event& event) = 0;
 	};
 }

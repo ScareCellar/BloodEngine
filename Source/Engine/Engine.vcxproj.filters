@@ -113,6 +113,9 @@
     <ClCompile Include="Source\Framework\Object.cpp">
       <Filter>Source\Framework</Filter>
     </ClCompile>
+    <ClCompile Include="Event\EventManager.cpp">
+      <Filter>Source\Event</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sound\Header.h">
@@ -239,6 +242,12 @@
       <Filter>Source\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Event\Observer.h">
+      <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event.h">
+      <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\EventManager.h">
       <Filter>Source\Event</Filter>
     </ClInclude>
   </ItemGroup>
