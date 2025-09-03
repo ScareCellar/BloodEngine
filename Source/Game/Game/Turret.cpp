@@ -10,7 +10,7 @@ FACTORY_REGISTER(Turret)
 
 void Turret::Update(float dt) {
 	//line up with player position
-	Actor* player = owner->scene->GetActorByName<Actor>("player");
+	Actor* player = owner->scene->GetActorByName<Actor>("tankplayer");
 	if (player) {
 		owner->transform.position = player->transform.position;
 

@@ -6,7 +6,7 @@ using namespace blood;
 class Enemy : public Component, public ICollidable {
 public:
 	Enemy() = default;
-	float speed{ 100 };
+	float speed{ 0 };
 	float rotationRate{ 0 };
 	float shootTimer = 1;
 	

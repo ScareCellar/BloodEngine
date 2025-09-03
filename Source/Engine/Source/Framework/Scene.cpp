@@ -27,7 +27,8 @@ namespace blood{
 				float distance = (actorA->transform.position - actorB->transform.position).Length();
 
 				if (colliderA->CheckCollision(*colliderB)) {
-					Logger::Debug("{} colliding with {}", actorA->name, actorB->name);
+					if (actorA->name == "tankplayer" || actorB->name == "tankplayer")
+						Logger::Debug("{} colliding with {}", actorA->name, actorB->name);
 					actorA->OnCollision(actorB.get());
 					actorB->OnCollision(actorA.get());
 				}

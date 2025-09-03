@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "../../EngineMinimal.h"
+#include "Source/Math/Rect.h"
 
 namespace blood
 {
@@ -35,14 +36,14 @@ namespace blood
             SDL_Quit();
             return false;
         }
-        
+
         SDL_SetRenderLogicalPresentation(m_renderer, width, height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
         return true;
     }
 
     void Renderer::SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
-		SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
+        SDL_SetRenderDrawColor(m_renderer, r, g, b, a);
     }
 
     void Renderer::SetColorFloat(float r, float g, float b, float a) {
@@ -97,6 +98,22 @@ namespace blood
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
+    }
+
+    void Renderer::DrawTexture(Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale) {
+        SDL_FRect srcRect;
+        srcRect.x = sourceRect.x;
+        srcRect.y = sourceRect.y;
+        srcRect.w = sourceRect.w;
+        srcRect.h = sourceRect.h;
+
+        SDL_FRect destRect;
+        destRect.w = srcRect.w * scale;
+        destRect.h = srcRect.h * scale;
+        destRect.x = x - destRect.w * 0.5f;
+        destRect.y = y - destRect.h * 0.5f;
+        
+        SDL_RenderTextureRotated(m_renderer, texture.m_texture, &srcRect, &destRect, angle, NULL, SDL_FLIP_NONE);
     }
 
 }

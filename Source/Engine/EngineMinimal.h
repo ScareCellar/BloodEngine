@@ -45,6 +45,7 @@
 
 //math
 #include "Source/Math/MathUtils.h"
+#include "Source/Math/Rect.h"
 #include "Source/Math/Transform.h"
 #include "Source/Math/Vector2.h"
 #include "Source/Math/Vector3.h"

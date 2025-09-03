@@ -14,9 +14,10 @@ void Enemy::Start() {
 }
 
 void Enemy::Update(float dt) {
+    dt = math::min(dt, 0.2f);
     //bool playerSeen = false;
 
-    Actor* player = owner->scene->GetActorByName<Actor>("player");
+    Actor* player = owner->scene->GetActorByName<Actor>("tankplayer");
     if (player) {
         vec2 direction{ 0,0 };
         direction = player->transform.position - owner->transform.position;

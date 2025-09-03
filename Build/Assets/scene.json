@@ -1,7 +1,7 @@
 {
   "prototypes": [
     {
-      "name": "player",
+      "name": "tankplayer",
       "active": true,
       "tag": "player",
       "transform": {
@@ -58,10 +58,6 @@
         {
           "type": "SpriteRenderer",
           "textureName": "turret.png"
-        },
-        {
-          "type": "CircleCollider2D",
-          "radius": 50
         }
       ]
     },
@@ -166,6 +162,34 @@
         {
           "type": "CircleCollider2D",
           "radius": 25
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "name": "coin",
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          740,
+          500
+        ],
+        "rotation": 0,
+        "scale": 3
+      },
+      "components": [
+        {
+          "type": "SpriteRenderer"
+        },
+        {
+          "type": "Animator",
+          "animations": [
+            {
+              "name": "idle",
+              "texture_animation": "Animations/coin_spin.json"
+            }
+          ]
         }
       ]
     }

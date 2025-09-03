@@ -1,5 +1,6 @@
 #pragma once
 #include "Texture.h"
+#include "Source/Math/Rect.h"
 
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
@@ -37,6 +38,7 @@ namespace blood
 
 		void DrawTexture(Texture& texture, float x, float y);
 		void DrawTexture(Texture& texture, float x, float y, float angle, float scale = 1);
+		void DrawTexture(class Texture& texture, const rect& sourceRect, float x, float y, float angle, float scale = 1);
 
 		friend class Texture;
 

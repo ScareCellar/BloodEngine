@@ -9,7 +9,10 @@ namespace blood {
 
 
 	void SpriteRenderer::Start() {
-		texture = Resources().Get<Texture>(textureName, GetEngine().GetRenderer());
+		// get texture resource if texture doesn't exist and there's a texture name
+		if (!texture && !textureName.empty()) {
+			texture = Resources().Get<Texture>(textureName, GetEngine().GetRenderer());
+		}
 	}
 
 	void SpriteRenderer::Update(float dt) {
@@ -18,11 +21,21 @@ namespace blood {
 
 	void SpriteRenderer::Draw(Renderer& renderer) {
 		if (texture) {
-			renderer.DrawTexture(*texture,
-				owner->transform.position.x,
-				owner->transform.position.y,
-				owner->transform.rotation,
-				owner->transform.scale);
+			if (textureRect.w > 0 && textureRect.h > 0) {
+				renderer.DrawTexture(*texture,
+					textureRect,
+					owner->transform.position.x,
+					owner->transform.position.y,
+					owner->transform.rotation,
+					owner->transform.scale);
+			}
+			else {
+				renderer.DrawTexture(*texture,
+					owner->transform.position.x,
+					owner->transform.position.y,
+					owner->transform.rotation,
+					owner->transform.scale);
+			}
 		}
 	}
 	void SpriteRenderer::Read(const json::value_t& value) {

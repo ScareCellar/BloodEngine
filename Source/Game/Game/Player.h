@@ -4,7 +4,7 @@
 
 using namespace blood;
 
-class Player : public Component, ICollidable {
+class Player : public Component, public blood::ICollidable {
 public:
 	Player() = default;
 	
@@ -17,7 +17,7 @@ public:
 	
 	CLASS_PROTOTYPE(Player)
 	
-	void OnCollision(Actor* other);
+	void OnCollision(Actor* other) override;
 
 	void Read(const blood::json::value_t& value) override;
 

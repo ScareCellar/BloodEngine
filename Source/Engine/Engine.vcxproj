@@ -188,6 +188,7 @@
     </ClCompile>
     <ClCompile Include="Event\EventManager.cpp" />
     <ClCompile Include="Event\Observer.cpp" />
+    <ClCompile Include="Source\Components\Animator.cpp" />
     <ClCompile Include="Source\Components\AudioSource.cpp" />
     <ClCompile Include="Source\Components\CircleCollider2D.cpp" />
     <ClCompile Include="Source\Components\MeshRenderer.cpp" />
@@ -211,6 +212,7 @@
     <ClCompile Include="Source\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Renderer\Text.cpp" />
     <ClCompile Include="Source\Renderer\Texture.cpp" />
+    <ClCompile Include="Source\Renderer\TextureAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
@@ -220,6 +222,7 @@
     <ClInclude Include="Event\EventManager.h" />
     <ClInclude Include="Event\Observer.h" />
     <ClInclude Include="Sound\Header.h" />
+    <ClInclude Include="Source\Components\Animator.h" />
     <ClInclude Include="Source\Components\AudioSource.h" />
     <ClInclude Include="Source\Components\CircleCollider2D.h" />
     <ClInclude Include="Source\Components\Collider.h" />
@@ -245,6 +248,7 @@
     <ClInclude Include="Source\Framework\Scene.h" />
     <ClInclude Include="Source\Input\InputSystem.h" />
     <ClInclude Include="Source\Math\MathUtils.h" />
+    <ClInclude Include="Source\Math\Rect.h" />
     <ClInclude Include="Source\Math\Transform.h" />
     <ClInclude Include="Source\Math\Vector2.h" />
     <ClInclude Include="Source\Math\Vector3.h" />
@@ -256,6 +260,7 @@
     <ClInclude Include="Source\Renderer\Renderer.h" />
     <ClInclude Include="Source\Renderer\Text.h" />
     <ClInclude Include="Source\Renderer\Texture.h" />
+    <ClInclude Include="Source\Renderer\TextureAnimation.h" />
     <ClInclude Include="Source\Resources\Resource.h" />
     <ClInclude Include="Source\Resources\ResourceManager.h" />
   </ItemGroup>

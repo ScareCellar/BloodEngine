@@ -47,7 +47,7 @@ void SpaceGame::Update(float dt) {
     {
         m_scene->RemoveAllActors();
 
-        auto player = blood::Factory::Instance().Create<Actor>("player");
+        auto player = blood::Factory::Instance().Create<Actor>("tankplayer");
         if (player) m_scene->AddActor(std::move(player));
 
         auto turret = blood::Factory::Instance().Create<Actor>("turret");
