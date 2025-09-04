@@ -53,13 +53,13 @@ namespace blood {
 				if (tileId == 0) continue;
 
 				rect source;
-				vec2 position;
+				/*vec2 position;
 
 				renderer.DrawTexture(*layer.texture, source, 
 					position.x, 
 					position.y, 
 					owner->transform.rotation, 
-					owner->transform.scale);
+					owner->transform.scale);*/
 			}
 		}
 	}
