@@ -128,5 +128,10 @@ namespace blood::json
         return true;
     }
 
+    bool Read(const value_t& value, const std::string& name, std::vector<int>& data, bool required)
+    {
+        return false;
+    }
+
 
 }

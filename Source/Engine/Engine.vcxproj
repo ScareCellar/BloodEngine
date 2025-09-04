@@ -194,6 +194,7 @@
     <ClCompile Include="Source\Components\MeshRenderer.cpp" />
     <ClCompile Include="Source\Components\RigidBody.cpp" />
     <ClCompile Include="Source\Components\SpriteRenderer.cpp" />
+    <ClCompile Include="Source\Components\TilemapRenderer.cpp" />
     <ClCompile Include="Source\Core\Audio\AudioClip.cpp" />
     <ClCompile Include="Source\Core\Audio\AudioSystem.cpp" />
     <ClCompile Include="Source\Core\File.cpp" />
@@ -206,6 +207,7 @@
     <ClCompile Include="Source\Input\InputSystem.cpp" />
     <ClCompile Include="Source\Math\Transform.cpp" />
     <ClCompile Include="Source\Physics\Physics.cpp" />
+    <ClCompile Include="Source\Physics\PhysicsBody.cpp" />
     <ClCompile Include="Source\Renderer\Font.cpp" />
     <ClCompile Include="Source\Renderer\Mesh.cpp" />
     <ClCompile Include="Source\Renderer\ParticleSystem.cpp" />
@@ -213,6 +215,7 @@
     <ClCompile Include="Source\Renderer\Text.cpp" />
     <ClCompile Include="Source\Renderer\Texture.cpp" />
     <ClCompile Include="Source\Renderer\TextureAnimation.cpp" />
+    <ClCompile Include="Source\Resources\Tilemap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
@@ -230,6 +233,7 @@
     <ClInclude Include="Source\Components\RendererComponent.h" />
     <ClInclude Include="Source\Components\RigidBody.h" />
     <ClInclude Include="Source\Components\SpriteRenderer.h" />
+    <ClInclude Include="Source\Components\TilemapRenderer.h" />
     <ClInclude Include="Source\Core\Audio\AudioClip.h" />
     <ClInclude Include="Source\Core\Audio\AudioSystem.h" />
     <ClInclude Include="Source\Core\Factory.h" />
@@ -254,6 +258,7 @@
     <ClInclude Include="Source\Math\Vector3.h" />
     <ClInclude Include="Source\Physics\ICollidable.h" />
     <ClInclude Include="Source\Physics\Physics.h" />
+    <ClInclude Include="Source\Physics\PhysicsBody.h" />
     <ClInclude Include="Source\Renderer\Font.h" />
     <ClInclude Include="Source\Renderer\Mesh.h" />
     <ClInclude Include="Source\Renderer\ParticleSystem.h" />
@@ -263,6 +268,7 @@
     <ClInclude Include="Source\Renderer\TextureAnimation.h" />
     <ClInclude Include="Source\Resources\Resource.h" />
     <ClInclude Include="Source\Resources\ResourceManager.h" />
+    <ClInclude Include="Source\Resources\Tilemap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
