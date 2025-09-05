@@ -20,17 +20,16 @@ bool SpaceGame::Initialize()
 
     m_scene->Load("scene.json");
 
-    m_titleText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("title_font", "wingding.ttf", 128.0f));
-    m_scoreText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("ui_font", "wingding.ttf", 64.0f));
-    m_livesText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("ui_font", "wingding.ttf", 64.0f));
+    m_titleText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("title_font", "military_kid.ttf", 128.0f));
+    m_scoreText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("ui_font", "military_kid.ttf", 64.0f));
+    m_livesText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("ui_font", "military_kid.ttf", 64.0f));
 
     return true;
 }
 
 void SpaceGame::Update(float dt) {
     
-    switch (m_gamestate)
-    {
+    switch (m_gamestate) {
     case SpaceGame::GameState::Initialize:
         m_gamestate = GameState::Title;
         break;
@@ -116,7 +115,6 @@ void SpaceGame::Shutdown() {
 }
 
 void SpaceGame::SpawnEnemy() {
-    //x
     Transform trans(vec2((float)random::getReal<float>(GetEngine().GetRenderer().GetWidth()), 
         //y
         (float)random::getReal<float>(GetEngine().GetRenderer().GetHeight())), 
@@ -125,7 +123,10 @@ void SpaceGame::SpawnEnemy() {
 
     auto enemy = blood::Instantiate("enemy", trans);
     if (enemy) m_scene->AddActor(std::move(enemy));
-    //1hour:36mins into video.
+    m_spawnTime -= 0.1f;
+    if (m_spawnTime < 0.5f) {
+        m_spawnTime = 0.5f;
+    }
 }
 
 void SpaceGame::OnNotify(const Event& event){

@@ -55,19 +55,20 @@ void Enemy::Update(float dt) {
 }
 
 void Enemy::OnCollision(Actor* other){
-    if (other->tag == "player") {
-        owner->destroyed = true;
-        blood::EventManager::Instance().Notify({ "add_points", 100 });
-        //owner->scene->GetGame()->AddPoints(100);
-        blood::GetEngine().GetAudio().PlaySound("bass");
-        for (int i = 0; i < 100; i++) {
-            blood::Particle particle;
-            particle.position = owner->transform.position;
-            particle.velocity = blood::vec2{ blood::random::getReal(-200.0f, 200.0f), blood::random::getReal(-200.0f, 200.0f) };
-            particle.color = blood::vec3{ 1, 1, 1 };
-            particle.lifespan = 2;
+    if (other->tag == "player" || other->tag == "neutral") {
+        if (other->GetComponent<CircleCollider2D>()->active) {
+            owner->destroyed = true;
+            blood::EventManager::Instance().Notify({ "add_points", 100 });
+            blood::GetEngine().GetAudio().PlaySound("bass");
+            for (int i = 0; i < 100; i++) {
+                blood::Particle particle;
+                particle.position = owner->transform.position;
+                particle.velocity = blood::vec2{ blood::random::getReal(-200.0f, 200.0f), blood::random::getReal(-200.0f, 200.0f) };
+                particle.color = blood::vec3{ 1, 1, 1 };
+                particle.lifespan = 2;
 
-            blood::GetEngine().GetPS().AddParticle(particle);
+                blood::GetEngine().GetPS().AddParticle(particle);
+            }
         }
     }
 }

@@ -92,7 +92,7 @@ namespace blood {
 			T* derived = dynamic_cast<T*>(object.get());
 			if (derived) {
 				object.release();
-				//Logger::Debug("instance of object {} created", name);
+				Logger::Debug("instance of object {} created", name);
 				return std::unique_ptr<T>(derived);
 			}
 			Logger::Error("Could not cast factory object: {}", name);

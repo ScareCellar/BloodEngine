@@ -40,6 +40,9 @@
     <ClCompile Include="GamePCH.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Mortar.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Player.h">
@@ -65,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="GamePCH.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Mortar.h">
+      <Filter>Source\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

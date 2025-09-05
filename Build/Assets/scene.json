@@ -52,8 +52,10 @@
       "components": [
         {
           "type": "Turret",
+          "bulletShootTimer": 0.2,
+          "maxBullets": 20,
           "rocketShootTimer": 3,
-          "bulletShootTimer": 0.2
+          "mortarShootTimer": 5
         },
         {
           "type": "SpriteRenderer",
@@ -162,6 +164,37 @@
         {
           "type": "CircleCollider2D",
           "radius": 25
+        }
+      ]
+    },
+    {
+      "name": "mortar_weapon",
+      "active": true,
+      "lifespan": 0,
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          300,
+          400
+        ],
+        "rotation": 0,
+        "scale": 2
+      },
+      "components": [
+        {
+          "type": "Mortar",
+          "dropTime": 1,
+          "explosionTime": 0.5
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "explode.png",
+          "active": false
+        },
+        {
+          "type": "CircleCollider2D",
+          "radius": 300,
+          "active": false
         }
       ]
     }

@@ -24,8 +24,11 @@ void Turret::Update(float dt) {
 
 	owner->transform.rotation = math::radToDeg(direction.Angle());
 
-    rocketShootTimer -= dt;
     bulletShootTimer -= dt;
+	totalBullets += 2 * dt;
+	if (totalBullets > maxBullets) totalBullets = maxBullets;
+    rocketShootTimer -= dt;
+    mortarShootTimer -= dt;
 
 	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Right) && rocketShootTimer <= 0) {
 		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("rocketLaunch.mp3", blood::GetEngine().GetAudio()));
@@ -39,9 +42,11 @@ void Turret::Update(float dt) {
 		owner->scene->AddActor(std::move(rocket));
 	}
 
-	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Left) && bulletShootTimer <= 0) {
+
+	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Left) && bulletShootTimer <= 0 && totalBullets >= 1) {
 		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
 		bulletShootTimer = 0.2f;
+		totalBullets--;
 
 		auto bullet = blood::Factory::Instance().Create<Actor>("bullet");
 		bullet->lifespan = 3.5f;
@@ -51,65 +56,28 @@ void Turret::Update(float dt) {
 		owner->scene->AddActor(std::move(bullet));
 	}
 
+	//Fire Mortar
+	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Middle) && mortarShootTimer <= 0) {
+		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
+		mortarShootTimer = 5.0f;
 
- //       std::shared_ptr<blood::Mesh> rocketModel = std::make_shared<blood::Mesh>(GameData::rocketPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
- //       blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 2 };
- //       auto rocket = std::make_unique<Rocket>(transform);// , blood::Resources().Get<blood::Texture>("rocket.png", blood::GetEngine().GetRenderer()));
- //       rocket->speed = 1000.0f;
- //       rocket->lifespan = 2.0f;
- //       rocket->name = "rocket";
- //       rocket->tag = "player";
- //       rocketShootTimer = 3.0f;
-
- //       auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
- //       spriteRenderer->textureName = "rocket.png";
-
- //       auto rigidBody = std::make_unique<blood::RigidBody>();
-
- //       auto collider = std::make_unique<blood::CircleCollider2D>();
- //       collider->radius = 50.0f;
-
- //       rocket->AddComponent(std::move(spriteRenderer));
- //       rocket->AddComponent(std::move(rigidBody));
- //       rocket->AddComponent(std::move(collider));
- //       scene->AddActor(std::move(rocket));
- //   }
-
- //   if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Left) && bulletShootTimer <= 0) {
- //       //blood::GetEngine().GetAudio().PlaySound("bullet");
- //       blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
-
-
- //       std::shared_ptr<blood::Mesh> bulletModel = std::make_shared<blood::Mesh>(GameData::bulletPoints, blood::vec3{ 1.0f, 1.0f, 0.0f });
- //       blood::Transform transform{ this->m_transform.position, this->m_transform.rotation, 2 };
- //       auto bullet = std::make_unique<Bullet>(transform);// , blood::Resources().Get<blood::Texture>("bullet.png", blood::GetEngine().GetRenderer()));
- //       bullet->speed = 1000.0f;
- //       bullet->lifespan = 1.5f;
- //       bullet->name = "bullet";
- //       bullet->tag = "player";
- //       bulletShootTimer = 0.2f;
-
- //       auto spriteRenderer = std::make_unique<blood::SpriteRenderer>();
- //       spriteRenderer->textureName = "bullet.png";
-
- //       auto rigidBody = std::make_unique<blood::RigidBody>();
- //       rigidBody->damping = 0.0f;
-
- //       auto collider = std::make_unique<blood::CircleCollider2D>();
- //       collider->radius = 50.0f;
-
- //       
- //       bullet->AddComponent(std::move(spriteRenderer));
- //       bullet->AddComponent(std::move(rigidBody));
- //       bullet->AddComponent(std::move(collider));
-
- //       scene->AddActor(std::move(bullet));
- //   }
+		auto mortar = blood::Factory::Instance().Create<Actor>("mortar_weapon");
+		mortar->lifespan = 0.0f;
+		//mortar->transform = owner->transform;
+		mortar->transform.position = GetEngine().GetInput().GetMousePosition();
+		//mortar->GetComponent<RigidBody>()->velocity = mortar->GetComponent<RigidBody>()->velocity.Rotate(math::degToRad(mortar->transform.rotation));
+		mortar->tag = "neutral";
+		mortar->destroyed = false;
+		owner->scene->AddActor(std::move(mortar));
+	}
 }
 
 void Turret::Read(const blood::json::value_t& value) {
 	Object::Read(value);
 
-	JSON_READ(value, rocketShootTimer);
 	JSON_READ(value, bulletShootTimer);
+	JSON_READ(value, maxBullets);
+	JSON_READ(value, rocketShootTimer);
+	JSON_READ(value, mortarShootTimer);
+	totalBullets = maxBullets;
 }

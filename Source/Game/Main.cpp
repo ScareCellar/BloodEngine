@@ -8,6 +8,9 @@
 using namespace blood;
 
 int main(int argc, char* argv[]) { 
+    
+
+
     blood::file::SetCurrentDirectory("Assets");
 
     std::cout << argc << std::endl;
@@ -40,6 +43,8 @@ int main(int argc, char* argv[]) {
     vec3 color(0, 0, 0);
 
     float rotate = 0;
+
+
 
     //main loop
     while (!quit) {

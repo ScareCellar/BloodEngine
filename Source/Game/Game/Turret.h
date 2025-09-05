@@ -15,14 +15,10 @@ public:
 	void Read(const blood::json::value_t& value) override;
 
 private:
-	float rocketShootTimer{ 3.0f };
-	float bulletShootTimer{ 0.2f };
-	
-
-	
-
-
-private:
-
-
+	float rocketShootTimer;
+	float totalBullets;
+	float maxBullets;
+	float bulletShootTimer;
+	float mortarShootTimer;
+	float mortarDropTimer{ 3 };
 };

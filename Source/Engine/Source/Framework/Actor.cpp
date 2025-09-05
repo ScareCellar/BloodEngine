@@ -14,7 +14,9 @@ namespace blood {
     {
         for (auto& component : other.m_components) {
             auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
-            AddComponent(std::move(clone));
+            if (clone) {
+                AddComponent(std::move(clone));
+            }
         }
     }
 
@@ -51,7 +53,7 @@ namespace blood {
     }
 
     void Actor::OnCollision(Actor* other){
-        Logger::Debug("Actor on collision called with other: {}", other->name);
+        //Logger::Debug("Actor on collision called with other: {}", other->name);
         auto collidables = GetComponents<ICollidable>();
         for (auto& collidable : collidables) {
             collidable->OnCollision(other);
@@ -81,8 +83,9 @@ namespace blood {
         if (JSON_HAS(value, tag)) {
             JSON_READ(value, tag);
         }
-
-        JSON_READ(value, lifespan);
+        if (JSON_HAS(value, lifespan)) {
+            JSON_READ(value, lifespan);
+        }
         
         if (JSON_HAS(value, transform)) {
             transform.Read(JSON_GET(value, transform));
