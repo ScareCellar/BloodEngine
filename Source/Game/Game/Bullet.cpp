@@ -6,7 +6,7 @@
 
 FACTORY_REGISTER(Bullet)
 
-void Bullet::OnCollision(blood::Actor* other){
+void Bullet::OnCollision(sc::Actor* other){
 	if (owner->tag != other->tag && other->name != "turret") {
 		owner->destroyed = true;
 		if (other->GetComponent<Enemy>()) {

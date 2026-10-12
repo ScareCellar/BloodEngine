@@ -1,6 +1,6 @@
 #pragma once
 #include <chrono>
-namespace blood{
+namespace sc{
 	class Time {
 	private:
 		using clock = std::chrono::high_resolution_clock;

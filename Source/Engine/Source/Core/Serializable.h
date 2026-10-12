@@ -1,7 +1,7 @@
 #pragma once
 #include "Source/Core/Json.h"
 
-namespace blood {
+namespace sc {
 	class ISerializable {
 	public:
 		virtual ~ISerializable() = default;

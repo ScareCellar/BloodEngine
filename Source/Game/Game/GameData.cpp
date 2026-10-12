@@ -1,7 +1,7 @@
 #include "GameData.h"
 
 namespace GameData {
-    std::vector<blood::vec2> drillPoints
+    std::vector<sc::vec2> drillPoints
     {
         { -4, -3 },
         { 4, -3 },
@@ -22,7 +22,7 @@ namespace GameData {
         { -3, 3 },
     };
 
-    std::vector<blood::vec2> turretPoints
+    std::vector<sc::vec2> turretPoints
     {
         { -0.83f, -0.33f },
         { -0.67f, -0.67f },
@@ -44,7 +44,7 @@ namespace GameData {
         { -1.0f, 0.0f },
         { -0.83f, 0.33f },
     };
-    extern std::vector<blood::vec2> rocketPoints
+    extern std::vector<sc::vec2> rocketPoints
     {
         { -0.333f, 0.0f },
         { 0.0f, -0.333f },
@@ -54,12 +54,12 @@ namespace GameData {
         { 0.0f, 0.333f },
         { -0.333f, 0.0f },
     };
-    extern std::vector<blood::vec2> bulletPoints
+    extern std::vector<sc::vec2> bulletPoints
     {
         {0,0},
         {1,0}
     };
-    extern std::vector<blood::vec2> explodePoints
+    extern std::vector<sc::vec2> explodePoints
     {
         { 0, -9 },
         { 6, -6 },

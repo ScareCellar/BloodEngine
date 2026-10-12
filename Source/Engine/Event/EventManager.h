@@ -4,7 +4,7 @@
 #include "Observer.h"
 #include <map>
 
-namespace blood {
+namespace sc {
 	class EventManager : public Singleton<EventManager> {
 	public:
 		void AddObserver(const Event::id_t& id, IObserver& observer);

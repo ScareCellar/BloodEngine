@@ -17,7 +17,7 @@ void Turret::Update(float dt) {
 		owner->destroyed = player->destroyed;
 	}
 	//make it point towards the user's mouse
-	blood::vec2 mousePosition = blood::GetEngine().GetInput().GetMousePosition();
+	sc::vec2 mousePosition = sc::GetEngine().GetInput().GetMousePosition();
 
 	vec2 direction{ 0,0 };
 	direction = mousePosition - owner->transform.position;
@@ -30,11 +30,11 @@ void Turret::Update(float dt) {
     rocketShootTimer -= dt;
     mortarShootTimer -= dt;
 
-	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Right) && rocketShootTimer <= 0) {
-		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("rocketLaunch.mp3", blood::GetEngine().GetAudio()));
+	if (sc::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Right) && rocketShootTimer <= 0) {
+		sc::GetEngine().GetAudio().PlaySound(*sc::Resources().Get<AudioClip>("rocketLaunch.mp3", sc::GetEngine().GetAudio()));
 		rocketShootTimer = 3.0f;
 
-		auto rocket = blood::Factory::Instance().Create<Actor>("rocket");
+		auto rocket = sc::Factory::Instance().Create<Actor>("rocket");
 		rocket->lifespan = 3.5f;
 		rocket->transform = owner->transform;
 		rocket->GetComponent<RigidBody>()->velocity = rocket->GetComponent<RigidBody>()->velocity.Rotate(math::degToRad(rocket->transform.rotation));
@@ -43,12 +43,12 @@ void Turret::Update(float dt) {
 	}
 
 
-	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Left) && bulletShootTimer <= 0 && totalBullets >= 1) {
-		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
+	if (sc::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Left) && bulletShootTimer <= 0 && totalBullets >= 1) {
+		sc::GetEngine().GetAudio().PlaySound(*sc::Resources().Get<AudioClip>("bullet.mp3", sc::GetEngine().GetAudio()));
 		bulletShootTimer = 0.2f;
 		totalBullets--;
 
-		auto bullet = blood::Factory::Instance().Create<Actor>("bullet");
+		auto bullet = sc::Factory::Instance().Create<Actor>("bullet");
 		bullet->lifespan = 3.5f;
 		bullet->transform = owner->transform;
 		bullet->GetComponent<RigidBody>()->velocity = bullet->GetComponent<RigidBody>()->velocity.Rotate(math::degToRad(bullet->transform.rotation));
@@ -57,11 +57,11 @@ void Turret::Update(float dt) {
 	}
 
 	//Fire Mortar
-	if (blood::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Middle) && mortarShootTimer <= 0) {
-		blood::GetEngine().GetAudio().PlaySound(*blood::Resources().Get<AudioClip>("bullet.mp3", blood::GetEngine().GetAudio()));
+	if (sc::GetEngine().GetInput().GetMouseButtonDown(InputSystem::MouseButton::Middle) && mortarShootTimer <= 0) {
+		sc::GetEngine().GetAudio().PlaySound(*sc::Resources().Get<AudioClip>("bullet.mp3", sc::GetEngine().GetAudio()));
 		mortarShootTimer = 5.0f;
 
-		auto mortar = blood::Factory::Instance().Create<Actor>("mortar_weapon");
+		auto mortar = sc::Factory::Instance().Create<Actor>("mortar_weapon");
 		mortar->lifespan = 0.0f;
 		//mortar->transform = owner->transform;
 		mortar->transform.position = GetEngine().GetInput().GetMousePosition();
@@ -72,7 +72,7 @@ void Turret::Update(float dt) {
 	}
 }
 
-void Turret::Read(const blood::json::value_t& value) {
+void Turret::Read(const sc::json::value_t& value) {
 	Object::Read(value);
 
 	JSON_READ(value, bulletShootTimer);

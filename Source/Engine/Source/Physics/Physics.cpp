@@ -1,6 +1,6 @@
 #include "Physics.h"
 
-namespace blood {
+namespace sc {
     float Physics::s_pixelsPerMeter = 48.0f;
 
     bool Physics::Initialize() {

@@ -4,20 +4,20 @@
 #include "Source/Core/Audio/AudioSystem.h"
 #include "Source/Renderer/ParticleSystem.h"
 
-namespace blood {
+namespace sc {
 
 	bool Engine::Initialize() {
-		m_renderer = std::make_unique<blood::Renderer>();
+		m_renderer = std::make_unique<sc::Renderer>();
 		m_renderer->Initialize();
 		m_renderer->CreateWindow("Game", 1980, 1224, false);
 
-		m_input = std::make_unique<blood::InputSystem>();
+		m_input = std::make_unique<sc::InputSystem>();
 		m_input->Initialize();
 
-		m_audio = std::make_unique<blood::AudioSystem>();
+		m_audio = std::make_unique<sc::AudioSystem>();
 		m_audio->Initialize();
 
-		m_particleSystem = std::make_unique<blood::ParticleSystem>();
+		m_particleSystem = std::make_unique<sc::ParticleSystem>();
 		m_particleSystem->Initialize();
 
 		m_physics = std::make_unique<Physics>();

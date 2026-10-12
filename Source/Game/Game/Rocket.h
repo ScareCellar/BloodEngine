@@ -5,7 +5,7 @@
 #include "Source/Framework/Actor.h"
 
 
-class Rocket : public blood::Component, blood::ICollidable {
+class Rocket : public sc::Component, sc::ICollidable {
 public:
 	float speed{ -1000.0f };
 
@@ -15,7 +15,7 @@ public:
 	void Explode();
 	
 	// Inherited via Actor
-	void OnCollision(blood::Actor* other) override;
+	void OnCollision(sc::Actor* other) override;
 
 private:
 	bool exploded = false;

@@ -2,7 +2,7 @@
 #include "../Core/Audio/AudioClip.h"
 #include "../../Engine.h"
 
-namespace blood {
+namespace sc {
 	FACTORY_REGISTER(AudioSource)
 
 	void AudioSource::Update(float dt) {

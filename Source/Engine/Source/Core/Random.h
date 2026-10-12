@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <random>
 
-namespace blood {
+namespace sc {
 	namespace random {
 		
         inline std::mt19937& generator() {

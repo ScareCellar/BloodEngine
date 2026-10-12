@@ -4,7 +4,7 @@
 #include "../Resources/ResourceManager.h"
 #include "Engine.h"
 
-namespace blood {
+namespace sc {
 	FACTORY_REGISTER(SpriteRenderer)
 
 

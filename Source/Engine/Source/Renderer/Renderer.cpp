@@ -2,7 +2,7 @@
 #include "../../EngineMinimal.h"
 #include "Source/Math/Rect.h"
 
-namespace blood
+namespace sc
 {
     bool Renderer::Initialize() {
         if (!SDL_Init(SDL_INIT_VIDEO)) {

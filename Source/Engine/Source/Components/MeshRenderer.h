@@ -2,7 +2,7 @@
 #include "RendererComponent.h"
 #include <string>
 
-namespace blood {
+namespace sc {
 	class MeshRenderer : public RendererComponent {
 	public:
 		std::string meshName;

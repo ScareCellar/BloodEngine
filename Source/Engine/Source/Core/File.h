@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-namespace blood {
+namespace sc {
     namespace file {
         std::string GetCurrentDirectory();
         bool SetCurrentDirectory(const std::string& path);

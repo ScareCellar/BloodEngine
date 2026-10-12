@@ -3,7 +3,7 @@
 #include "Source/Renderer/Renderer.h"
 #include "Source/Renderer/TextureAnimation.h"
 #include "Engine.h"
-namespace blood {
+namespace sc {
 	FACTORY_REGISTER(Animator)
 		void Animator::Start() {
 		// cache off sprite renderer component, using sprite renderer to draw

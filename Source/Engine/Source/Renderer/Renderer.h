@@ -7,7 +7,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <iostream>
 
-namespace blood
+namespace sc
 {
 	class Renderer {
 	public:

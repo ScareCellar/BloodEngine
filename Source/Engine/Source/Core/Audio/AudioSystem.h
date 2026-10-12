@@ -6,7 +6,7 @@
 #include <map>
 #include "../StringHelper.h"
 
-namespace blood {
+namespace sc {
 	class AudioSystem {
 	public:
 		AudioSystem() = default;

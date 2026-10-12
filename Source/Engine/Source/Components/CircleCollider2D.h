@@ -1,6 +1,6 @@
 #pragma once
 #include "Collider.h"
-namespace blood {
+namespace sc {
 	class CircleCollider2D :public ColliderComponent {
 	public:
 		float radius = 0;

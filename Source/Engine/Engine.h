@@ -8,7 +8,7 @@
 #include "Source/Physics/Physics.h"
 #include <memory>
 
-namespace blood {
+namespace sc {
 	class Renderer;
 	class InputSystem;
 	class AudioSystem;

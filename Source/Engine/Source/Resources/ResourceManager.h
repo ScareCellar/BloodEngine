@@ -7,7 +7,7 @@
 #include <iostream>
 
 
-namespace blood {
+namespace sc {
 	class ResourceManager :public Singleton<ResourceManager> {
 	public:
 		void Clear() {

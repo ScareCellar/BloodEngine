@@ -1,7 +1,7 @@
 #include "CircleCollider2D.h"
 #include "../Framework/Actor.h"
 
-namespace blood {
+namespace sc {
 	FACTORY_REGISTER(CircleCollider2D)
 
 	void CircleCollider2D::Update(float dt) {

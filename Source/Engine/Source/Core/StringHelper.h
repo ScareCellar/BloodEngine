@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace blood {
+namespace sc {
 	inline std::string toLower(const std::string& str) {
 		std::string result = str;
 		

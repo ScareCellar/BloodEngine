@@ -9,7 +9,7 @@
 #include <string>
 
 
-namespace blood {
+namespace sc {
 	class Actor : public Object, public ICollidable {
 	public:
 		std::string tag;

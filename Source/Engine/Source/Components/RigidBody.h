@@ -1,7 +1,7 @@
 #pragma once
 #include "../Framework/Component.h"
 
-namespace blood {
+namespace sc {
 	class RigidBody : public Component {
 	public:
 		vec2 velocity = { 0,0 };

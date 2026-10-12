@@ -1,6 +1,6 @@
 #include "EnginePCH.h"
 
-namespace blood {
+namespace sc {
 	void Transform::Read(const json::value_t& value) {
 		JSON_READ(value, position);
 		JSON_READ(value, rotation);

@@ -1,7 +1,7 @@
 #pragma once
 #include <cassert>
 #include "MathUtils.h"
-namespace blood {
+namespace sc {
 	template<typename T>
 	struct Vector2 {
 		union {

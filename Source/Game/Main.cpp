@@ -5,13 +5,13 @@
 #include "Game/SpaceGame.h"
 #include "GamePCH.h"
 
-using namespace blood;
+using namespace sc;
 
 int main(int argc, char* argv[]) { 
     
 
 
-    blood::file::SetCurrentDirectory("Assets");
+    sc::file::SetCurrentDirectory("Assets");
 
     std::cout << argc << std::endl;
 

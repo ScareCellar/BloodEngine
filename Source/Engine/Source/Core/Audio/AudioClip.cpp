@@ -1,6 +1,6 @@
 #include "../Audio/AudioClip.h"
 #include "AudioSystem.h"
-namespace blood {
+namespace sc {
 	AudioClip::~AudioClip() {
 		if(m_sound) m_sound->release();
 	}

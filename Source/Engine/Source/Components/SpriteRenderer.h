@@ -2,7 +2,7 @@
 #include "RendererComponent.h"
 #include <string>
 
-namespace blood {
+namespace sc {
 	class SpriteRenderer : public RendererComponent {
 	public:
 		std::string textureName;

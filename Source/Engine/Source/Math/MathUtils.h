@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace blood {
+namespace sc {
 	namespace math {
 		constexpr float pi = 3.1415926535897932384626433832795f;
 		constexpr float twoPi = pi * 2;

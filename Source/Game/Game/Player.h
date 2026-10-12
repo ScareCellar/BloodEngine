@@ -2,9 +2,9 @@
 #include "Source/Framework/Actor.h"
 
 
-using namespace blood;
+using namespace sc;
 
-class Player : public Component, public blood::ICollidable {
+class Player : public Component, public sc::ICollidable {
 public:
 	Player() = default;
 	
@@ -19,7 +19,7 @@ public:
 	
 	void OnCollision(Actor* other) override;
 
-	void Read(const blood::json::value_t& value) override;
+	void Read(const sc::json::value_t& value) override;
 
 private:
 	float shootTimer{ 0.4f };

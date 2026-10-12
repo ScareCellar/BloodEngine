@@ -4,7 +4,7 @@
 #include <string>
 
 
-namespace blood {
+namespace sc {
 	class Texture : public Resource {
 	public:
 		Texture() = default;

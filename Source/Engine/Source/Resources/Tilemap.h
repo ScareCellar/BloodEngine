@@ -1,6 +1,6 @@
 #pragma once
 
-namespace blood {
+namespace sc {
 	class Tilemap : public Resource {
 	public:
 		struct Layer {

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace blood {
+namespace sc {
 	template<typename T>
 	class Singleton {
 	public:

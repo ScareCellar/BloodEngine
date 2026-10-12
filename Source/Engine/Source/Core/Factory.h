@@ -10,12 +10,12 @@
 class Register##classname {         \
 public:                             \
     Register##classname() {         \
-        blood::Factory::Instance().Register<classname>(#classname); \
+        sc::Factory::Instance().Register<classname>(#classname); \
     }                               \
 };                                  \
 Register##classname register_instance;
 
-namespace blood {
+namespace sc {
 	class CreatorBase {
 	public:
 		virtual ~CreatorBase() = default;

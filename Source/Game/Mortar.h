@@ -2,7 +2,7 @@
 
 #include "GamePCH.h"
 
-class Mortar : public blood::Component, public blood::ICollidable {
+class Mortar : public sc::Component, public sc::ICollidable {
 public:
 	float dropTime;
 	float explosionTime;
@@ -14,10 +14,10 @@ public:
 
 	void Explode(float dt);
 
-	void Read(const blood::json::value_t& value) override;
+	void Read(const sc::json::value_t& value) override;
 
 
 	// Inherited via ICollidable
-	void OnCollision(blood::Actor* other) override;
+	void OnCollision(sc::Actor* other) override;
 
 };

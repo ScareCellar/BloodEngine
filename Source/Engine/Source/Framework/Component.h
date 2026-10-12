@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
 
-namespace blood {
+namespace sc {
 	class Component : public Object {
 	public:
 		class Actor* owner{ nullptr };

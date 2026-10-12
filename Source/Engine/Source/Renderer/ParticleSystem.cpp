@@ -1,7 +1,7 @@
 #include "ParticleSystem.h"
 #include "Renderer.h"
 
-namespace blood {
+namespace sc {
 	
 
 

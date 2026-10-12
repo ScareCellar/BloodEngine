@@ -3,7 +3,7 @@
 
 class RegisterMortar {
 public: RegisterMortar() {
-    blood::Factory::Instance().Register<Mortar>("Mortar");
+    sc::Factory::Instance().Register<Mortar>("Mortar");
 }
 }; RegisterMortar register_instance;
 
@@ -20,19 +20,19 @@ void Mortar::Update(float dt)
 void Mortar::Explode(float dt)
 {
     //owner->destroyed = false;
-    owner->GetComponent<blood::CircleCollider2D>()->active = true;
-    owner->GetComponent<blood::SpriteRenderer>()->active = true;
+    owner->GetComponent<sc::CircleCollider2D>()->active = true;
+    owner->GetComponent<sc::SpriteRenderer>()->active = true;
     owner->transform.scale = 20.0f;
-    owner->GetComponent<blood::CircleCollider2D>()->radius = 300.0f;
+    owner->GetComponent<sc::CircleCollider2D>()->radius = 300.0f;
     explosionTime -= dt;
     
     if (explosionTime <= 0) {
-        owner->GetComponent<blood::CircleCollider2D>()->radius /= 10;
+        owner->GetComponent<sc::CircleCollider2D>()->radius /= 10;
         owner->destroyed = true;
     }
 }
 
-void Mortar::Read(const blood::json::value_t& value)
+void Mortar::Read(const sc::json::value_t& value)
 {
     Object::Read(value);
 
@@ -41,7 +41,7 @@ void Mortar::Read(const blood::json::value_t& value)
 }
 
 
-void Mortar::OnCollision(blood::Actor* other)
+void Mortar::OnCollision(sc::Actor* other)
 {
    
 }

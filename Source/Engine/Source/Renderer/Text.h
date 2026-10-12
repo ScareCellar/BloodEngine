@@ -6,7 +6,7 @@
 #include <memory>
 
 struct SDL_Texture;
-namespace blood {
+namespace sc {
 	class Resource;
 	
 

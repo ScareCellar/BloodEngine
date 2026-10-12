@@ -1,7 +1,7 @@
 #pragma once
 #include "Source/Framework/Actor.h"
 
-using namespace blood;
+using namespace sc;
 class Turret :public Component {
 public:
 	Turret() = default;
@@ -12,7 +12,7 @@ public:
 
 	CLASS_PROTOTYPE(Turret)
 
-	void Read(const blood::json::value_t& value) override;
+	void Read(const sc::json::value_t& value) override;
 
 private:
 	float rocketShootTimer;

@@ -1,7 +1,7 @@
 #include "Observer.h"
 
-namespace blood {
-	blood::IObserver::~IObserver() {
+namespace sc {
+	sc::IObserver::~IObserver() {
 		EventManager::Instance().RemoveObserver(*this);
 	}
 }

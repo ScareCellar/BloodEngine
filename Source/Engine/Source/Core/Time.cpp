@@ -1,5 +1,5 @@
 #include "Time.h"
-namespace blood {
+namespace sc {
 	void Time::Tick()
 	{
 		clock::time_point now = clock::now();

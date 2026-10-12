@@ -4,7 +4,7 @@
 #include "Source/Math/Vector2.h"
 #include "Source/Math/Vector3.h"
 
-namespace blood {
+namespace sc {
 	struct Event {
 		using id_t = std::string;
 		using data_t = std::variant<int, float, bool, std::string, vec2, vec3>;

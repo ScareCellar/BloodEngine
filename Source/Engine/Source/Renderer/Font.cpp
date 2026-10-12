@@ -1,7 +1,7 @@
 #include "Font.h"
 
 
-namespace blood {
+namespace sc {
 	Font::~Font() {
 		if (m_ttfFont != nullptr) {
 			TTF_CloseFont(m_ttfFont);

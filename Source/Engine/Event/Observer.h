@@ -1,6 +1,6 @@
 #pragma once
 
-namespace blood {
+namespace sc {
 	class IObserver {
 	public:
 		virtual ~IObserver();

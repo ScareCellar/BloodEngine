@@ -1,6 +1,6 @@
 #pragma once
 
-namespace blood {
+namespace sc {
 	template<typename T>
 	struct Rect {
 		T x, y, w, h;

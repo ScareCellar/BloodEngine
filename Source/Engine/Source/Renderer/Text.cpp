@@ -1,7 +1,7 @@
 #include "Text.h"
 
 
-namespace blood {
+namespace sc {
 	Text::~Text() {
 		if (m_texture != nullptr) {
 			SDL_DestroyTexture(m_texture);

@@ -6,10 +6,10 @@
 #include "../Math/Vector3.h"
 #include <sstream>
 
-bool blood::Mesh::Load(const std::string filename)
+bool sc::Mesh::Load(const std::string filename)
 {
 	std::string buffer;
-	if (!(blood::file::ReadTextFile(filename, buffer))) {
+	if (!(sc::file::ReadTextFile(filename, buffer))) {
 		Logger::Error("Could not read file: {}", filename);
 		return false;
 	}
@@ -32,7 +32,7 @@ bool blood::Mesh::Load(const std::string filename)
 	return true;
 }
 
-void blood::Mesh::Draw(class Renderer& renderer, const vec2& position, float rotation, float scale) {
+void sc::Mesh::Draw(class Renderer& renderer, const vec2& position, float rotation, float scale) {
 
 		if (m_points.empty()) return;
 		renderer.SetColorFloat(m_color.r, m_color.g, m_color.b);
@@ -46,11 +46,11 @@ void blood::Mesh::Draw(class Renderer& renderer, const vec2& position, float rot
 			renderer.DrawLine(p1.x, p1.y, p2.x, p2.y);
 		}
 	}
-	void blood::Mesh::Draw(class Renderer& renderer, const Transform& transform) {
+	void sc::Mesh::Draw(class Renderer& renderer, const Transform& transform) {
 		Draw(renderer, transform.position, transform.rotation, transform.scale);
 	}
 
-	void blood::Mesh::CalculateRadius() {
+	void sc::Mesh::CalculateRadius() {
 		m_radius = 0;
 		for (auto& point : m_points) {
 			float length = point.Length();

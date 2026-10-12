@@ -3,7 +3,7 @@
 #include <iostream>
 #include <format>
 
-namespace blood {
+namespace sc {
 
 	enum class LogLevel : uint8_t {
 		None = 0,

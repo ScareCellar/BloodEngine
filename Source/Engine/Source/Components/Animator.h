@@ -3,7 +3,7 @@
 #include "Source/Framework/Component.h"
 #include "Source/Renderer/TextureAnimation.h"
 
-namespace blood {
+namespace sc {
 	class Animator : public Component {
 	public:
 		struct TextureAnimInfo {

@@ -2,7 +2,7 @@
 #include "InputSystem.h"
 
 
-namespace blood {
+namespace sc {
 	bool InputSystem::Initialize() {
 		int numKeys;
 		const bool* keyboardState = SDL_GetKeyboardState(&numKeys);

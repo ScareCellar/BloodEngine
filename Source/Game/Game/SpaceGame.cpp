@@ -6,6 +6,7 @@
 #include "../../Engine/EngineMinimal.h"
 #include "../../Engine/Engine.h"
 #include "../GamePCH.h"
+#include "../../ThirdParty/ImGUI/imgui.h"
 
 #include <vector>
 #include <iostream>
@@ -13,16 +14,16 @@
 
 bool SpaceGame::Initialize()
 {
-    blood::EventManager::Instance().AddObserver("player_dead", *this);
-    blood::EventManager::Instance().AddObserver("add_points", *this);
+    sc::EventManager::Instance().AddObserver("player_dead", *this);
+    sc::EventManager::Instance().AddObserver("add_points", *this);
 
     m_scene = std::make_unique<Scene>(this);
 
     m_scene->Load("scene.json");
 
-    m_titleText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("title_font", "military_kid.ttf", 128.0f));
-    m_scoreText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("ui_font", "military_kid.ttf", 64.0f));
-    m_livesText = std::make_unique<blood::Text>(blood::Resources().GetWithID<blood::Font>("ui_font", "military_kid.ttf", 64.0f));
+    m_titleText = std::make_unique<sc::Text>(sc::Resources().GetWithID<sc::Font>("title_font", "military_kid.ttf", 128.0f));
+    m_scoreText = std::make_unique<sc::Text>(sc::Resources().GetWithID<sc::Font>("ui_font", "military_kid.ttf", 64.0f));
+    m_livesText = std::make_unique<sc::Text>(sc::Resources().GetWithID<sc::Font>("ui_font", "military_kid.ttf", 64.0f));
 
     return true;
 }
@@ -34,7 +35,7 @@ void SpaceGame::Update(float dt) {
         m_gamestate = GameState::Title;
         break;
     case SpaceGame::GameState::Title:
-        if (blood::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_SPACE)) m_gamestate = GameState::StartGame;
+        if (sc::GetEngine().GetInput().GetKeyDown(SDL_SCANCODE_SPACE)) m_gamestate = GameState::StartGame;
         break;
     case SpaceGame::GameState::StartGame:
         m_score = 0;
@@ -46,13 +47,13 @@ void SpaceGame::Update(float dt) {
     {
         m_scene->RemoveAllActors();
 
-        auto player = blood::Factory::Instance().Create<Actor>("tankplayer");
+        auto player = sc::Factory::Instance().Create<Actor>("tankplayer");
         if (player) m_scene->AddActor(std::move(player));
 
-        auto turret = blood::Factory::Instance().Create<Actor>("turret");
+        auto turret = sc::Factory::Instance().Create<Actor>("turret");
         if (turret) m_scene->AddActor(std::move(turret));
 
-        auto enemy = blood::Factory::Instance().Create<Actor>("enemy");
+        auto enemy = sc::Factory::Instance().Create<Actor>("enemy");
         if (enemy) m_scene->AddActor(std::move(enemy));
         
 
@@ -89,13 +90,13 @@ void SpaceGame::Update(float dt) {
     m_scene->Update(dt);
 }
 
-void SpaceGame::Draw(blood::Renderer& renderer) {
+void SpaceGame::Draw(sc::Renderer& renderer) {
     if (m_gamestate == GameState::Title) {
-        m_titleText->Create(renderer, "Blood", blood::vec3{ 1,0,0 });
+        m_titleText->Create(renderer, "Blood", sc::vec3{ 1,0,0 });
         m_titleText->Draw(renderer, (float)renderer.GetWidth() / 2- 250, (float)renderer.GetHeight() / 2);
     }
     if (m_gamestate == GameState::GameOver) {
-        m_titleText->Create(renderer, "Game Over", blood::vec3{ 1,0,0 });
+        m_titleText->Create(renderer, "Game Over", sc::vec3{ 1,0,0 });
         m_titleText->Draw(renderer, (float)renderer.GetWidth() / 2 - 500, (float)renderer.GetHeight() / 2);
     }
 
@@ -105,7 +106,7 @@ void SpaceGame::Draw(blood::Renderer& renderer) {
     m_scoreText->Create(renderer, std::to_string(GetLives()), {1,1,1});
     m_scoreText->Draw(renderer, (float)renderer.GetWidth() - 100, (float)renderer.GetHeight() - 100);
 
-    blood::GetEngine().GetPS().Draw(renderer);
+    sc::GetEngine().GetPS().Draw(renderer);
     m_scene->Draw(renderer);
 
 }
@@ -115,13 +116,13 @@ void SpaceGame::Shutdown() {
 }
 
 void SpaceGame::SpawnEnemy() {
-    Transform trans(vec2((float)random::getReal<float>(GetEngine().GetRenderer().GetWidth()), 
+    Transform transform(vec2((float)random::getReal<float>((float)GetEngine().GetRenderer().GetWidth()), 
         //y
-        (float)random::getReal<float>(GetEngine().GetRenderer().GetHeight())), 
+        (float)random::getReal<float>((float)GetEngine().GetRenderer().GetHeight())), 
         //rotation and scale
         random::getReal(360.0f), 2.0f);
 
-    auto enemy = blood::Instantiate("enemy", trans);
+    auto enemy = sc::Instantiate("enemy", transform);
     if (enemy) m_scene->AddActor(std::move(enemy));
     m_spawnTime -= 0.1f;
     if (m_spawnTime < 0.5f) {
@@ -130,10 +131,10 @@ void SpaceGame::SpawnEnemy() {
 }
 
 void SpaceGame::OnNotify(const Event& event){
-    if (blood::equalsIgnoreCase(event.id, "player_dead")) {
+    if (sc::equalsIgnoreCase(event.id, "player_dead")) {
         OnPlayerDestroyed();
     }
-    else if (blood::equalsIgnoreCase(event.id, "add_points")) {
+    else if (sc::equalsIgnoreCase(event.id, "add_points")) {
         AddPoints(std::get<int>(event.data));
     }
     Logger::Info("Event: {}", event.id);

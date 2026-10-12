@@ -3,12 +3,12 @@
 #include "Source/Core/StringHelper.h"
 #include "Event/Observer.h"
 
-#define OBSERVER_ADD(event_id)				blood::EventManager::Instance().AddObserver(#event_id, *this)
-#define OBSERVER_REMOVE_SELF				blood::EventManager::Instance().RemoveObserver(*this)
-#define EVENT_NOTIFY_DATA(event_id, data)	blood::EventManager::Instance().Notify({ #event_id, data })
-#define EVENT_NOTIFY(event_id)				blood::EventManager::Instance().Notify({ #event_id, true })
+#define OBSERVER_ADD(event_id)				sc::EventManager::Instance().AddObserver(#event_id, *this)
+#define OBSERVER_REMOVE_SELF				sc::EventManager::Instance().RemoveObserver(*this)
+#define EVENT_NOTIFY_DATA(event_id, data)	sc::EventManager::Instance().Notify({ #event_id, data })
+#define EVENT_NOTIFY(event_id)				sc::EventManager::Instance().Notify({ #event_id, true })
 
-namespace blood {
+namespace sc {
 	void EventManager::AddObserver(const Event::id_t& id, IObserver& observer) {
 		m_observers[toLower(id)].push_back(&observer);
 	}

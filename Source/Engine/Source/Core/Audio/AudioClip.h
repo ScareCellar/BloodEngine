@@ -3,7 +3,7 @@
 #include <fmod.hpp>
 #include <string>
 
-namespace blood {
+namespace sc {
 	class AudioClip : public Resource {
 	public:
 		AudioClip() = default;

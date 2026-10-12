@@ -4,13 +4,13 @@
 #include <string>
 #include "Source/Math/Vector2.h"
 #include "Source/Math/Vector3.h"
-#define JSON_READ(value, data) blood::json::Read(value, #data, data)
-#define JSON_READ_NAME(value, name, data) blood::json::Read(value, name, data)
+#define JSON_READ(value, data) sc::json::Read(value, #data, data)
+#define JSON_READ_NAME(value, name, data) sc::json::Read(value, name, data)
 
 #define JSON_HAS(value, data) value.HasMember(#data)
 #define JSON_GET(value, data) value[#data]
 
-namespace blood::json
+namespace sc::json
 {
 	using value_t = rapidjson::Value;
 	using document_t = rapidjson::Document;

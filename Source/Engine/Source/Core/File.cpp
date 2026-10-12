@@ -2,7 +2,7 @@
 
 
 
-namespace blood {
+namespace sc {
 	namespace file {
         std::string GetCurrentDirectory() {
             std::error_code ec;

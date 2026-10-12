@@ -6,7 +6,7 @@
 #include "../Core/StringHelper.h"
 
 
-namespace blood{
+namespace sc{
 	
 	class Scene : public ISerializable {
 	public:

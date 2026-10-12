@@ -2,7 +2,7 @@
 #include "RendererComponent.h"
 #include "Source/Physics/PhysicsBody.h"
 
-namespace blood {
+namespace sc {
 	class TilemapRenderer : public RendererComponent {
 	public:
 		TilemapRenderer() = default;

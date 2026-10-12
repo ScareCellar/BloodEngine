@@ -1,7 +1,7 @@
 #include "MeshRenderer.h"
 #include "../../EnginePCH.h"
 
-namespace blood {
+namespace sc {
 	FACTORY_REGISTER(MeshRenderer)
 
 	void MeshRenderer::Update(float dt)	{

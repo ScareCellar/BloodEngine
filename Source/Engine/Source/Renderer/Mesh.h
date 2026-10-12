@@ -7,7 +7,7 @@
 
 
 #include <vector>
-namespace blood {
+namespace sc {
 	class Mesh : public Resource {
 	public:
 		Mesh() = default;

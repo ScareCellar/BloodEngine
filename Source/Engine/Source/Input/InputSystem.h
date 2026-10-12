@@ -4,7 +4,7 @@
 #include <array>
 
 
-namespace blood {
+namespace sc {
 	class InputSystem {
 	public:
 		InputSystem() = default;

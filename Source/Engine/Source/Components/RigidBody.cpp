@@ -1,7 +1,7 @@
 #include "RigidBody.h"
 #include "../Framework/Actor.h"
 
-namespace blood {
+namespace sc {
 	FACTORY_REGISTER(RigidBody)
 
 	void RigidBody::Update(float dt) {

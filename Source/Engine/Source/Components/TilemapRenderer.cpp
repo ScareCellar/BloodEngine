@@ -2,7 +2,7 @@
 #include "Source/Resources/Tilemap.h"
 #include "Engine.h"
 
-namespace blood {
+namespace sc {
 	FACTORY_REGISTER(TilemapRenderer)
 
 	TilemapRenderer::TilemapRenderer(const TilemapRenderer& other) {

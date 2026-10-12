@@ -10,7 +10,7 @@
 FACTORY_REGISTER(Enemy)
 
 void Enemy::Start() {
-    rigidBody = owner->GetComponent<blood::RigidBody>();
+    rigidBody = owner->GetComponent<sc::RigidBody>();
 }
 
 void Enemy::Update(float dt) {
@@ -30,10 +30,10 @@ void Enemy::Update(float dt) {
 
 
 
-    vec2 force = blood::vec2{ 1,0 }.Rotate(blood::math::degToRad(owner->transform.rotation* speed));
+    vec2 force = sc::vec2{ 1,0 }.Rotate(sc::math::degToRad(owner->transform.rotation* speed));
     
     
-    auto rb = owner->GetComponent<blood::RigidBody>();
+    auto rb = owner->GetComponent<sc::RigidBody>();
     if (rb) {
         rb->velocity = (force * dt) * speed;
     }
@@ -58,16 +58,16 @@ void Enemy::OnCollision(Actor* other){
     if (other->tag == "player" || other->tag == "neutral") {
         if (other->GetComponent<CircleCollider2D>()->active) {
             owner->destroyed = true;
-            blood::EventManager::Instance().Notify({ "add_points", 100 });
-            blood::GetEngine().GetAudio().PlaySound("bass");
+            sc::EventManager::Instance().Notify({ "add_points", 100 });
+            sc::GetEngine().GetAudio().PlaySound("bass");
             for (int i = 0; i < 100; i++) {
-                blood::Particle particle;
+                sc::Particle particle;
                 particle.position = owner->transform.position;
-                particle.velocity = blood::vec2{ blood::random::getReal(-200.0f, 200.0f), blood::random::getReal(-200.0f, 200.0f) };
-                particle.color = blood::vec3{ 1, 1, 1 };
+                particle.velocity = sc::vec2{ sc::random::getReal(-200.0f, 200.0f), sc::random::getReal(-200.0f, 200.0f) };
+                particle.color = sc::vec3{ 1, 1, 1 };
                 particle.lifespan = 2;
 
-                blood::GetEngine().GetPS().AddParticle(particle);
+                sc::GetEngine().GetPS().AddParticle(particle);
             }
         }
     }

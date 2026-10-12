@@ -3,7 +3,7 @@
 #include "../Components/Collider.h"
 #include "../Engine/Source/Core/Factory.h"
 
-namespace blood{
+namespace sc{
 
 	void Scene::Update(float dt) {
 		for (auto& actor : m_actors) {
@@ -48,8 +48,8 @@ namespace blood{
 	}
 
 	bool Scene::Load(const std::string& sceneName) {
-		blood::json::document_t document;
-		if (!blood::json::Load(sceneName, document)) {
+		sc::json::document_t document;
+		if (!sc::json::Load(sceneName, document)) {
 			Logger::Error("Could not load Scene {}", sceneName);
 			return false;
 		}

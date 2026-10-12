@@ -4,7 +4,7 @@
 #define CLASS_PROTOTYPE(classname) virtual std::unique_ptr<Object> Clone() { return std::make_unique<classname>(*this); }
 
 
-namespace blood {
+namespace sc {
 	class Object : public ISerializable{
 	public:
 		std::string name;

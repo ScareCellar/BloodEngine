@@ -1,7 +1,7 @@
 #pragma once
 #include "Source/Framework/Actor.h"
 
-using namespace blood;
+using namespace sc;
 
 class Enemy : public Component, public ICollidable {
 public:
@@ -11,7 +11,7 @@ public:
 	float shootTimer = 1;
 	
 
-	blood::RigidBody* rigidBody;
+	sc::RigidBody* rigidBody;
 
 	CLASS_PROTOTYPE(Enemy)
 

@@ -2,7 +2,7 @@
 #include "../Renderer/Renderer.h"
 #include "../Components/RendererComponent.h"
 
-namespace blood {
+namespace sc {
 
     FACTORY_REGISTER(Actor)
 

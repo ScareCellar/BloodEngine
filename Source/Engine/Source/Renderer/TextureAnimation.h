@@ -1,6 +1,6 @@
 #pragma once
 
-namespace blood {
+namespace sc {
 	class Texture;
 	class TextureAnimation : public Resource {
 	public:

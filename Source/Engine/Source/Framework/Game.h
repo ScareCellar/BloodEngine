@@ -3,7 +3,7 @@
 #include "Scene.h"
 #include "../Core/Time.h"
 
-namespace blood {
+namespace sc {
 	class Game {
 	public:
 		Game() = default;

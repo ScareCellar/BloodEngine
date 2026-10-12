@@ -6,16 +6,16 @@
 #include "../Engine/Source/Components/RigidBody.h"
 
 
-using namespace blood;
+using namespace sc;
 
 FACTORY_REGISTER(Player)
 
 void Player::Update(float dt) {
     ////1980, 1224
-    blood::Particle particle;
+    sc::Particle particle;
     particle.position = owner->transform.position;
-    particle.velocity = blood::vec2{ 200,0 };
-    particle.color = blood::vec3{ 1,1,1 };
+    particle.velocity = sc::vec2{ 200,0 };
+    particle.color = sc::vec3{ 1,1,1 };
     particle.lifespan = 2.0f;
     GetEngine().GetPS().AddParticle(particle);
 
@@ -35,7 +35,7 @@ void Player::Update(float dt) {
     vec2 direction{ 1,0 };
     vec2 force = direction.Rotate(math::degToRad(owner->transform.rotation)) * thrust * speed;
 
-    auto* rb = owner->GetComponent<blood::RigidBody>();
+    auto* rb = owner->GetComponent<sc::RigidBody>();
     if (rb) {
         rb->velocity += force * dt;
     }
@@ -47,17 +47,17 @@ void Player::Update(float dt) {
 }
 
 
-void Player::OnCollision(blood::Actor* other) {
+void Player::OnCollision(sc::Actor* other) {
     
     if (owner->tag != other->tag) {
         owner->destroyed = true;
-        blood::EventManager::Instance().Notify(blood::Event{ "player_dead", true });
+        sc::EventManager::Instance().Notify(sc::Event{ "player_dead", true });
 
         dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDestroyed();
     }
 }
 
-void Player::Read(const blood::json::value_t& value) {
+void Player::Read(const sc::json::value_t& value) {
     Object::Read(value);
 
     JSON_READ(value, speed);

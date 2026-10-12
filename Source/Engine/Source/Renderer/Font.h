@@ -3,7 +3,7 @@
 #include <string>
 
 struct TTF_Font;
-namespace blood {
+namespace sc {
 
 	class Font : public Resource {
 	public:

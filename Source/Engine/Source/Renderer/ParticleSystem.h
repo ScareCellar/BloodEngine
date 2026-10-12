@@ -4,7 +4,7 @@
 
 #include <vector>
 
-namespace blood {
+namespace sc {
 	struct Particle {
 		bool active = false;
 

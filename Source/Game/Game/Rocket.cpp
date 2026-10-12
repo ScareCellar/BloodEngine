@@ -17,9 +17,9 @@ void Rocket::Update(float dt) {
 
 void Rocket::Explode(){
 	if (!exploded) {
-		blood::GetEngine().GetAudio().PlaySound("explode");
-		std::unique_ptr<blood::Mesh> explode;
-		owner->GetComponent<blood::SpriteRenderer>()->textureName = "explode.png";
+		sc::GetEngine().GetAudio().PlaySound("explode");
+		std::unique_ptr<sc::Mesh> explode;
+		owner->GetComponent<sc::SpriteRenderer>()->textureName = "explode.png";
 		owner->lifespan = 0.2f;
 		owner->GetComponent<RigidBody>()->damping = 10;
 		exploded = true;
@@ -29,7 +29,7 @@ void Rocket::Explode(){
 	}
 }
 
-void Rocket::OnCollision(blood::Actor* other){
+void Rocket::OnCollision(sc::Actor* other){
 	if (owner->tag != other->tag && other->name != "turret") {
 		Explode();
 		

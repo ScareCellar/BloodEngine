@@ -1,7 +1,7 @@
 #include "Texture.h"
 #include "../Renderer/Renderer.h"
 
-namespace blood {
+namespace sc {
     Texture::~Texture()
     {
         // if texture exists, destroy texture

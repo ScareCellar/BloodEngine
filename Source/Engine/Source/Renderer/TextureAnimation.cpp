@@ -1,9 +1,9 @@
 #include "TextureAnimation.h"
-namespace blood {
+namespace sc {
 	bool TextureAnimation::Load(const std::string& filename, class Renderer& renderer) {
 		// load json
-		blood::json::document_t document;
-		if (!blood::json::Load(filename, document)) {
+		sc::json::document_t document;
+		if (!sc::json::Load(filename, document)) {
 			Logger::Error("Could not load TextureAnimation json {}", filename);
 			return false;
 		}

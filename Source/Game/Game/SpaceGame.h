@@ -4,7 +4,7 @@
 #include "Source/Renderer/Text.h"
 #include "Event/Observer.h"
 
-class SpaceGame : public blood::Game, public blood::IObserver {
+class SpaceGame : public sc::Game, public sc::IObserver {
 public:
 
 	enum class GameState {
@@ -23,13 +23,13 @@ public:
 	bool Initialize() override;
 
 	void Update(float dt) override;
-	void Draw(class blood::Renderer& renderer) override;
+	void Draw(class sc::Renderer& renderer) override;
 
 	void Shutdown() override;
 
 	void OnPlayerDestroyed();
 
-	void OnNotify(const blood::Event& event) override;
+	void OnNotify(const sc::Event& event) override;
 	
 private:
 	GameState m_gamestate = GameState::Initialize;
@@ -41,9 +41,9 @@ private:
 
 	float m_stateTimer{ 0 };
 
-	std::unique_ptr<blood::Text> m_titleText;
-	std::unique_ptr<blood::Text> m_scoreText;
-	std::unique_ptr<blood::Text> m_livesText;
+	std::unique_ptr<sc::Text> m_titleText;
+	std::unique_ptr<sc::Text> m_scoreText;
+	std::unique_ptr<sc::Text> m_livesText;
 
 	// Inherited via IObserver
 };

@@ -2,7 +2,7 @@
 #include "../../../EnginePCH.h"
 #include "AudioClip.h"
 
-namespace blood {
+namespace sc {
 
 	bool AudioSystem::CheckFMODResult(FMOD_RESULT result) {
 		if (result != FMOD_OK) {

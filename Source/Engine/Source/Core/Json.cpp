@@ -5,7 +5,7 @@
 #include <rapidjson/istreamwrapper.h>
 #include <iostream>
 
-namespace blood::json
+namespace sc::json
 {
     bool Load(const std::string& filename, document_t& document) {
         // read the file into a string
